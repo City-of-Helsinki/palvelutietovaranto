@@ -1,0 +1,16 @@
+version: '{branch}.{build}'
+environment:
+  RunOctoPack: truepull_requests:
+  do_not_increment_build_number: true
+nuget:
+  disable_publish_on_pr: true
+before_build:
+- cmd: nuget restore "Source\ServiceRegister.sln"
+build:
+  verbosity: minimal
+configuration: Release
+artifacts:
+  - path: 'Source\Api\obj\octopacked\ServiceRegister.API.*.nupkg'
+    name: ServiceRegister API OctoPack
+  - path: 'Source\AngularApplication\obj\octopacked\ServiceRegister.UI.*.nupkg'
+    name: ServiceRegister UI OctoPack
