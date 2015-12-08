@@ -14,3 +14,71 @@ artifacts:
     name: ServiceRegister API OctoPack
   - path: 'Source\AngularApplication\obj\octopacked\ServiceRegister.UI.*.nupkg'
     name: ServiceRegister UI OctoPack
+test:
+  categories:
+    except:
+    - BrowserTest
+before_test:
+- ps: >-
+    # Run Chutzpah unit tests
+
+    
+    # Locate Chutzpah
+
+    $ChutzpahDir = Get-ChildItem chutzpah.console.exe -recurse | select-object -first 1 | select -expand Directory
+
+
+    # Run tests using Chutzpah and export results as JUnit format to chutzpah-results.xml
+
+    $ChutzpahCmd = "$($ChutzpahDir)\chutzpah.console.exe $($env:APPVEYOR_BUILD_FOLDER)\Source\AngularApplication.Tests /silent /junit .\chutzpah-results.xml"
+
+
+    Write-Host $ChutzpahCmd
+
+    Invoke-Expression $ChutzpahCmd
+
+
+    # Upload results to AppVeyor one by one
+
+
+    $testsuites = [xml](get-content .\chutzpah-results.xml)
+
+    $anyFailures = $FALSE
+
+
+    foreach ($testsuite in $testsuites.testsuites.testsuite)
+
+    {
+        Write-Host "`r`n============================================================="
+        Write-Host "Test file: $($testsuite.name)"
+        foreach ($testcase in $testsuite.testcase)
+        {
+            $failed = $testcase.failure
+            $time = $testsuite.time
+            if ($testcase.time)
+            {
+                $time = $testcase.time
+            }
+
+            if ($failed)
+            {
+                Write-Host "Failed - $($testcase.name)" -foregroundcolor "Red"
+                Write-Host "$($testcase.failure.message)" -foregroundcolor "Yellow"
+                Add-AppveyorTest $testcase.name -Outcome Failed -FileName $testsuite.name -ErrorMessage $testcase.failure.message -Duration $time
+                $anyFailures = $TRUE
+            }
+            else
+            {
+                Write-Host "Passed - $($testcase.name)"
+                Add-AppveyorTest $testcase.name -Outcome Passed -FileName $testsuite.name -Duration $time
+            }
+        }
+    }
+
+
+    if ($anyFailures -eq $TRUE)
+
+    {
+        Write-Host "Failing build as there are broken tests"
+        $host.SetShouldExit(1)
+    }
