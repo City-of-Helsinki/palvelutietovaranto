@@ -137,13 +137,9 @@ publish/
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
-**/packages/*
+Source/packages/*
 # except build/, which is used as an MSBuild target.
-!**/packages/build/
-# except App/Packages, which is used for storing AngularJS reference files.
-!**/App/Packages/**
-# except Content/Packages, which is used for storing CSS reference files.
-!**/Content/Packages/**
+!Source/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 

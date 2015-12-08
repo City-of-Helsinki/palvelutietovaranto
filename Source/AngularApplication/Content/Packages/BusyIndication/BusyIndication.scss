@@ -1,0 +1,64 @@
+.busy-indicator {
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.spinner-background {
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 97;
+    opacity: 0.8;
+}
+
+.spinner-container {
+    position: absolute;
+    z-index: 99;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.spinner {
+    border: 5px solid #a5a5a5;
+    border-right-color: transparent;
+    border-radius: 50%;
+    z-index: 99;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 150px;
+    -webkit-animation: form-loading 1000ms linear infinite;
+    animation: form-loading 700ms linear infinite;
+}
+
+.busy-text {
+    position: absolute;
+    z-index: 99;
+    margin-top: 10px;
+    border: none;
+    width: 400px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+@keyframes form-loading {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes form-loading {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
