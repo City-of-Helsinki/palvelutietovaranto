@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ServiceRegister.UI</id>
+    <title>Service Register UI</title>
+    <description>Service Register AngularJS UI</description>
+    <authors>Affecto</authors>
+    <version>$version$</version>
+    <releaseNotes>
+      Fix creating a new user when being a normal organization user.
+      User instructions for services.
+      User instructions for organizations.
+      Fix for read-only layouts in IE when using very long words in text areas.
+      Faster and configurable ontology term search.
+    </releaseNotes>
+  </metadata>
+</package>

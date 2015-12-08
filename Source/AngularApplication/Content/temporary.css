@@ -1,0 +1,154 @@
+﻿@charset "UTF-8";
+
+article {
+  position: relative;
+}
+
+.validation-message {
+  position: absolute;
+}
+
+.validation-message.no-wrap {
+  white-space: nowrap;
+}
+
+.content-box-inner label.no-wrap {
+  white-space: nowrap;
+}
+
+.overlay {
+  position: absolute;
+}
+
+.help-text {
+  margin: 25px 0 40px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.organization-map {
+  z-index: 10;
+}
+
+.organization-map .map-toggle > span {
+  padding: 240px 25px 15px 25px;
+}
+
+.organization-map ul li ul li {
+    padding-left: 20px;
+}
+
+.services-landing {
+  padding: 20px 20px 20px;
+}
+
+input[disabled],
+.button[disabled] {
+  opacity: 0.6;
+  text-decoration: none !important;
+  color: #b3b7ba !important;
+  cursor: default;
+}
+
+.form-control {
+  border: 2px solid;
+  border-color: #989c9f;
+}
+
+.form-control.ng-invalid {
+  border-color: #e7394e !important;
+}
+
+.form-control.ng-invalid-required {
+  border-color: #989c9f !important;
+}
+
+.link-tree ul a.add {
+  background-color: #19945a !important;
+}
+
+.link-tree ul a {
+    padding: 4px;
+}
+
+.busy-indicator {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  margin-top: -173px;
+}
+
+.mandatory-field:after {
+  content: "*"
+}
+
+.big-textfield {
+	height: 200px !important;
+}
+
+.chosen-container-multi .chosen-choices {
+  width: 96%;
+}
+
+.adding-wizard-header {
+  z-index: 2;
+  position: relative;
+}
+
+.ui-tree-container {
+  overflow: hidden;
+}
+
+#ontologyTermList {
+  width: 100%;
+  border: none;
+  outline: 0;
+}
+
+#ontologyTermList option {
+  cursor: pointer;
+  transition: background-color 0.15s, box-shadow 0.15s;
+  padding: 1px 3px 1px 2px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-size: 0.77778rem;
+}
+#ontologyTermList option:hover {
+  background: #e7f4f9;
+  box-shadow: 0 0 1px #ccc inset;
+}
+
+.tag-list-long .tag-container .tag span:first-child {
+    max-width: 88%;
+}
+
+.map-content treecontrol.tree-organization .tree-label {
+    position: relative;
+    max-width: 270px;
+}
+
+.map-content treecontrol.tree-organization li li .tree-label {
+    max-width: 250px;
+}
+
+.map-content treecontrol.tree-organization li li li .tree-label {
+    max-width: 249px;
+}
+
+.map-content treecontrol.tree-organization .org-tree-add {
+    position: absolute; 
+    top: 0; 
+    right: -40px
+}
+
+.service-basic-information span {
+    display: block;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}

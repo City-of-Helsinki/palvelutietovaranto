@@ -1,0 +1,31 @@
+﻿<p>
+    <a id="addOrganizationButton" data-ng-href="#/Organizations" class="button add" data-ng-show="controller.isEditModeEnabled">Lisää organisaatiotaso</a>
+    <a id="editStructureButton" class="button add" href="javascript: void(0)" data-ng-click="controller.enableEditMode()" data-ng-show="controller.canEdit">Muokkaa rakennetta</a>
+    <a id="quitEditStructureButton" href="javascript: void(0)" class="button cancel" data-ng-click="controller.disableEditMode()"
+       data-ng-show="controller.isEditModeEnabled">
+        Lopeta muokkaus
+    </a>
+</p>
+
+<treecontrol id="organizationTree" class="tree-organization" tree-model="controller.model" order-by="name" options="controller.treeOptions" expanded-nodes="controller.expandedTreeNodes"
+             data-on-selection="controller.navigateToOrganization(node.id, selected)">
+    {{node.name}}
+    <button id="addSubOrganizationButton" class="add org-tree-add" data-ng-if="controller.isEditModeEnabled" data-ng-click="controller.createSubOrganization($event, node)">
+        Lisää
+    </button>
+</treecontrol>
+
+<script id="organizationTreeTemplate.html" type="text/ng-template">
+    <ul {{options.ulClass}}>
+        <li data-ng-repeat="node in node.{{options.nodeChildren}} | filter:filterExpression:filterComparator {{options.orderBy}}" data-ng-class="headClass(node)"
+            {{options.liClass}} set-node-to-data>
+            <div class="branch-container" data-ng-class="selectedClass()">
+                <i class="tree-branch-head" data-ng-class="iBranchClass()" data-ng-click="selectNodeHead(node)"></i>
+                <i class="tree-leaf-head {{options.iLeafClass}}"></i>
+                <div class="tree-label {{options.labelClass}}" data-ng-class="unselectableClass()" data-ng-click="selectNodeLabel(node)" tree-transclude>
+                </div>
+            </div>
+            <treeitem data-ng-show="nodeExpanded()"></treeitem>
+        </li>
+    </ul>
+</script>

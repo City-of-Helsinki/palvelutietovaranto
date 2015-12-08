@@ -1,0 +1,59 @@
+﻿<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                
+                <h1>Käyttäjät</h1>
+
+                <div class="help-text">
+                    <p>
+                        <strong>Ohje käytöstä tähän.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div class="button-row" data-ng-show="controller.canMaintainUsers">
+                    <div class="left">
+                        <a href="#/Organizations/{{ controller.organizationId }}/NewUser" class="button" id="addNewUserButton">Lisää käyttäjä</a>
+                    </div>
+                </div>
+
+                <div class="organization-landing">
+                    <div class="search-area" data-ng-show="controller.canViewAllUsers">
+                        <h2>Hae käyttäjiä</h2>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>Organisaatio</label>
+                                <select id="userOrganizationInput" class="form-control"
+                                        data-ng-model="controller.organizationId"
+                                        data-ng-options="org.id as org.name for org in controller.organizations"
+                                        data-ng-change="controller.retrieveUsers()"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="services-sum">
+                        Hakutuloksia <strong>{{ controller.userCount }}</strong> kpl
+                    </p>
+
+                    <div class="row">
+                        <table id="userList" class="content-table common-descriptions">
+                            <tbody>
+                                <tr>
+                                    <th>Nimi</th>
+                                    <th>Sähköposti</th>
+                                    <th>Rooli</th>
+                                    <th>Organisaatio</th>
+                                </tr>
+                                <tr data-ng-repeat="user in controller.model | orderBy: 'fullName'">
+                                    <td id="userName">{{ user.lastName }} {{ user.firstName }}</td>
+                                    <td id="userEmail">{{ user.emailAddress }}</td>
+                                    <td id="userRole">{{ user.role.name }}</td>
+                                    <td id="userOrganization">{{ user.organization.name }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ServiceRegister.API</id>
+    <title>Service Register API</title>
+    <description>Service Register REST API</description>
+    <authors>Affecto</authors>
+    <version>$version$</version>
+    <releaseNotes>
+      Fix creating a new user when being a normal organization user.
+      Faster and configurable ontology term search.
+    </releaseNotes>
+  </metadata>
+</package>

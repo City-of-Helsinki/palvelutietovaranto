@@ -1,0 +1,33 @@
+﻿<div class="id-not-active">
+    <strong>ID:</strong> {{ controller.model.numericId }}
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <label>Organisaatiotyyppi</label>
+        {{ controller.model.type }}
+    </div>
+    <div class="col-xs-6">
+        <label>Kunnan numero</label>
+        {{ controller.model.municipalityCode }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <label>Nimi</label>
+        {{ controller.model.name }}
+    </div>
+    <div class="col-xs-6">
+        <label>Y-tunnus</label>
+        {{ controller.model.businessId }}
+    </div>
+</div>
+<div class="row">
+    <label>Kuvaus</label>
+    <span data-ng-bind-html="controller.model.descriptionAsHtml"></span>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <label>OID</label>
+        {{ controller.model.oid }}
+    </div>
+</div>

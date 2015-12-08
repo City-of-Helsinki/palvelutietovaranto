@@ -1,0 +1,98 @@
+﻿@using ServiceRegister.AngularApplication.Configuration
+
+@{ ViewBag.Title = "Palvelutietovaranto"; }
+
+<header id="page-header" role="banner">
+    <div class="header-top" data-ng-controller="ServiceRegister.MainNavigationController as controller">
+        <div class="container">
+            <h1>
+                <a href="#/" class="logo-link">
+                    <img src="~/Content/img/logo.png" />
+                </a>
+            </h1>
+            <div class="site-options md-right">
+                <ul class="adjust-font-size" aria-hidden="true">
+                    <li><button title="Pienennä tekstikokoa" class="decrease-font-size">A-</button></li>
+                    <li><button title="Suurenna tekstikokoa" class="increase-font-size">A+</button></li>
+                </ul>
+                <span data-ng-show="controller.isUserLoggedIn">
+                    <span class="user-logged" >
+                        <a id="userName" href="javascript: void(0)">{{ controller.user.name }}</a>
+                    </span>
+                    <button id="logoutButton" class="button loginbutton" data-ng-click="controller.logOut()">
+                        <span class="icon icon-lock" aria-hidden="true"></span><span>Kirjaudu ulos</span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="site-navigation">
+            <div class="container">
+                <nav>
+                    <ul data-ng-show="controller.isUserLoggedIn">
+                        <li data-ng-class="{ 'current': controller.isServiceInformationSectionActive() }" data-ng-click="controller.changeToServiceInformationSection()">
+                            <a id="serviceInformationLink" href="javascript: void(0)">Palvelutiedot</a>
+                        </li>
+                        <li data-ng-class="{ 'current': controller.isAdministrationSectionActive() }" data-ng-click="controller.changeToAdministrationSection()">
+                            <a id="administrationLink" href="javascript: void(0)">Hallinta</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <nav class="main-navigation">
+                <div class="container" data-ng-show="controller.isUserLoggedIn">
+                    <ul data-ng-show="controller.isServiceInformationSectionActive()">
+                        <li><a data-ng-href="#/">Organisaatiot</a></li>
+                        <li><a data-ng-href="#/Organizations/{{controller.user.organizationId}}/Services">Palvelut</a></li>
+                    </ul>
+                    <ul data-ng-show="controller.isAdministrationSectionActive()">
+                        <li><a data-ng-href="#/Organizations/{{controller.user.organizationId}}/Users">Käyttäjät</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main id="main" role="main" name="main">
+    <div data-affecto-busy-indicator></div>
+    <div data-ng-view></div>
+</main>
+
+<footer id="page-footer" role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <div id="footer-logo">
+                <img src="~/Content/img/footer-logo2.svg" alt="Väestörekisterikeskus logo">
+            </div>
+        </div>
+    </div>
+</footer>
+
+@section scripts
+{
+    @{
+        var apiBaseUrl = ServiceRegisterApiConfiguration.Settings.BaseUrl;
+        var tokenServiceConfiguration = AccessTokenServiceConfiguration.Settings;
+    }
+
+    <script type="text/javascript">
+        angular
+            .module('ServiceRegister.Settings', [])
+            .constant('apiBaseUrl', '@apiBaseUrl')
+	    .constant('maxOntologyTermSearchResults', '@ServiceRegisterApiConfiguration.Settings.MaxOntologyTermSearchResults')
+            .constant('apiGetUserUrl', '@string.Format("{0}serviceregister/authenticateduser", apiBaseUrl)')
+            .constant('tokenServiceUrl', '@tokenServiceConfiguration.Url')
+            .constant('tokenServiceClientId', '@tokenServiceConfiguration.ClientId')
+            .constant('tokenServiceClientSecret', '@tokenServiceConfiguration.ClientSecret')
+            .constant('tokenServiceScope', '@tokenServiceConfiguration.Scope');
+
+        $(document).ready(function () {
+            $(".main-navigation li a").click(function () {
+                $(".main-navigation li").each(function () {
+                    $(this).removeClass("active");
+                });
+                $(this).parent().addClass("active");
+            });
+        });
+    </script>
+}

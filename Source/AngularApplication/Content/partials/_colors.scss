@@ -1,0 +1,79 @@
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+$color-dark-gray:					#2c2c2c;
+$color-light-gray:					#ececec;
+$color-gray-1:						#0f1317;
+$color-gray-2:						#2a2e32;
+$color-gray-3:						#464a4d;
+$color-gray-4:						#616568;
+$color-gray-5:						#7d8184;
+$color-gray-6:						#989c9f;
+$color-gray-7:						#b3b7ba;
+$color-gray-8:						#ced2d5;
+$color-gray-9:						#e9edf0;
+
+$color-entrepreneur:				#0061af;
+	$color-entrepreneur-darkest:	shade($color-entrepreneur, 60%);
+	$color-entrepreneur-darker:		shade($color-entrepreneur, 40%);
+	$color-entrepreneur-dark:		shade($color-entrepreneur, 20%);
+	$color-entrepreneur-light:		tint($color-entrepreneur, 20%);
+	$color-entrepreneur-lighter:	tint($color-entrepreneur, 50%);
+	$color-entrepreneur-lightest:	tint($color-entrepreneur, 80%);
+	
+$color-bright-azure:				#1998ff;
+	$color-bright-azure-darkest:	shade($color-bright-azure, 60%); 
+	$color-bright-azure-darker:		shade($color-bright-azure, 40%);
+	$color-bright-azure-dark:		shade($color-bright-azure, 20%);
+	$color-bright-azure-light:		tint($color-bright-azure, 20%);
+	$color-bright-azure-lighter:	tint($color-bright-azure, 50%);
+	$color-bright-azure-lightest:	tint($color-bright-azure, 80%);
+
+$color-persimmon:					#f25d0d;
+	$color-persimmon-darkest:		shade($color-persimmon, 60%);
+	$color-persimmon-darker:		shade($color-persimmon, 40%);
+	$color-persimmon-dark:			shade($color-persimmon, 20%);
+	$color-persimmon-light:			tint($color-persimmon, 20%);
+	$color-persimmon-lighter:		tint($color-persimmon, 50%);
+	$color-persimmon-lightest:		tint($color-persimmon, 80%);
+
+$color-deep-orchid:					#a155aa;
+	$color-deep-orchid-darkest:		shade($color-deep-orchid, 60%);
+	$color-deep-orchid-darker:		shade($color-deep-orchid, 40%);
+	$color-deep-orchid-dark:		shade($color-deep-orchid, 20%);
+	$color-deep-orchid-light:		tint($color-deep-orchid, 20%);
+	$color-deep-orchid-lighter:		tint($color-deep-orchid, 50%);
+	$color-deep-orchid-lightest:	tint($color-deep-orchid, 80%);
+
+$color-red:							#ff5353;
+	$color-red-darkest:				shade($color-red, 60%);
+	$color-red-darker:				shade($color-red, 40%);
+	$color-red-dark:				shade($color-red, 20%);
+	$color-red-light:				tint($color-red, 20%);
+	$color-red-lighter:				tint($color-red, 50%);
+	$color-red-lightest:			tint($color-red, 80%);
+
+$color-official:					#178809;
+	$color-official-darkest:		shade($color-official, 60%);
+	$color-official-darker:			shade($color-official, 40%);
+	$color-official-dark:			shade($color-official, 20%);
+	$color-official-light:			tint($color-official, 20%);
+	$color-official-lighter:		tint($color-official, 50%);
+	$color-official-lightest:		tint($color-official, 80%);
+	
+$color-citizen:						#e82375;
+	$color-citizen-darkest:			shade($color-citizen, 60%);
+	$color-citizen-darker:			shade($color-citizen, 40%);
+	$color-citizen-dark:			shade($color-citizen, 20%);
+	$color-citizen-light:			tint($color-citizen, 20%);
+	$color-citizen-lighter:			tint($color-citizen, 50%);
+	$color-citizen-lightest:		tint($color-citizen, 80%);
+
+$color-basic-text:	#333333;
+$white:				#ffffff;
+$link-color:		$color-bright-azure-dark;

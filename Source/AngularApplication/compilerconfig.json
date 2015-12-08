@@ -1,0 +1,12 @@
+﻿[
+  {
+    "outputFile": "Content/screen.css",
+    "inputFile": "Content/screen.scss",
+    "minify": {
+        "enabled": true
+    },
+    "includeInProject": true,
+    "sourceMap": true,
+    "options":{}
+  }
+]

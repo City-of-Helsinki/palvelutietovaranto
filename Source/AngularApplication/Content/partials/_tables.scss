@@ -1,0 +1,39 @@
+.content-table {
+	width: 100%;
+		
+	td {
+		padding: 5px 10px 5px 10px;
+		vertical-align: middle;
+		}
+	th {
+		padding: 5px 10px;
+		vertical-align: middle;
+		border-bottom: 3px solid $color-gray-7;
+		font-size: 1.15rem;
+		font-weight: bold;
+		}
+	
+	.button {
+		margin: 0;
+		}
+		
+	.level2 {
+		td:first-child {
+			padding-left: 40px;
+			}
+			}
+	.level3 {
+		td:first-child {
+			padding-left: 80px;
+			}
+			}
+			
+	
+	
+	}
+	
+.stripes {
+		:nth-child(even) td{
+			background-color: lighten($color-gray-8, 4%);
+			}
+	}

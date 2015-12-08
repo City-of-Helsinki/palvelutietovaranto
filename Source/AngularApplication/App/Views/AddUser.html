@@ -1,0 +1,96 @@
+﻿<article>
+    <div>
+        <div class="container">
+            <div class="page-title">
+                <h1>Uuden käyttäjän lisäys</h1>
+            </div>
+        </div>
+
+        <div>
+            <div class="container">
+                <form class="form-horizontal" name="controller.userInformationForm" unsaved-warning-form autocomplete="off">
+                    <div class="content-box">
+                        <div class="content-box-header">
+                            <h3>Käyttäjän tiedot</h3>
+                            <button id="saveNewUserButton" type="submit" class="button edit" data-ng-click="controller.addUserInformation()"
+                                    data-ng-disabled="controller.userInformationForm.$invalid || !controller.canSave() || controller.userInformationForm.$pristine">
+                                Tallenna
+                            </button>
+                            <button type="submit" class="button cancel" data-ng-click="controller.cancelAdd()">
+                                Keskeytä
+                            </button>
+                        </div>
+
+                        <div class="content-box-inner">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Sukunimi</label>
+                                    <input id="userLastNameInput" type="text" class="form-control" maxlength="100" data-ng-model="model.lastName" data-ng-required="true" />
+                                </div>
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Etunimi</label>
+                                    <input id="userFirstNameInput" type="text" class="form-control" maxlength="100" data-ng-model="model.firstName" data-ng-required="true" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Sähköpostiosoite (=käyttäjätunnus)</label>
+                                    <input id="userEmailAddressInput" type="text" class="form-control" name="emailAddress" maxlength="200"
+                                           data-ng-model="model.emailAddress" data-ng-blur="controller.validateEmailAddress()" data-ng-required="true" autocomplete="off">
+                                    <input id="emailInputToDisableAutocomplete" type="text" style="display: none;" />
+                                    <div id="userEmailAddressExistsErrorMessage" aria-live="polite" class="validation-message" data-ng-show="controller.validEmailAddress && controller.existingEmailAddress">
+                                        Sähköpostiosoite on jo varattu
+                                    </div>
+                                    <div id="userEmailAddressErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validEmailAddress">
+                                        Virheellinen sähköpostiosoite
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label>Puhelinnumero</label>
+                                    <input id="userPhoneNumberInput" type="text" class="form-control" name="phoneNumber" maxlength="50"
+                                           data-ng-model="model.phoneNumber" data-ng-blur="controller.validatePhoneNumber()" autocomplete="off">
+                                    <input id="phoneNumberInputToDisableAutocomplete" type="text" style="display: none;" />
+                                    <div id="userPhoneNumberErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validPhoneNumber">
+                                        Virheellinen puhelinnumero
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Salasana</label>
+                                    <input id="userPasswordInput" type="password" class="form-control" maxlength="100" data-ng-model="model.password"
+                                           data-ng-change="controller.validatePassword()" data-ng-required="true" autocomplete="off" />
+                                    <input id="passwordInputToDisableAutocomplete" type="password" style="display: none;" />
+                                </div>
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Salasana uudelleen</label>
+                                    <input id="userPasswordAgainInput" type="password" class="form-control" maxlength="100" data-ng-model="model.passwordConfirm"
+                                           data-ng-change="controller.validatePassword()" data-ng-required="true" autocomplete="off" />
+                                    <input id="passwordConfirmInputToDisableAutocomplete" type="password" style="display: none;" />
+                                    <div id="userPasswordErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validPassword">
+                                        Salasana ei täsmää
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Organisaatio</label>
+                                    <select id="userOrganizationInput" class="form-control" data-ng-model="model.organizationIdProperty"
+                                            data-ng-options="org.id as org.name for org in controller.organizations" data-ng-required="true"></select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Rooli</label>
+                                    <select id="userRoleInput" class="form-control" data-ng-model="model.roleIdProperty"
+                                            data-ng-options="role.id as role.name for role in controller.userRoles" data-ng-required="true"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</article>

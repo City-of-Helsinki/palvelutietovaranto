@@ -1,0 +1,65 @@
+﻿<article>
+
+    <div class="container" data-ng-controller="ServiceRegister.LoginController as controller ">
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <h1>Kansallinen palvelutietovaranto</h1>
+                <div class="help-text">
+                    <p>
+                        Tervetuloa kansalliseen palvelutietovarantoon! Palvelutietovaranto on tietovaranto, johon julkishallinnon organisaatiot tuottavat tiedot palveluistaan ja
+                        niiden palvelukanavista yhdenmukaisesti ja mahdollisimman asiakasystävällisesti. Palvelutietovarannon sisältö on avointa dataa ja se on avoimen rajapinnan
+                        kautta käytettävissä missä tahansa muussa palvelussa.
+                    </p>
+                    <p>Eikö organisaatiosi vielä kuvaa palveluita palvelutietovarantoon? <a href="http://esuomi.fi/palveluntarjoajille/palvelutietovaranto/" target="_blank">Lue lisää Palvelutietovarannosta ja ota meihin yhteyttä!</a></p>
+                </div>
+
+                <h2>Kirjaudu sisään</h2>
+
+                <div id="loginFailedNotificationBox" class="notification-box box" data-ng-show="controller.loginFailed">
+                    <span aria-hidden="true" class="icon icon-error"></span>
+                    <p class="text"><strong>Kirjautuminen ei onnistunut</strong><br /> Syöttämäsi sähköpostiosoite ja/tai salasana on virheellinen. Ole hyvä ja yritä uudelleen.</p>
+                </div>
+
+                <form name="loginForm">
+                    <div class="login-box">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label>Sähköposti</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input id="loginEmailInputField" type="text" data-ng-model="controller.emailAddress" data-ng-required="true" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label>Salasana</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input id="loginPasswordInputField" type="password" data-ng-model="controller.password" data-ng-required="true"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                            </div>
+                            <div class="col-xs-4">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="right">
+                                    <button id="loginButton" class="button" type="submit" data-ng-click="controller.login()"
+                                       data-ng-disabled="loginForm.$invalid">Kirjaudu sisään</button><br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</article>

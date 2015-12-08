@@ -1,0 +1,28 @@
+$chevron-circle-up:	"\e602";
+$chevron-circle-down: "\e603";
+$icon-info:	"\f129";
+$icon-menu:	"\e6025";
+$icon-lock: "\e601";
+$icon-pencil: "\e600";
+$icon-add: "\e606";
+$icon-remove: "\e607";
+$chevron-circle-right: "\e608";
+$icon-search: "\e609";
+$icon-stack: "\e610";
+
+.icon {
+	@include inline-block;
+}
+
+.icon:before {
+  @extend .charet;
+  @include inline-block;
+  /*width: 30px;
+  height: 30px;*/
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+button.icon {
+	background: transparent;
+}

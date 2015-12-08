@@ -1,0 +1,628 @@
+/****** Organisaatiokartta ********/
+
+.map-wrapper {
+	position:absolute;
+	top: 120px;
+	left: 0;
+}
+
+#addnew2 {
+	width: 300px;
+}
+
+#addnew, #addnew2, #moveLevel, #removeLevel {
+	
+	strong {
+		font-weight: bold;
+	}
+
+	.row {
+		margin: 0 0 20px 0!important;
+		
+		label {
+			display: block!important;
+			margin: 0 0 5px;
+		}
+	}
+	
+	select {
+		width: 100%;
+	}
+}	
+	
+.organization-landing, .services-landing  {
+
+	background-color: $color-gray-9;	
+	padding: 1px 20px 20px 20px;
+	.row {
+		margin: 0 0 20px 0;
+	}
+	label {
+		display: block;
+		font-weight: bold;
+		margin: 0 0 5px;
+	
+	}
+	
+	.link-tree ul a {
+		@include rem(font-size, 18px);
+	
+	}
+	
+	.jstree-default .jstree-anchor {
+		height: 28px;
+		line-height: 28px;
+		padding-left: 10px;
+		padding-right: 10px;
+		
+	}
+	
+	
+	.jstree-leaf > .jstree-icon {
+	
+		display: none;
+	}
+	
+	  .jstree-icon {
+			background-color: $color-bright-azure !important;
+			color: #ffffff !important;
+			@include rem(font-size, 18px);
+			height: 28px!important;
+			line-height: 28px!important;
+			padding-left: 8px !important;
+		}
+		
+		
+		.selected >  .jstree-icon {
+			background: $color-persimmon;
+		
+		}
+
+		 .jstree-default .jstree-node {
+			margin-left: 30px;
+		 
+		 }
+}
+	
+.organization-map {
+	
+	display: inline-block;
+	width: auto;
+	bottom: 0;
+    color: #000;
+    left: 0;
+    position: fixed;
+    top: 177px;
+	z-index: 2;
+		.help-text {
+			width: 305px;
+		
+		}
+		h3 {
+			margin-top: 0; 
+		}
+		.button {
+			@include rem(font-size, 16px);
+		}
+		
+		.tag-container {
+			
+			height: auto;
+			background: #fff;
+			width: 350px;
+		}
+		
+		.jstree-default .jstree-anchor {
+			padding-left: 10px;
+			padding-right: 10px;
+		
+		}
+		
+		.jstree-open > .jstree-icon, .jstree-closed > .jstree-icon
+			 {
+				background-color: $color-bright-azure!important; 
+				color: $white!important;
+				@include rem(font-size, 12px);
+			 }
+		
+		
+		> ul {
+			width: 273px;
+		}
+	
+		.map-left-container {
+			float: left;
+			display: inline-block;
+			height: 100%;	
+			}
+		
+		.map-toggle {
+			color: $white; 
+			cursor: pointer;
+			display: inline-block;
+			float: right;
+					span.hide-desktop {
+						display: none;
+					}
+				> span {
+					display: inline-block;
+					background-color: $color-bright-azure;
+					font-size: 1.25rem;
+					transform: rotate(-90deg);
+					margin-left: -236px;
+					padding-top: 240px;
+					padding-left: 25px;
+					padding-right: 25px;
+					padding-bottom: 15px;
+					width: 285px;
+					text-align: center;
+					float: left;
+					margin-top: 0;
+				}
+				
+				.icon.arrow {
+					padding: 0;
+					width: auto;
+					margin: 0 0 0 8px;
+					@extend .charet;
+					@include rem(font-size, 16px);
+					&:after {
+						content: $chevron-circle-down;
+					}
+							}
+				.edit {
+					background: $color-bright-azure; 
+					padding: 10px 7px 10px 15px!important;
+					display: block;
+					margin-top: 5px;
+					color: $white;
+					
+					
+					}
+			}
+			
+			
+	
+			.map-toggle.open {
+			
+				span.hide-desktop {
+						display: inline-block;
+					}
+					span.show-desktop {
+						display: none;
+					}
+					
+			.icon.arrow {
+			
+					&:after {
+						content: $chevron-circle-down;
+					}
+						}
+							}
+			
+		
+				.map-left {
+					display: none;
+					float: left;
+					position:relative;
+					width: auto;			
+					height: 100%;
+				}
+			
+			.content-table {
+				width: 100%;
+				
+					.selected .button {
+						background-color: $color-persimmon;
+					}
+			}
+		
+		}
+		
+			.organization-map.editmode .map-toggle {
+				.icon.arrow {
+			
+					&:after {
+						content: $chevron-circle-up;
+					}
+				
+				
+
+				}
+			
+			}
+			
+			.organization-map.editmode .map-toggle.open {
+				.icon.arrow {
+			
+					&:after {
+						content: $chevron-circle-down;
+					}
+					
+				
+						}
+			
+			}
+			
+		.map-content {
+			position: relative; 
+			height: 100%; 
+			padding: 20px 15px 20px 15px; 
+			width: auto;
+			overflow: auto; 
+			min-width: 380px;	
+			z-index: 2;		
+			background-color: $color-gray-9;	
+			border-top: 5px solid $color-bright-azure;
+			
+			treecontrol.tree-organization {
+			
+				.tree-label {max-width: 300px;}
+			
+			li li li .tree-label {
+				max-width: 285px;
+			}
+			
+			li li li li .tree-label {
+				max-width: 265px;
+			}
+			
+			li li li li li .tree-label {
+				max-width: 225px;
+			}
+
+	
+	
+		}
+		
+		}
+
+		.organization-map-container {
+			position: relative;
+	
+			}
+
+		
+		
+		.editmode .map-left, .front .map-left {
+			display: block;
+
+		}
+
+.services-layer {
+
+	.map-content {
+/* 		min-width: 600px; */
+	}
+
+	.content-table {
+		width: 100%;
+	}
+}
+
+
+
+/****** Linkkipuu ********/
+
+
+.link-tree.ui-list {width: 305px;}
+.link-tree a {width: 100%;}
+.link-tree .angular-ui-tree a {
+	width: auto;
+}
+
+.link-tree > ul > li{
+	padding: 0!important;
+	}
+
+.link-tree ul {
+	
+	margin-top: 0px;
+	
+	li {
+		margin: 0;
+		padding: 0;
+		display: block; 
+		clear: both;
+		
+		
+		.btn-danger {
+		
+			background: #000!important;
+			color: $white;
+			display: inline-block; 
+			@include rem(font-size, 23px);
+			@include rem(line-height, 14px);
+			font-weight: bold;
+			padding: 3px 8px 4px 8px !important;
+			text-decoration: none;
+			margin: 0px!important;
+			border-left: 1px solid $color-gray-9;
+			float: left!important;
+			
+			.glyphicon-remove::before {
+				content: $icon-remove;
+				 @extend .charet;
+				  @include inline-block;
+				  @include rem(font-size, 10px);
+				  background-color: transparent;
+				 
+					}
+		}
+	}
+	
+	li.selected a {
+		background: $color-persimmon;
+		
+		}
+	a {
+		margin-bottom: 3px;
+		display: inline-block;
+		background-color: $color-bright-azure; 
+		color: $white!important;
+		text-decoration: none;
+		transition: all 0.3s ease;
+		font-size: 0.8rem;
+		width: 100%;
+		&:hover,&:focus {
+				background-color: darken($color-bright-azure, 7%);
+				text-decoration: none;
+				border-radius: 0;
+						}
+		}
+		
+		a.add  {
+			background-color: $color-bright-azure;
+			&:hover {
+				background-color: #19945a;
+				}
+			}
+			
+		a.remove {
+			float: right;
+			padding: 3px 10px!important;
+			margin-right: 0;
+			}
+		
+				}
+
+				
+				.organization-map > div {
+					float: left;
+					}
+	
+	
+
+
+
+.angular-ui-tree-empty {
+    background-color: #e5e5e5;
+    background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+    background-position: 0 0px, 30px 30px;
+    background-size: 60px 60px;
+    border: 1px dashed #bbb;
+    min-height: 100px;
+}
+.angular-ui-tree-nodes {
+    display: block;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.angular-ui-tree-nodes .angular-ui-tree-nodes {
+    padding-left: 20px;
+}
+.angular-ui-tree-node, .angular-ui-tree-placeholder {
+    display: block;
+    line-height: 20px;
+    margin: 0;
+    min-height: 20px;
+    padding: 0;
+    position: relative;
+}
+.angular-ui-tree-hidden {
+    display: none;
+}
+.angular-ui-tree-placeholder {
+    margin: 5px 0;
+    min-height: 30px;
+    padding: 0;
+}
+.angular-ui-tree-handle {
+    box-sizing: border-box;
+    cursor: move;
+		
+		.pull-right{
+			float: none!important;
+		}
+  
+}
+.angular-ui-tree-drag {
+    opacity: 0.8;
+    pointer-events: none;
+    position: absolute;
+    z-index: 999;
+}
+
+
+.btn {
+    margin-right: 8px;
+}
+
+.angular-ui-tree-handle {
+    background: lighten($color-bright-azure, 40%);
+	border: 1px solid #b9d3e9;
+    color: $color-gray-1;
+    padding: 5px 0px 5px 10px;
+	margin-bottom: 2px;
+	font-size: normal;
+	display: inline-block;
+	@include rem(font-size, 12px);
+	
+		.btn-primary {
+		
+			background: shade($color-bright-azure,  20%);
+			color: $white;
+			display: inline-block; 
+			@include rem(font-size, 23px);
+			@include rem(line-height, 10px);
+			font-weight: bold;
+			padding: 6px 9px 9px 9px;
+			text-decoration: none;
+			margin: -6px -10px -5px 0px!important;
+			border-left: 1px solid $color-gray-9;
+			
+		}
+		
+		.btn-danger {
+		
+			background: #000;
+			color: $white;
+			display: inline-block; 
+			@include rem(font-size, 23px);
+			@include rem(line-height, 10px);
+			font-weight: bold;
+			padding: 6px 9px 9px;
+			text-decoration: none;
+			margin: -6px -2px -6px 50px!important;
+			border-left: 1px solid $color-gray-9;
+			
+		}
+	
+		.action-name {
+			@include rem(font-size, 12px);
+			@include rem(line-height, 10px);
+			font-weight: normal;
+		
+		}
+		.glyphicon-plus {
+			 @include rem(line-height, 14px);
+		}
+		
+		.glyphicon-remove {
+			 @include rem(line-height, 13px);
+		}
+		.glyphicon-plus::before {
+				content: $icon-add;
+				 @extend .charet;
+				  @include inline-block;
+				  @include rem(font-size, 10px);
+				  background-color: transparent;
+				 margin-right: 5px;
+					}
+
+		.glyphicon-remove::before {
+				content: $icon-remove;
+				 @extend .charet;
+				  @include inline-block;
+				  @include rem(font-size, 10px);
+				  background-color: transparent;
+				  margin-right: 5px;
+				 
+					}
+					
+					
+	
+	.glyphicon-chevron-down{
+		float: left;
+		color: $color-gray-1;
+		@extend .charet;
+		&:before {
+			content: $chevron-circle-down;
+			}
+		}
+	
+	.glyphicon-chevron-left{
+		float: left;
+		color: $color-gray-1;
+		@extend .charet;
+		&:before {
+			content: $chevron-circle-right;
+			}
+		}
+		
+	
+
+
+	}
+.angular-ui-tree-handle:hover {
+     background: $color-bright-azure;
+    color: $white;
+}
+.angular-ui-tree-placeholder {
+    background: #f0f9ff none repeat scroll 0 0;
+    border: 2px dashed #bed2db;
+    box-sizing: border-box;
+}
+.group-title {
+    background-color: #687074 !important;
+    color: #fff !important;
+}
+
+	
+.edit-tree {
+	border-top: 2px solid $color-gray-4;
+	padding-top: 10px;
+	margin-bottom: 0;
+	.right {
+		margin-bottom: 0;
+	}
+	.button {
+		margin-right: 0;
+	
+	
+	}
+	
+	}	
+	
+
+
+a.button.return-btn {
+	 display: none;
+    font-family: verdana;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px 7px 7px;
+    position: absolute;
+    right: 5px;
+    text-transform: uppercase;
+    top: 18px;
+	
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+	
+	}
+.do-search {
+	display: none;
+	label {
+		display: block;
+		font-weight: bold; 
+		margin: 0 0 5px 0;
+	}
+	.button-row{
+		margin-top: 30px;
+	}
+	
+	select {
+		width: 96%;
+		
+	}
+	
+}
+
+
+.not-active {
+	opacity: 0.3;
+	a {
+	   pointer-events: none;
+	   cursor: default;
+	   }
+}
+
+
+.show-desktop {
+	margin-top: 0;
+
+}

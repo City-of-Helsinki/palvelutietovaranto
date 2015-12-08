@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fi" data-ng-app="ServiceRegister" itemscope itemtype="http://schema.org/WebPage" data-text-size="3" class="no-js text-size-3">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Service Register" />
+        <title>
+            @ViewBag.Title
+        </title>
+        <base href="@Url.Content("~")" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+
+    <body id="ptv">
+        @RenderBody()
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryfancybox")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/angulartranslate")
+        @Scripts.Render("~/bundles/angular-unsavedChanges")
+        @Scripts.Render("~/bundles/chosen")
+        @Scripts.Render("~/bundles/treecontrol")
+        @Scripts.Render("~/bundles/scripts")
+        @Scripts.Render("~/bundles/base")
+        @Scripts.Render("~/bundles/busyindication")
+        @Scripts.Render("~/bundles/exceptionhandling")
+        @Scripts.Render("~/bundles/login")
+        @Scripts.Render("~/bundles/app")
+        @RenderSection("scripts", false)
+    </body>
+</html>

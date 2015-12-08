@@ -1,0 +1,113 @@
+﻿<div class="row">
+    <div class="col-xs-6">
+        <label for="email">Sähköpostiosoite <small>Esim. kirjaamo@organisaatio.fi</small></label>
+        <input type="text" id="email" class="form-control" name="email" maxlength="200" data-ng-model="controller.model.emailAddress"
+               data-ng-blur="controller.validateEmailAddress()">
+        <div id="emailErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validEmailAddress">
+            Virheellinen sähköpostiosoite
+        </div>
+    </div>
+    <div class="col-xs-6"></div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <label for="phoneNumber">Vaihteen puhelinnumero <small>Esim. 09 12345</small></label>
+        <input type="text" id="phoneNumber" class="form-control" name="phoneNumber" maxlength="50" data-ng-model="controller.model.phoneNumber"
+               data-ng-blur="controller.validatePhoneNumber()">
+        <div id="phoneNumberErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validPhoneNumber">
+            Virheellinen puhelinnumero
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <label for="phoneCallFee">
+            Puhelun hintatiedot
+            <affecto-help-popup paragraphs='["Kerro sanallisesti, mitä puhelinnumeroon soittaminen maksaa, esimerkiksi paikallisverkkomaksu / paikallispuhelumaksu tai \"Virasto x ei peri puhelusta maksua. Operaattorisi perii paikallisverkkomaksun hinnastonsa mukaan\". Kuvaus saa olla maksimissaan 150 merkkiä pitkä."]' />
+        </label>
+        <input type="text" id="phoneCallFee" class="form-control" maxlength="150" data-ng-model="controller.model.phoneCallFee">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-3">
+        <label for="webPageType">
+            Verkkosivun tyyppi
+            <affecto-help-popup paragraphs='["Valitse verkkosivun tyyppi (kotisivu tai sosiaalisen median palvelu)."]' />
+        </label>
+    </div>
+    <div class="col-xs-3">
+        <label for="webPageName">
+            Verkkosivun nimi
+            <affecto-help-popup paragraphs='["Anna verkkosivulle havainnollinen nimi esim. Organisaation x kotisivut tai xxx-kampanjasivusto."]' />
+        </label>
+    </div>
+    <div class="col-xs-6">
+        <label for="webPage">
+            Verkkosivun osoite
+            <affecto-help-popup paragraphs='["Anna verkkosivun osoite muodossa www.suomi.fi. Kun klikkaat Lisää uusi -painiketta, osoitteen alkuun lisätään http:// automaattisesti. Voit lisätä useita verkkosivuja. Ne lisätään yksi kerrallaan painamalla Lisää uusi –painiketta."]' />
+        </label>
+    </div>
+</div>
+<div class="row website-row">
+    <div class="col-xs-3">
+        <select id="webPageType" class="form-control" data-ng-model="controller.model.webPageType"
+                data-ng-options="pt for pt in controller.webPageTypes | orderBy: 'toString()'" data-affecto-ignore-dirty-form-field data-ng-disabled="controller.webPageEditModeOn"></select>
+    </div>
+    <div class="col-xs-3">
+        <input type="text" id="webPageName" class="form-control" maxlength="500" data-affecto-ignore-dirty-form-field data-ng-model="controller.model.webPageName" data-ng-disabled="controller.webPageEditModeOn">
+    </div>
+    <div class="col-xs-3">
+        <input type="text" id="webPage" name="webPage" class="form-control" maxlength="1000" data-ng-model="controller.model.webPageUrl"
+               data-ng-blur="controller.validateWebPageUrl()" data-affecto-ignore-dirty-form-field data-ng-disabled="controller.webPageEditModeOn">
+        <div id="webPageErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validWebPageUrl">
+            Virheellinen verkkosivun osoite
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <button id="add-new-website" type="button" class="button add" data-ng-click="controller.addNewWebPage()"
+                data-ng-show="controller.isContactInformationBeingEdited()" data-ng-disabled="!controller.canAddNewWebPage()">
+            Lisää uusi
+        </button>
+    </div>
+</div>
+<div id="addedWebPages" class="row website-row" data-ng-repeat="webPage in controller.model.webPages | orderBy: 'name'">
+    <div class="col-xs-3">
+        <span data-ng-hide="controller.isWebPageBeingEdited(webPage.address)">{{ webPage.type }}</span>
+        <select id="edited-website-type" class="form-control" data-ng-model="controller.model.editedWebPageType"
+                data-ng-options="pt for pt in controller.webPageTypes | orderBy: 'toString()'"
+                data-ng-hide="!controller.isWebPageBeingEdited(webPage.address)" data-affecto-ignore-dirty-form-field></select>
+    </div>
+    <div class="col-xs-3">
+        <span data-ng-hide="controller.isWebPageBeingEdited(webPage.address)">{{ webPage.name }}</span>
+        <input type="text" id="edited-website-name" class="form-control" maxlength="500" data-ng-model="controller.model.editedWebPageName"
+               data-ng-hide="!controller.isWebPageBeingEdited(webPage.address)" data-ng-init="controller.model.editedWebPageName=webPage.name"
+               data-affecto-ignore-dirty-form-field data-ng-required="true">
+    </div>
+    <div class="col-xs-3">
+        <span data-ng-hide="controller.isWebPageBeingEdited(webPage.address)">
+            <a href="{{ webPage.address }}" target="_blank">{{ webPage.address }}</a>
+        </span>
+        <input type="text" id="edited-website" name="editedWebPage" class="form-control" maxlength="1000" data-ng-model="controller.model.editedWebPageUrl"
+               data-ng-blur="controller.validateEditedWebPageUrl()" data-ng-hide="!controller.isWebPageBeingEdited(webPage.address)"
+               data-ng-init="controller.model.editedWebPageUrl=webPage.address" data-ng-required="true" data-affecto-ignore-dirty-form-field>
+        <div id="edited-websiteErrorMessage" aria-live="polite" class="validation-message" data-ng-show="controller.showEditWebPageErrorMessage(webPage.address)">
+            Virheellinen verkkosivun osoite
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <button id="edit-website" type="button" class="button edit" data-ng-click="controller.editWebPage(webPage.name, webPage.address, webPage.type)"
+                data-ng-hide="controller.isWebPageBeingEdited(webPage.address)" data-ng-disabled="controller.isOtherWebPageBeingEdited(webPage.address)">
+            Muokkaa
+        </button>
+        <button id="save-website" type="button" class="button edit" data-ng-click="controller.saveEditedWebPage()"
+                data-ng-hide="!controller.isWebPageBeingEdited(webPage.address)" data-ng-disabled="!controller.canSaveEditedWebPage()">
+            Tallenna
+        </button>
+        <button id="remove-website" type="button" class="button remove" data-ng-click="controller.removeWebPage(webPage.address)"
+                data-ng-hide="controller.webPageEditModeOn">
+            Poista
+        </button>
+        <button id="cancel-edit-website" type="button" class="button remove" data-ng-click="controller.cancelWebPageEditing()"
+                data-ng-hide="!controller.isWebPageBeingEdited(webPage.address)">
+            Peruuta
+        </button>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+﻿<div class="help-popup">
+    <span class="icon icon-moreinfo" data-ng-click="helpTextVisible = !helpTextVisible"></span>
+    <div class="help-layer" data-ng-show="helpTextVisible">
+        <h3>Ohje</h3>
+        <p data-ng-repeat="paragraph in paragraphs" data-ng-bind-html="paragraph"></p>
+    </div>
+</div>

@@ -1,0 +1,192 @@
+﻿<div class="main">
+    <article>
+        <div class="overlay"></div>
+
+        <div class="container">
+            <h1 id="mainOrganizationHeader" class="adding-wizard-header" data-ng-show="!controller.isSubOrganizationBeingAdded()">Uuden pääorganisaation lisääminen</h1>
+            <h1 id="subOrganizationHeader" class="adding-wizard-header" data-ng-show="controller.isSubOrganizationBeingAdded()">Uuden alaorganisaation lisääminen yläorganisaatioon "{{ controller.parentOrganizationName }}"</h1>
+            <div class="help-text">
+                <p>
+                    Uuden organisaation luominen -sivulla voit luoda oman organisaatiosi organisaatiohierarkian (pääorganisaatio ja alaorganisaatiot) tai lisätä organisaatiollesi uusia alaorganisaatioita.
+                    Organisaatiolle voidaan palvelutietovarannossa luoda vain päätaso (pääorganisaatio), mutta myös koko organisaatiohierarkian voi kuvata PTV:hen (alaorganisaatiot).
+                    Alaorganisaatiolla tarkoitetaan mitä tahansa organisaatiotasoa, joka on pääorganisaation (ylimmän tason) alla.
+                </p>
+                <p>
+                    Organisaatiohierarkian luominen tekee mahdolliseksi sen, että voit ryhmitellä palveluita tai esim. palvelupisteitä alaorganisaatioittain.
+                    (Esim. kaupungin x kiinteistöviraston palvelupisteet ja sosiaaliviraston palvelupisteet omiksi kokonaisuuksikseen).
+                </p>
+                <p>
+                    Lisää uusi organisaatio täyttämällä vähintään pakollisiksi tiedoiksi merkityt kentät perustiedoista.
+                    Voit tallentaa organisaation keskeneräisenä painamalla "Tallenna keskeneräisenä" missä tahansa osiossa, kun osion pakolliset tiedot on syötetty,
+                    ja jatkaa työskentelyä myöhemmin.
+                    Organisaatio tallennetaan myös joka kerta, kun siirryt vaiheiden välillä.
+                </p>
+            </div>
+        </div>
+
+        <div class="edit-area">
+            <div class="container">
+                <div class="page-title">
+                    <button id="cancelAddingOrganizationButton" type="submit" class="button remove" data-ng-click="controller.goToHomePage()"
+                            data-ng-show="controller.canAddingBeCancelled()">
+                        Keskeytä lisääminen
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="step1" data-ng-class="{'edit-mode-active': controller.isBasicInformationBeingEdited(), 'edit-area': controller.isBasicInformationBeingEdited()}">
+            <div class="container">
+                <div class="phase-title">
+                    <span data-ng-show="!controller.isSubOrganizationBeingAdded()" class="section-title">Uusi pääorganisaatio</span>
+                    <span data-ng-show="controller.isSubOrganizationBeingAdded()" class="section-title">Uusi alaorganisaatio</span>
+                    <h3>Vaihe 1/4: Täytä perustiedot</h3>
+                </div>
+                <form class="form-horizontal" name="controller.basicInformationForm" unsaved-warning-form>
+                    <div class="content-box active">
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditBasicInformation.html'">
+                        </div>
+                    </div>
+                    <div class="button-row">
+                        <div class="right">
+                            <button id="addOrganizationFirstStepSaveAndQuitButton" type="submit" class="button cancel" data-ng-click="controller.saveOrganizationBasicInformationAndQuit()"
+                                    data-ng-show="controller.isBasicInformationBeingEdited()"
+                                    data-ng-disabled="controller.basicInformationForm.$invalid || !controller.canSaveBasicInformation()">
+                                Tallenna keskeneräisenä
+                            </button>
+                            <button id="addOrganizationFirstStepSaveAndNextButton" type="submit" class="button scroll-button" data-go-step="#step2"
+                                    data-ng-click="controller.saveOrganizationBasicInformationAndMoveToNextStep()" data-ng-show="controller.isBasicInformationBeingEdited()"
+                                    data-ng-disabled="controller.basicInformationForm.$invalid || !controller.canSaveBasicInformation()">
+                                Siirry seuraavaan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="step2" data-ng-class="{'edit-mode-active': controller.isContactInformationBeingEdited(), 'edit-area': controller.isContactInformationBeingEdited()}">
+            <div class="container">
+                <div class="phase-title">
+                    <span data-ng-show="!controller.isSubOrganizationBeingAdded()" class="section-title">Uusi pääorganisaatio</span>
+                    <span data-ng-show="controller.isSubOrganizationBeingAdded()" class="section-title">Uusi alaorganisaatio</span>
+                    <h3>Vaihe 2/4: Täytä yhteystiedot</h3>
+                </div>
+                <form class="form-horizontal" name="controller.contactInformationForm" unsaved-warning-form>
+                    <div class="content-box active">
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditContactInformation.html'">
+                        </div>
+                    </div>
+                    <div class="button-row">
+                        <div class="left">
+                            <button type="submit" id="saveOrganizationContactInformationAndMoveToPreviousStep" class="button scroll-button" data-go-step="#step1" data-ng-click="controller.saveOrganizationContactInformationAndMoveToPreviousStep()"
+                                    data-ng-show="controller.isContactInformationBeingEdited()"
+                                    data-ng-disabled="controller.contactInformationForm.$invalid || !controller.canSaveContactInformation()">
+                                Palaa edelliseen
+                            </button>
+                        </div>
+                        <div class="right">
+                            <button type="submit" id="saveOrganizationContactInformationAndQuit" class="button cancel" data-ng-click="controller.saveOrganizationContactInformationAndQuit()"
+                                    data-ng-show="controller.isContactInformationBeingEdited()"
+                                    data-ng-disabled="controller.contactInformationForm.$invalid || !controller.canSaveContactInformation()">
+                                Tallenna keskeneräisenä
+                            </button>
+                            <button type="submit" id="saveOrganizationContactInformationAndMoveToNextStep" class="button scroll-button" data-go-step="#step3" data-ng-click="controller.saveOrganizationContactInformationAndMoveToNextStep()"
+                                    data-ng-show="controller.isContactInformationBeingEdited()"
+                                    data-ng-disabled="controller.contactInformationForm.$invalid || !controller.canSaveContactInformation()">
+                                Siirry seuraavaan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="step3" data-ng-class="{'edit-mode-active': controller.isVisitingAddressBeingEdited(), 'edit-area': controller.isVisitingAddressBeingEdited()}">
+            <div class="container">
+                <div class="phase-title">
+                    <span data-ng-show="!controller.isSubOrganizationBeingAdded()" class="section-title">Uusi pääorganisaatio</span>
+                    <span data-ng-show="controller.isSubOrganizationBeingAdded()" class="section-title">Uusi alaorganisaatio</span>
+                    <h3>Vaihe 3/4: Täytä käyntiosoite</h3>
+                </div>
+                <form class="form-horizontal" name="controller.visitingAddressForm" unsaved-warning-form>
+                    <div class="content-box active">
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditVisitingAddress.html'">
+                        </div>
+                    </div>
+                    <div class="button-row">
+                        <div class="left">
+                            <button type="submit" id="saveOrganizationVisitingAddressAndMoveToPreviousStep" class="button scroll-button" data-go-step="#step2" data-ng-click="controller.saveOrganizationVisitingAddressAndMoveToPreviousStep()"
+                                    data-ng-show="controller.isVisitingAddressBeingEdited()"
+                                    data-ng-disabled="controller.visitingAddressForm.$invalid">
+                                Palaa edelliseen
+                            </button>
+                        </div>
+                        <div class="right">
+                            <button type="submit" id="saveOrganizationVisitingAddressAndQuit" class="button cancel" data-ng-click="controller.saveOrganizationVisitingAddressAndQuit()"
+                                    data-ng-show="controller.isVisitingAddressBeingEdited()"
+                                    data-ng-disabled="controller.visitingAddressForm.$invalid">
+                                Tallenna keskeneräisenä
+                            </button>
+                            <button type="submit" id="saveOrganizationVisitingAddressAndMoveToNextStep" class="button scroll-button" data-go-step="#step4" data-ng-click="controller.saveOrganizationVisitingAddressAndMoveToNextStep()"
+                                    data-ng-show="controller.isVisitingAddressBeingEdited()"
+                                    data-ng-disabled="controller.visitingAddressForm.$invalid">
+                                Siirry seuraavaan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="step4" data-ng-class="{'edit-mode-active': controller.isPostalAddressBeingEdited(), 'edit-area': controller.isPostalAddressBeingEdited()}">
+            <div class="container">
+                <div class="phase-title">
+                    <span data-ng-show="!controller.isSubOrganizationBeingAdded()" class="section-title">Uusi pääorganisaatio</span>
+                    <span data-ng-show="controller.isSubOrganizationBeingAdded()" class="section-title">Uusi alaorganisaatio</span>
+                    <h3>Vaihe 4/4: Täytä postiosoitteet</h3>
+                </div>
+                <form class="form-horizontal" name="controller.postalAddressForm" unsaved-warning-form>
+                    <div class="content-box active">
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditPostalAddress.html'">
+                        </div>
+                    </div>
+                    <div class="button-row">
+                        <div class="left">
+                            <button type="submit" id="saveOrganizationPostalAddressAndMoveToPreviousStep" class="button scroll-button"
+                                    data-go-step="#step3" data-ng-click="controller.saveOrganizationPostalAddressAndMoveToPreviousStep()"
+                                    data-ng-show="controller.isPostalAddressBeingEdited()"
+                                    data-ng-disabled="controller.postalAddressForm.$invalid">
+                                Palaa edelliseen
+                            </button>
+                        </div>
+                        <div class="right">
+                            <button type="submit" id="saveOrganizationPostalAddressAndQuit" class="button" data-ng-click="controller.saveOrganizationPostalAddressAndQuit()"
+                                    data-ng-show="controller.isPostalAddressBeingEdited()"
+                                    data-ng-disabled="controller.postalAddressForm.$invalid">
+                                Valmis
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </article>
+</div>
+
+<div class="organization-map closed" data-ng-controller="ServiceRegister.OrganizationTreeController as controller">
+    <div class="map-left-container">
+        <div class="map-left">
+            <div class="map-content" data-ng-include src="'App/Views/OrganizationPartials/Tree.html'">
+            </div>
+        </div>
+        <div class="map-toggle">
+            <span>Organisaatiot <span class="icon arrow"></span></span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    toggleOrganizationTree();
+    scrollView();
+</script>

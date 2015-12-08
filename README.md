@@ -1,10 +1,6 @@
-# Kansallinen palvelutietovaranto
+# Kansallinen palvelutietovaranto - Palvelurekisteri
 
 
-## Build status
+### Build status
 
-| Target | Build |
-| -----------------------|------------------|
-| Project |  |
-| Master branch |  |
-| Dev-ServiceRegister branch |  |
+[![Build status](https://ci.appveyor.com/api/projects/status/a37a9yxx3fvd1fm3?svg=true)](https://ci.appveyor.com/project/johannesvaltonen/palvelutietovaranto)

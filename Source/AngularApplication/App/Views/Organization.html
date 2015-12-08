@@ -1,0 +1,173 @@
+﻿<div class="main">
+    <article>
+        <div data-ng-controller="ServiceRegister.OrganizationController as controller">
+            <div class="container">
+                <h1>Organisaation tietojen katselu ja muokkaus</h1>
+                <div class="help-text">
+                    <p>
+                        Organisaatiorakenteen muokkaaminen -osiossa voit lisätä organisaatiollesi uusia alaorganisaatioita, muokata olemassa olevien organisaatiotasojen tietoja ja organisaatiohierarkiaa sekä tarvittaessa poistaa tarpeettomia alaorganisaatioita.
+                        Tietoja voi muokata yksi osio kerrallaan. Kun olet tallentanut muokkaamasi osion tiedot, voit siirtyä muokkaamaan seuraavaa.
+                    </p>
+                </div>
+                <div class="page-title">
+                    <h2>{{ controller.model.name }}</h2>
+                    <button type="submit" class="button remove fancybox" data-ng-click="controller.deleteOrganization()">Poista</button>
+                </div>
+            </div>
+
+            <div id="step1" data-ng-class="{'edit-mode-active': controller.isBasicInformationBeingEdited()}">
+                <div class="container" data-ng-show="!controller.isBasicInformationBeingEdited()">
+                    <div class="content-box">
+                        <div class="content-box-header">
+                            <h3>Perustiedot</h3>
+                            <button type="submit" class="button edit scroll-button" data-go-step="#step1" data-ng-click="controller.editOrganizationBasicInformation()"
+                                    data-ng-hide="controller.isOrganizationBeingEdited()">
+                                Muokkaa
+                            </button>
+                        </div>
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/ViewBasicInformation.html'">
+                        </div>
+                    </div>
+                </div>
+                <div class="container" data-ng-show="controller.isBasicInformationBeingEdited()">
+                    <form class=" form-horizontal" name="controller.basicInformationForm" unsaved-warning-form>
+                        <div class="content-box">
+                            <div class="content-box-header">
+                                <h3>Perustiedot</h3>
+                                <button type="submit" class="button edit" data-ng-click="controller.saveEditOrganizationBasicInformation()"
+                                        data-ng-disabled="controller.basicInformationForm.$invalid || !controller.canSaveBasicInformation() || controller.basicInformationForm.$pristine">
+                                    Tallenna
+                                </button>
+                                <button type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
+                                    Peruuta
+                                </button>
+                            </div>
+                            <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditBasicInformation.html'">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="step2" data-ng-class="{'edit-mode-active': controller.isContactInformationBeingEdited()}">
+                <div class="container" data-ng-show="!controller.isContactInformationBeingEdited()">
+                    <div class="content-box">
+                        <div class=" content-box-header">
+                            <h3>Yhteystiedot</h3>
+                            <button type="submit" class="button edit scroll-button" data-go-step="#step2" data-ng-click="controller.editOrganizationContactInformation()"
+                                    data-ng-hide="controller.isOrganizationBeingEdited()">
+                                Muokkaa
+                            </button>
+                        </div>
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/ViewContactInformation.html'">
+                        </div>
+                    </div>
+                </div>
+                <div class="container" data-ng-show="controller.isContactInformationBeingEdited()">
+                    <form class="form-horizontal" name="controller.contactInformationForm" unsaved-warning-form>
+                        <div class="content-box">
+                            <div class="content-box-header">
+                                <h3>Yhteystiedot</h3>
+                                <button type="submit" class="button edit" data-ng-click="controller.saveEditedOrganizationContactInformation()"
+                                        data-ng-disabled="controller.contactInformationForm.$invalid || !controller.canSaveContactInformation() ||
+                                                                                (controller.contactInformationForm.$pristine && !controller.areWebPagesChanged())">
+                                    Tallenna
+                                </button>
+                                <button type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
+                                    Peruuta
+                                </button>
+                            </div>
+                            <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditContactInformation.html'">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="step3" data-ng-class="{'edit-mode-active': controller.isVisitingAddressBeingEdited()}">
+                <div class="container" data-ng-show="!controller.isVisitingAddressBeingEdited()">
+                    <div class="content-box">
+                        <div class="content-box-header">
+                            <h3>Käyntiosoite</h3>
+                            <button type="submit" class="button edit scroll-button" data-go-step="#step3" data-ng-click="controller.editOrganizationVisitingAddress()"
+                                    data-ng-hide="controller.isOrganizationBeingEdited()">
+                                Muokkaa
+                            </button>
+                        </div>
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/ViewVisitingAddress.html'">
+                        </div>
+                    </div>
+                </div>
+                <div class="container" data-ng-show="controller.isVisitingAddressBeingEdited()">
+                    <form class="form-horizontal" name="controller.visitingAddressForm" unsaved-warning-form>
+                        <div class="content-box">
+                            <div class="content-box-header">
+                                <h3>Käyntiosoite</h3>
+                                <button type="submit" class="button edit" data-ng-click="controller.saveEditedOrganizationVisitingAddress()"
+                                        data-ng-disabled="controller.visitingAddressForm.$invalid || controller.visitingAddressForm.$pristine">
+                                    Tallenna
+                                </button>
+                                <button type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
+                                    Peruuta
+                                </button>
+                            </div>
+                            <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditVisitingAddress.html'">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="step4" data-ng-class="{'edit-mode-active': controller.isPostalAddressBeingEdited()}">
+                <div class="container" data-ng-show="!controller.isPostalAddressBeingEdited()">
+                    <div class="content-box">
+                        <div class="content-box-header">
+                            <h3>Postiosoitteet</h3>
+                            <button type="submit" class="button edit scroll-button" data-go-step="#step4" data-ng-click="controller.editOrganizationPostalAddress()"
+                                    data-ng-hide="controller.isOrganizationBeingEdited()">
+                                Muokkaa
+                            </button>
+                        </div>
+                        <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/ViewPostalAddress.html'">
+                        </div>
+                    </div>
+                </div>
+                <div class="container" data-ng-show="controller.isPostalAddressBeingEdited()">
+                    <form class="form-horizontal" name="controller.postalAddressForm" unsaved-warning-form>
+                        <div class="content-box">
+                            <div class="content-box-header">
+                                <h3>Postiosoitteet</h3>
+                                <button type="submit" class="button edit" data-ng-click="controller.saveEditedOrganizationPostalAddress()"
+                                        data-ng-disabled="controller.postalAddressForm.$invalid || controller.postalAddressForm.$pristine">
+                                    Tallenna
+                                </button>
+                                <button type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
+                                    Peruuta
+                                </button>
+                            </div>
+                            <div class="content-box-inner" data-ng-include src="'App/Views/OrganizationPartials/EditPostalAddress.html'">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+
+<div class="organization-map closed" data-ng-controller="ServiceRegister.OrganizationTreeController as controller">
+    <div class="map-left-container">
+        <div class="map-left">
+            <div class="map-content" data-ng-include src="'App/Views/OrganizationPartials/Tree.html'">
+            </div>
+        </div>
+        <div class="map-toggle">
+            <span>Organisaatiot <span class="icon arrow"></span></span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    toggleOrganizationTree();
+    scrollView();
+</script>

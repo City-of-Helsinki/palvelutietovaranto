@@ -1,0 +1,132 @@
+﻿<div class="row">
+    <div class="col-xs-4">
+        <label>
+            Osoitetyyppi
+            <affecto-help-popup paragraphs='["Valitse ensin, minkätyyppisestä postiosoitteesta on kysymys. Mikäli valitset \"Sama kuin käyntiosoite\" -vaihtoehdon, Käyntiosoite-kohdassa syöttämäsi osoite kopioituu postiosoitteeksi. Mikäli valitset \"Muu osoite\" -vaihtoehdon, voit syöttää postiosoitteeksi muun katuosoite-muotoisen osoitteen. Jos valitset vaihtoehdon \"PL-osoite\", voit syöttää postiosoitteeksi postilokero-osoitteen. Postiosoitteet-kohtaan on mahdollista antaa enimmillään yksi katuosoite-muotoinen postiosoite (joko sama kuin käyntiosoite tai muu osoite) ja yksi PL-postiosoite."]' />
+        </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <select id="postalAddressType" data-ng-model="controller.toBeAddedPostalAddressType"
+                data-ng-disabled="!controller.hasAvailablePostalAddressTypes()"
+                data-ng-options="type | translate for type in controller.model.postalAddressTypes.available.types"></select>
+    </div>
+    <div class="col-xs-4">
+        <button id="addOrganizationPostalAddress" type="button" class="button add" data-ng-click="controller.addOrganizationPostalAddress()"
+                data-ng-disabled="!controller.hasAvailablePostalAddressTypes()">
+            Lisää
+        </button>
+    </div>
+</div>
+<div id="postboxArea" class="row" data-ng-show="controller.showPostOfficeBoxPostalAddress()">
+    <div class="col-xs-12">
+        <div class="block-header">
+            <div class="left">
+                <h3 class="small-title">PL-osoite</h3>
+            </div>
+            <div class="right">
+                <a id="removePostboxPostalAddress" type="button" class="button remove" data-ng-click="controller.removePostOfficeBoxPostalAddress()">Poista</a>
+            </div>
+        </div>
+        <blockquote>
+            <div class="row">
+                <div class="col-xs-1">
+                    <label for="po-box" class="mandatory-field">Postilokero</label>
+                    <input type="text" class="form-control" id="po-box" name="postalPostOfficeBoxAddressPostOfficeBox" maxlength="100"
+                            data-ng-model="controller.model.postalPostOfficeBoxAddressPostOfficeBox" data-ng-required="controller.showPostOfficeBoxPostalAddress()"
+                            data-ng-pattern="/^\d+$/" />
+                    <div id="po-boxErrorMessage" aria-live="polite" class="validation-message no-wrap"
+                            data-ng-show="controller.postalAddressForm.postalPostOfficeBoxAddressPostOfficeBox.$error.pattern">
+                        Postilokero on pelkkiä numeroita
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="postcode" class="mandatory-field">Postinumero</label>
+                    <input type="text" class="form-control" id="postcode" name="postalPostOfficeBoxAddressPostalCode" maxlength="5"
+                            data-ng-model="controller.model.postalPostOfficeBoxAddressPostalCode" data-ng-required="controller.showPostOfficeBoxPostalAddress()"
+                            data-ng-blur="controller.validatePostalPostOfficeBoxAddressPostalCode()" />
+                    <div id="postcodeErrorMessage" aria-live="polite" class="validation-message no-wrap" data-ng-show="!controller.validPostalPostOfficeBoxAddressPostalCode">
+                        Postilokeron postinumeron pitää olla viisinumeroinen ja päättyä numeroon yksi
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <label for="city" class="mandatory-field">Postitoimipaikka</label>
+                    <input type="text" class="form-control" id="city" maxlength="100" data-ng-model="controller.model.postalPostOfficeBoxAddressPostalDistrict"
+                            data-ng-required="controller.showPostOfficeBoxPostalAddress()" />
+                </div>
+            </div>
+        </blockquote>
+    </div>
+</div>
+<div id="separatePostalAddressArea" class="row" data-ng-show="controller.showSeparateStreetPostalAddress()">
+    <div class="col-xs-12">
+        <div class="block-header">
+            <div class="block-header">
+                <div class="left">
+                    <h3 class="small-title">Muu osoite</h3>
+                </div>
+                <div class="right">
+                    <a id="removeSeparateStreetPostalAddress" type="button" class="button remove" data-ng-click="controller.removeSeparateStreetPostalAddress()">Poista</a>
+                </div>
+            </div>
+        </div>
+        <blockquote>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label class="mandatory-field">Katuosoite</label>
+                    <input id="separateStreetPostalAddress" type="text" class="form-control" maxlength="200" data-ng-model="controller.model.postalStreetAddressStreet"
+                            data-ng-required="controller.showSeparateStreetPostalAddress()" />
+                </div>
+                <div class="col-xs-3">
+                    <label class="mandatory-field">Postinumero</label>
+                    <input id="postalStreetAddressPostalCode" type="text" class="form-control" name="postalStreetAddressPostalCode" maxlength="5"
+                            data-ng-model="controller.model.postalStreetAddressPostalCode" data-ng-required="controller.showSeparateStreetPostalAddress()"
+                            data-ng-blur="controller.validatePostalStreetAddressPostalCode()" />
+                    <div id="separatePostalStreetAddressPostalCodeErrorMessage" aria-live="polite" class="validation-message"
+                            data-ng-show="!controller.validPostalStreetAddressPostalCode">
+                        Postinumero on viisi numeroa
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class="mandatory-field">Postitoimipaikka</label>
+                    <input id="postalStreetAddressPostalDistrict" type="text" class="form-control" maxlength="100" data-ng-model="controller.model.postalStreetAddressPostalDistrict"
+                            data-ng-required="controller.showSeparateStreetPostalAddress()" />
+                </div>
+            </div>
+        </blockquote>
+    </div>
+</div>
+<div class="row" data-ng-show="controller.showSameAsVisitingAddressPostalAddress()">
+    <div class="col-xs-12">
+        <div class="block-header">
+            <div class="block-header">
+                <div class="left">
+                    <h3 class="small-title">Sama kuin käyntiosoite</h3>
+                </div>
+                <div class="right">
+                    <a type="button" class="button remove" data-ng-click="controller.removeSameAsVisitingAddressPostalAddress()">Poista</a>
+                </div>
+            </div>
+        </div>
+        <blockquote>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Katuosoite</label>
+                    <input type="text" class="form-control" data-ng-model="controller.model.visitingStreetAddress" data-ng-disabled="true" />
+                </div>
+                <div class="col-xs-3">
+                    <label>Postinumero</label>
+                    <input type="text" class="form-control" name="postalStreetAddressPostalCode" data-ng-model="controller.model.visitingAddressPostalCode"
+                            data-ng-disabled="true" />
+                </div>
+                <div class="col-xs-3">
+                    <label>Postitoimipaikka</label>
+                    <input type="text" class="form-control" data-ng-model="controller.model.visitingAddressPostalDistrict" data-ng-disabled="true" />
+                </div>
+            </div>
+        </blockquote>
+    </div>
+</div>
