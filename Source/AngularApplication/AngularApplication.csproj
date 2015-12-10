@@ -324,6 +324,7 @@
     <Content Include="Content\partials\_typography.scss" />
     <Content Include="Content\partials\_variables.scss" />
     <Content Include="Content\screen.scss" />
+    <None Include="AccessToken.config" />
     <None Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
