@@ -328,6 +328,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DatabaseConnectionStrings.config" />
+    <None Include="Authentication.config" />
+    <None Include="DatabaseSchemas.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -336,6 +339,7 @@
     <Content Include="Api.nuspec" />
     <Content Include="Web.Octopus Deployment.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup />
