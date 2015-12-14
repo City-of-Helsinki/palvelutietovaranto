@@ -46,12 +46,15 @@ module ServiceRegister
 
         public expandAvailable(): void
         {
-            this.expandedAvailable = this.available;
+            if (this.expandedAvailable.length === 0)
+            {
+                this.pushToExpandedAvailable(this.available);
+            }
         }
 
         public collapseAvailable(): void
         {
-            this.expandedAvailable = new Array<HierarchicalClass>();
+            this.expandedAvailable.splice(0, this.expandedAvailable.length);
         }
 
         public toggleSelection(classId: string, selected: boolean): void
@@ -82,6 +85,21 @@ module ServiceRegister
         public remove(classId: string): void
         {
             this.addedCollection.remove(classId);
+        }
+
+        private pushToExpandedAvailable(classes: Array<HierarchicalClass>): void
+        {
+            if (classes != null)
+            {
+                classes.forEach((item: HierarchicalClass) =>
+                {
+                    if (item.children != null && item.children.length > 0)
+                    {
+                        this.expandedAvailable.push(item);
+                        this.pushToExpandedAvailable(item.children);                        
+                    }
+                });                
+            }
         }
     }
 }
