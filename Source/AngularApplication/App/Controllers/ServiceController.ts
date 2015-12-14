@@ -158,15 +158,14 @@ module ServiceRegister
 
         public editBasicInformation(): void
         {
-            this.originalModel = angular.copy(this.model);
+            this.copyModelAndClassificationObjects();
             this.basicInformationForm.$setPristine();
             this.editedSection = EditedServiceSection.BasicInfromation;
         }
 
         public editClassificationAndOnthologyTerms(): void
         {
-            this.originalModel = angular.copy(this.model);
-            this.copyClassificationObjects();
+            this.copyModelAndClassificationObjects();
             this.initializeClassificationPredicates();
             this.classificationAndOnthologyTermsForm.$setPristine();
             this.editedSection = EditedServiceSection.ClassificationAndOnthologyTerms;
@@ -174,8 +173,7 @@ module ServiceRegister
 
         public cancelEditing(): void
         {
-            this.model = this.originalModel;
-            this.resetClassificationObjects();
+            this.resetModelAndClassificationObjects();
             this.selectedLanguages = this.languages.filter(this.model.languageCodes);
             this.editedSection = EditedServiceSection.None;
         }
@@ -380,16 +378,18 @@ module ServiceRegister
             this.lifeEventPredicate = "";
         }
 
-        private copyClassificationObjects(): void
+        private copyModelAndClassificationObjects(): void
         {
+            this.originalModel = angular.copy(this.model);
             this.originalLifeEvents = angular.copy(this.lifeEvents);
             this.originalOntologyTerms = angular.copy(this.ontologyTerms);
             this.originalServiceClasses = angular.copy(this.serviceClasses);
             this.originalTargetGroups = angular.copy(this.targetGroups);
         }
 
-        private resetClassificationObjects(): void
+        private resetModelAndClassificationObjects(): void
         {
+            this.model = this.originalModel;
             this.lifeEvents = this.originalLifeEvents;
             this.ontologyTerms = this.originalOntologyTerms;
             this.serviceClasses = this.originalServiceClasses;
