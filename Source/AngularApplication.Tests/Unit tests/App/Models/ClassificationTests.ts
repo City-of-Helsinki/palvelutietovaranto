@@ -223,14 +223,17 @@ describe("classification", () =>
 
     describe("expanding and collapsing available classes", () =>
     {
-        it("expanding all", () =>
+        it("expanding all expands classes with children", () =>
         {
-            createRootAndChildClassClassificationAndSelectChildClass("1", "1.1");
+            availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass("1", "root",
+                new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass("1.1", "leaf", null))),
+                new ServiceRegister.HierarchicalClass("2", "another root", null)));
             sut = new ServiceRegister.Classification(availableClasses);
 
             sut.expandAvailable();
 
-            expect(sut.expandedAvailable.length).toBe(sut.available.length);
+            expect(sut.expandedAvailable.length).toBe(1);
+            expect(sut.expandedAvailable[0].id).toBe("1");
         });
         it("collapsing all", () =>
         {

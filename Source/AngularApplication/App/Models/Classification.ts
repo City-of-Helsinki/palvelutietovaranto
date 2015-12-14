@@ -46,7 +46,7 @@ module ServiceRegister
 
         public expandAvailable(): void
         {
-            if (this.expandedAvailable.length === 0)
+            if (this.available != null && this.expandedAvailable.length === 0)
             {
                 this.pushToExpandedAvailable(this.available);
             }
@@ -89,17 +89,14 @@ module ServiceRegister
 
         private pushToExpandedAvailable(classes: Array<HierarchicalClass>): void
         {
-            if (classes != null)
+            classes.forEach((item: HierarchicalClass) =>
             {
-                classes.forEach((item: HierarchicalClass) =>
+                if (item.children != null && item.children.length > 0)
                 {
-                    if (item.children != null && item.children.length > 0)
-                    {
-                        this.expandedAvailable.push(item);
-                        this.pushToExpandedAvailable(item.children);                        
-                    }
-                });                
-            }
+                    this.expandedAvailable.push(item);
+                    this.pushToExpandedAvailable(item.children);                        
+                }
+            });
         }
     }
 }
