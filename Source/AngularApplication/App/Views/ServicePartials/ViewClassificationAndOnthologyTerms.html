@@ -1,7 +1,7 @@
 ﻿<div class="row">
     <div class="col-xs-6">
         <label>Palveluluokat</label>
-        <ul id="serviceClassList" class="hierarchical-list">
+        <ul id="serviceClassReadOnlyList" class="hierarchical-list">
             <li data-ng-repeat="node in controller.serviceClasses.added | orderBy: 'name'">
                 {{ node.name }}
                 <ul>
@@ -12,7 +12,7 @@
             </li>
         </ul>
     </div>
-    <div id="ontologyTermList" class="col-xs-6">
+    <div id="ontologyTermReadOnlyList" class="col-xs-6">
         <label>Ontologiasanat</label>
         <span data-ng-repeat="node in controller.ontologyTerms.added | orderBy: 'name'">{{ node.name }}{{ $last ? '' : ', ' }}</span>
     </div>
@@ -21,7 +21,7 @@
 <div class="row">
     <div class="col-xs-6">
         <label>Kohderyhmät</label>
-        <ul id="targetGroupList" class="hierarchical-list">
+        <ul id="targetGroupReadOnlyList" class="hierarchical-list">
             <li data-ng-repeat="node in controller.targetGroups.added | orderBy: 'name'">
                 {{ node.name }}
                 <ul>
@@ -34,7 +34,7 @@
     </div>
     <div class="col-xs-6">
         <label>Elämäntilanteet</label>
-        <ul id="lifeEventList" class="hierarchical-list">
+        <ul id="lifeEventReadOnlyList" class="hierarchical-list">
             <li data-ng-repeat="node in controller.lifeEvents.added | orderBy: 'name'">
                 {{ node.name }}
                 <ul>
@@ -47,7 +47,7 @@
     </div>
 </div>
 
-<div id="keywordList" class="row">
+<div id="keywordReadOnlyList" class="row">
     <label>Vapaat asiasanat</label>
     {{ controller.model.keywordList }}
 </div> 
