@@ -103,7 +103,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
         {
             TableRow classificationData = table.Rows.Single();
             string keywords = classificationData["Keywords"];
-            AssertServiceClassification(classificationData, "serviceClassList", "ontologyTermList", "targetGroupList", "lifeEventList");
+            AssertServiceClassification(classificationData, "serviceClassReadOnlyList", "ontologyTermReadOnlyList", "targetGroupReadOnlyList", "lifeEventReadOnlyList");
             Assert.IsTrue(TestEnvironment.Driver.ElementHasText("keywordList", keywords));
         }
 
@@ -167,25 +167,25 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
         [Then(@"service has no service class '(.+)'")]
         public void ThenServiceHasNoServiceClass(string serviceClass)
         {
-            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("serviceClassList", serviceClass));
+            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("serviceClassReadOnlyList", serviceClass));
         }
 
         [Then(@"service has no ontology term '(.+)'")]
         public void ThenServiceHasNoOntologyTerm(string ontologyTerm)
         {
-            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("ontologyTermList", ontologyTerm));
+            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("ontologyTermReadOnlyList", ontologyTerm));
         }
 
         [Then(@"service has no target group '(.+)'")]
         public void ThenServiceHasNoTargetGroup(string targetGroup)
         {
-            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("targetGroupList", targetGroup));
+            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("targetGroupReadOnlyList", targetGroup));
         }
 
         [Then(@"service has no life event '(.+)'")]
         public void ThenServiceHasNoLifeEvent(string lifeEvent)
         {
-            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("lifeEventList", lifeEvent));
+            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("lifeEventReadOnlyList", lifeEvent));
         }
 
         private static void AssertServiceClassification(TableRow classificationData, string serviceClassListElementId, string ontologyTermListElementId, 
