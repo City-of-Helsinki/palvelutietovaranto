@@ -45,6 +45,8 @@ Scenario: Selecting service classes
 	And the user moves forward to the classification section
 
 	When 'Omistus' is typed to the service class search field
+	And service class 'Asuminen' is collapsed
+	And service class 'Asuminen' is expanded
 	And service class 'Omistusasuminen' is selected
 	Then service class 'Omistusasuminen' is selected
 	And service class 'Asuminen' is selected
@@ -68,6 +70,8 @@ Scenario: Selecting target groups
 	And the user moves forward to the classification section
 
 	When 'K' is typed to the target group search field
+	And target group 'Kansalaiset' is collapsed
+	And target group 'Kansalaiset' is expanded
 	And target group 'Ikäihmiset' is selected
 	Then target group 'Kansalaiset' is selected
 	And target group 'Ikäihmiset' is selected
@@ -81,6 +85,8 @@ Scenario: Selecting life events
 	And the user moves forward to the classification section
 
 	When 'mu' is typed to the life event search field
+	And life event 'Muuttaminen' is collapsed
+	And life event 'Muuttaminen' is expanded
 	And life event 'Paluumuutto Suomeen' is selected
 	Then life event 'Muuttaminen' is selected
 	And life event 'Paluumuutto Suomeen' is selected
