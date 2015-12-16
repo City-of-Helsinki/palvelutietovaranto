@@ -122,7 +122,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line 13
- testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Service name",
@@ -365,6 +365,116 @@ this.FeatureBackground();
  testRunner.And("service has no target group \'Ikäihmiset\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 65
  testRunner.And("service has no life event \'Asevelvollisuus\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Cancelling the editing of service basic information changes nothing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EditingService")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BrowserTest")]
+        public virtual void CancellingTheEditingOfServiceBasicInformationChangesNothing()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancelling the editing of service basic information changes nothing", ((string[])(null)));
+#line 67
+this.ScenarioSetup(scenarioInfo);
+#line 4
+this.FeatureBackground();
+#line 68
+ testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 69
+ testRunner.And("the basic information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 70
+ testRunner.When("basic information editing is cancelled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Service name",
+                        "Alternate name",
+                        "Short description",
+                        "Description",
+                        "Languages",
+                        "Requirements",
+                        "User instructions"});
+            table9.AddRow(new string[] {
+                        "Daycare",
+                        "Daycare for children",
+                        "Private daycare",
+                        "Daycare to help public daycare",
+                        "suomi, ruotsi",
+                        "User must have kids",
+                        "Bring kids in the morning, take home in the afternoon"});
+#line 71
+ testRunner.Then("following service information is displayed", ((string)(null)), table9, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Service classes",
+                        "Ontology terms",
+                        "Target groups",
+                        "Life events",
+                        "Keywords"});
+            table10.AddRow(new string[] {
+                        "Asuminen, Asumisen tuet",
+                        "työväenopisto, päivähoito",
+                        "Kansalaiset, Ikäihmiset",
+                        "Asevelvollisuus, Muuttaminen",
+                        "Kunta, Palvelu"});
+#line 74
+ testRunner.And("following service classification information is displayed", ((string)(null)), table10, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Cancelling the editing of service classification information changes nothing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EditingService")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BrowserTest")]
+        public virtual void CancellingTheEditingOfServiceClassificationInformationChangesNothing()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancelling the editing of service classification information changes nothing", ((string[])(null)));
+#line 78
+this.ScenarioSetup(scenarioInfo);
+#line 4
+this.FeatureBackground();
+#line 79
+ testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 80
+ testRunner.And("the classification information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 81
+ testRunner.When("classification information editing is cancelled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Service name",
+                        "Alternate name",
+                        "Short description",
+                        "Description",
+                        "Languages",
+                        "Requirements",
+                        "User instructions"});
+            table11.AddRow(new string[] {
+                        "Daycare",
+                        "Daycare for children",
+                        "Private daycare",
+                        "Daycare to help public daycare",
+                        "suomi, ruotsi",
+                        "User must have kids",
+                        "Bring kids in the morning, take home in the afternoon"});
+#line 82
+ testRunner.Then("following service information is displayed", ((string)(null)), table11, "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Service classes",
+                        "Ontology terms",
+                        "Target groups",
+                        "Life events",
+                        "Keywords"});
+            table12.AddRow(new string[] {
+                        "Asuminen, Asumisen tuet",
+                        "työväenopisto, päivähoito",
+                        "Kansalaiset, Ikäihmiset",
+                        "Asevelvollisuus, Muuttaminen",
+                        "Kunta, Palvelu"});
+#line 85
+ testRunner.And("following service classification information is displayed", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

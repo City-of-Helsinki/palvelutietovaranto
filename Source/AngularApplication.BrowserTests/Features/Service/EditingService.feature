@@ -10,7 +10,7 @@ Background:
 	And organization services page is visible
 	
 Scenario: Service basic information is shown correctly in read mode
-	Given the service 'Daycare' is selected
+	When the service 'Daycare' is selected
 	Then following service information is displayed
 	| Service name | Alternate name       | Short description | Description                    | Languages     | Requirements        | User instructions                                     |
 	| Daycare      | Daycare for children | Private daycare   | Daycare to help public daycare | suomi, ruotsi | User must have kids | Bring kids in the morning, take home in the afternoon |
@@ -63,3 +63,25 @@ Scenario: Existing service classification information can be edited and edited i
 	And service has no ontology term 'päivähoito'
 	And service has no target group 'Ikäihmiset'
 	And service has no life event 'Asevelvollisuus'
+
+Scenario: Cancelling the editing of service basic information changes nothing
+	Given the service 'Daycare' is selected
+	And the basic information is put in edit mode
+	When basic information editing is cancelled
+	Then following service information is displayed
+	| Service name | Alternate name       | Short description | Description                    | Languages     | Requirements        | User instructions                                     |
+	| Daycare      | Daycare for children | Private daycare   | Daycare to help public daycare | suomi, ruotsi | User must have kids | Bring kids in the morning, take home in the afternoon |
+	And following service classification information is displayed
+	| Service classes         | Ontology terms            | Target groups           | Life events                  | Keywords       |
+	| Asuminen, Asumisen tuet | työväenopisto, päivähoito | Kansalaiset, Ikäihmiset | Asevelvollisuus, Muuttaminen | Kunta, Palvelu |
+
+Scenario: Cancelling the editing of service classification information changes nothing
+	Given the service 'Daycare' is selected
+	And the classification information is put in edit mode
+	When classification information editing is cancelled
+	Then following service information is displayed
+	| Service name | Alternate name       | Short description | Description                    | Languages     | Requirements        | User instructions                                     |
+	| Daycare      | Daycare for children | Private daycare   | Daycare to help public daycare | suomi, ruotsi | User must have kids | Bring kids in the morning, take home in the afternoon |
+	And following service classification information is displayed
+	| Service classes         | Ontology terms            | Target groups           | Life events                  | Keywords       |
+	| Asuminen, Asumisen tuet | työväenopisto, päivähoito | Kansalaiset, Ikäihmiset | Asevelvollisuus, Muuttaminen | Kunta, Palvelu |

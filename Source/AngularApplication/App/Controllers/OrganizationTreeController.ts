@@ -6,8 +6,7 @@ module ServiceRegister
     {
         public static $inject = ["$scope", "$routeParams", "$location", "organizationService", "busyIndicationService"];
 
-        public expandedTreeNodes: Array<HierarchicalOrganization>;
-        public model: Array<HierarchicalOrganization>;
+        public model: Tree;
         public selectedOrganizationId: string;
         public isEditModeEnabled: boolean;
         public treeOptions: any;
@@ -40,7 +39,7 @@ module ServiceRegister
 
         public get canEdit(): boolean
         {
-            return !this.isEditModeEnabled && this.model != null && this.model.length > 0;
+            return !this.isEditModeEnabled && this.model != null && this.model.value != null && this.model.value.length > 0;
         }
 
         public enableEditMode(): void
@@ -56,26 +55,9 @@ module ServiceRegister
         private createTreeOptions(): void
         {
             this.treeOptions = {
-                nodeChildren: "subOrganizations",
                 templateUrl: "organizationTreeTemplate.html",
                 isOrgTree: true,
                 selectedNodeId: this.selectedOrganizationId
-            }
-        }
-
-        private expandNodes(nodes: Array<HierarchicalOrganization>): void
-        {
-            if (this.expandedTreeNodes == null)
-            {
-                this.expandedTreeNodes = new Array<HierarchicalOrganization>();
-            }
-            if (nodes != null)
-            {
-                for (var i = 0; i < nodes.length; i++)
-                {
-                    this.expandedTreeNodes.push(nodes[i]);
-                    this.expandNodes(nodes[i].subOrganizations);
-                }                
             }
         }
 
@@ -91,10 +73,10 @@ module ServiceRegister
         {
             this.busyIndicationService.showBusyIndicator("Haetaan organisaatioita...");
             this.organizationService.getOrganizationHierarchy()
-                .then((orgs: Array<HierarchicalOrganization>) =>
+                .then((orgs: Tree) =>
                 {
                     this.model = orgs;
-                    this.expandNodes(orgs);
+                    this.model.expandAll();
                     this.busyIndicationService.hideBusyIndicator();
                 });
         }

@@ -23,8 +23,8 @@ module ServiceRegister
 
         constructor(public id?: string, public numericId?: number, public names?: Array<LocalizedText>, public alternateNames?: Array<LocalizedText>,
             public descriptions?: Array<LocalizedText>, public shortDescriptions?: Array<LocalizedText>, public userInstructions?: Array<LocalizedText>,
-            public requirements?: Array<LocalizedText>, languages?: Array<Language>, serviceClasses?: Array<HierarchicalClass>, public ontologyTerms?: Array<Class>,
-            targetGroups?: Array<HierarchicalClass>, lifeEvents?: Array<HierarchicalClass>, public keywords?: Array<LocalizedText>)
+            public requirements?: Array<LocalizedText>, languages?: Array<Language>, serviceClasses?: Array<Hierarchical>, public ontologyTerms?: Array<Class>,
+            targetGroups?: Array<Hierarchical>, lifeEvents?: Array<Hierarchical>, public keywords?: Array<LocalizedText>)
         {
             if (this.hasItems(names))
             {
@@ -146,7 +146,7 @@ module ServiceRegister
             return this.id != null;
         }
 
-        public setClassification(serviceClasses: HierarchicalClasses, targetGroups: HierarchicalClasses, lifeEvents: HierarchicalClasses): void
+        public setClassification(serviceClasses: Tree, targetGroups: Tree, lifeEvents: Tree): void
         {
             if (serviceClasses == null)
             {
@@ -181,12 +181,12 @@ module ServiceRegister
             return array != null && array.length > 0;
         }
 
-        private initializeClassificationCollections(serviceClasses: Array<HierarchicalClass>, targetGroups: Array<HierarchicalClass>, lifeEvents: Array<HierarchicalClass>): void
+        private initializeClassificationCollections(serviceClasses: Array<Hierarchical>, targetGroups: Array<Hierarchical>, lifeEvents: Array<Hierarchical>): void
         {
             this.serviceClasses = new Array<string>();
             this.targetGroups = new Array<string>();
             this.lifeEvents = new Array<string>();
-            this.setClassification(new HierarchicalClasses(serviceClasses), new HierarchicalClasses(targetGroups), new HierarchicalClasses(lifeEvents));
+            this.setClassification(new Tree(serviceClasses), new Tree(targetGroups), new Tree(lifeEvents));
         }
     }
 }

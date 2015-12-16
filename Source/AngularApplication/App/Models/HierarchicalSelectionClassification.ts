@@ -4,21 +4,21 @@ module ServiceRegister
 {
     export class HierarchicalSelectionClassification extends Classification
     {
-        constructor(available: HierarchicalClasses, addedIds?: Array<string>)
+        constructor(available: Tree, addedIds?: Array<string>)
         {
             super(available, addedIds);
         }
 
         public addSelected(): void
         {
-            if (this.selectedClassId != null && !this.addedCollection.containsClass(this.selectedClassId))
+            if (this.selectedClassId != null && !this.addedCollection.contains(this.selectedClassId))
             {
-                var rootClass: HierarchicalClass = this.availableCollection.getClassCopyWithParentChainAndNoChildren(this.selectedClassId);
+                var rootClass: Hierarchical = this.availableCollection.getCopyWithParentChainAndNoChildren(this.selectedClassId);
                 if (rootClass == null)
                 {
                     throw new ClassNotAvailableException("Selected class " + this.selectedClassId + " not available.");
                 }
-                if (this.addedCollection.containsRootClass(rootClass.id))
+                if (this.addedCollection.containsRoot(rootClass.id))
                 {
                     this.addChildToAddedParent(rootClass, rootClass.children[0]);
                 }
@@ -29,15 +29,15 @@ module ServiceRegister
             }
         }
 
-        private addChildToAddedParent(parent: HierarchicalClass, child: HierarchicalClass): void
+        private addChildToAddedParent(parent: Hierarchical, child: Hierarchical): void
         {
-            if (this.addedCollection.containsClass(child.id))
+            if (this.addedCollection.contains(child.id))
             {
                 this.addChildToAddedParent(parent.children[0], child.children[0]);
             }
             else
             {
-                var addedParent: HierarchicalClass = this.addedCollection.getClass(parent.id);
+                var addedParent: Hierarchical = this.addedCollection.get(parent.id);
                 addedParent.children.push(child);
             }
         }
