@@ -34,6 +34,16 @@ Scenario: Existing service basic information can be edited and edited informatio
 	| Service name | Alternate name           | Short description                | Description                      | Languages | Requirements | User instructions |
 	| Daycare      | Daycare for all children | Private daycare for all children | Daycare to assist public daycare | suomi     |              |                   |
 	
+# Bug PTV-38
+Scenario: Service languages can be edityed and edited information is shown correctly
+	Given the service 'Daycare' is selected
+	And the basic information is put in edit mode
+	When service language 'englanti' is added
+	And the service information is saved
+	Then following service information is displayed
+	| Service name | Alternate name       | Short description | Description                    | Languages               | Requirements        | User instructions                                     |
+	| Daycare      | Daycare for children | Private daycare   | Daycare to help public daycare | suomi, ruotsi, englanti | User must have kids | Bring kids in the morning, take home in the afternoon |
+
 Scenario: Service classification information is shown correctly in read mode
 	Given the service 'Daycare' is selected
 	Then following service classification information is displayed
