@@ -1,23 +1,41 @@
-version: '{branch}.{build}'
+
+init:
+- cmd: "Scripts\patch-version.cmd"
+
+assembly_info:
+  patch: true
+  file: 'Source\SharedFiles\SharedAssemblyInfo.cs'
+  assembly_version: $(CUSTOM_VERSION)
+  assembly_file_version: $(CUSTOM_VERSION)
+  assembly_informational_version: $(CUSTOM_INFORMATIONAL_VERSION)
+
 environment:
-  RunOctoPack: truepull_requests:
-  do_not_increment_build_number: true
-nuget:
-  disable_publish_on_pr: true
+  RunOctoPack: true
 before_build:
 - cmd: nuget restore "Source\ServiceRegister.sln"
+
 build:
   verbosity: minimal
+
 configuration: Release
+
+pull_requests:
+  do_not_increment_build_number: true
+
+nuget:
+  disable_publish_on_pr: true
+
 artifacts:
   - path: 'Source\Api\obj\octopacked\ServiceRegister.API.*.nupkg'
     name: ServiceRegister API OctoPack
   - path: 'Source\AngularApplication\obj\octopacked\ServiceRegister.UI.*.nupkg'
     name: ServiceRegister UI OctoPack
+
 test:
   categories:
     except:
     - BrowserTest
+
 before_test:
 - ps: >-
     # Run Chutzpah unit tests
