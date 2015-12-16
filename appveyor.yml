@@ -1,6 +1,3 @@
-init:
-- cmd: Scripts\patch-version.cmd
-
 assembly_info:
   patch: true
   file: 'Source\SharedFiles\SharedAssemblyInfo.cs'
@@ -11,6 +8,7 @@ assembly_info:
 environment:
   RunOctoPack: true
 before_build:
+- cmd: Scripts\patch-version.cmd
 - cmd: nuget restore "Source\ServiceRegister.sln"
 
 build:
