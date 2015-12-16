@@ -268,6 +268,48 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
             TestEnvironment.Driver.ElementHasText("organizationServiceListTable", serviceClasses);
         }
 
+        [When(@"service class '(.+)' is collapsed")]
+        public void WhenServiceClassIsCollapsed(string serviceClass)
+        {
+            var serviceClassTree = new AngularTree(TestEnvironment.Driver, "serviceClassTree");
+            serviceClassTree.Collapse(serviceClass);
+        }
+
+        [When(@"service class '(.+)' is expanded")]
+        public void WhenServiceClassIsExpanded(string serviceClass)
+        {
+            var serviceClassTree = new AngularTree(TestEnvironment.Driver, "serviceClassTree");
+            serviceClassTree.Expand(serviceClass);
+        }
+
+        [When(@"target group '(.+)' is collapsed")]
+        public void WhenTargetGroupIsCollapsed(string targetGroup)
+        {
+            var tree = new AngularTree(TestEnvironment.Driver, "targetGroupTree");
+            tree.Collapse(targetGroup);
+        }
+
+        [When(@"target group '(.+)' is expanded")]
+        public void WhenTargetGroupIsExpanded(string targetGroup)
+        {
+            var tree = new AngularTree(TestEnvironment.Driver, "targetGroupTree");
+            tree.Expand(targetGroup);
+        }
+
+        [When(@"life event '(.+)' is collapsed")]
+        public void WhenLifeEventIsCollapsed(string lifeEvent)
+        {
+            var tree = new AngularTree(TestEnvironment.Driver, "lifeEventTree");
+            tree.Collapse(lifeEvent);
+        }
+
+        [When(@"life event '(.+)' is expanded")]
+        public void WhenLifeEventIsExpanded(string lifeEvent)
+        {
+            var tree = new AngularTree(TestEnvironment.Driver, "lifeEventTree");
+            tree.Expand(lifeEvent);
+        }
+
         private static void SelectServiceLanguage(string language)
         {
             ChosenDropDown dropDown = new ChosenDropDown(TestEnvironment.Driver, "serviceLanguages");

@@ -38,7 +38,7 @@
                                 data-ng-disabled="controller.basicInformationForm.$invalid || controller.basicInformationForm.$pristine">
                             Tallenna
                         </button>
-                        <button type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
+                        <button id="cancelEditingServiceBasicInformation" type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
                             Peruuta
                         </button>
                     </div>
@@ -70,7 +70,7 @@
                                 data-ng-disabled="controller.classificationAndOnthologyTermsForm.$pristine || !controller.canSaveClassificationAndOnthologyTerms()">
                             Tallenna
                         </button>
-                        <button type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
+                        <button id="cancelEditingServiceClassificationInformation" type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">
                             Peruuta
                         </button>
                     </div>

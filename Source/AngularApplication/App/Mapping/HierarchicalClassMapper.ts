@@ -4,17 +4,17 @@ module ServiceRegister
 {
     export class HierarchicalClassMapper
     {
-        public static map(data: any): Array<HierarchicalClass>
+        public static map(data: any): Array<Hierarchical>
         {
-            var result: Array<HierarchicalClass> = new Array<HierarchicalClass>();
+            var result: Array<Hierarchical> = new Array<Hierarchical>();
             if (data != null)
             {
                 data.forEach((item: any) =>
                 {
-                    result.push(new HierarchicalClass(item.id, item.name, this.map(item.subClasses)));
+                    result.push(new Hierarchical(item.id, item.name, this.map(item.subClasses)));
                 });                
             }
             return result;
         }
     }
-}  
+}

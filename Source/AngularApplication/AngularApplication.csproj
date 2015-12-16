@@ -398,11 +398,11 @@
     <TypeScriptCompile Include="App\Exceptions\InsufficientPermissionsException.ts" />
     <TypeScriptCompile Include="App\Exceptions\OrganizationIdNotFoundException.ts" />
     <TypeScriptCompile Include="App\Mapping\HierarchicalClassMapper.ts" />
+    <TypeScriptCompile Include="App\Mapping\HierarchicalOrganizationMapper.ts" />
     <TypeScriptCompile Include="App\Mapping\LanguageMapper.ts" />
     <TypeScriptCompile Include="App\Mapping\OrganizationMapper.ts" />
     <TypeScriptCompile Include="App\Controllers\OrganizationTreeController.ts" />
     <TypeScriptCompile Include="App\Mapping\LocalizedTextMapper.ts" />
-    <TypeScriptCompile Include="App\Mapping\HierarchicalOrganizationMapper.ts" />
     <TypeScriptCompile Include="App\Mapping\OrganizationNameMapper.ts" />
     <TypeScriptCompile Include="App\Mapping\ServiceMapper.ts" />
     <TypeScriptCompile Include="App\Mapping\ServiceListItemMapper.ts" />
@@ -412,8 +412,8 @@
     <TypeScriptCompile Include="App\Models\AvailablePostalAddressTypes.ts" />
     <TypeScriptCompile Include="App\Models\CurrentNavigationSection.ts" />
     <TypeScriptCompile Include="App\Models\EditedServiceSection.ts" />
-    <TypeScriptCompile Include="App\Models\HierarchicalClass.ts" />
-    <TypeScriptCompile Include="App\Models\HierarchicalClasses.ts" />
+    <TypeScriptCompile Include="App\Models\Hierarchical.ts" />
+    <TypeScriptCompile Include="App\Models\Tree.ts" />
     <TypeScriptCompile Include="App\Models\HierarchicalSelectionClassification.ts" />
     <TypeScriptCompile Include="App\Models\Language.ts" />
     <TypeScriptCompile Include="App\Models\Languages.ts" />
@@ -431,7 +431,6 @@
     <TypeScriptCompile Include="App\Models\ServiceListItem.ts" />
     <TypeScriptCompile Include="App\Models\StreetAddress.ts" />
     <TypeScriptCompile Include="App\Models\BusinessIdentifierValidationResult.ts" />
-    <TypeScriptCompile Include="App\Models\HierarchicalOrganization.ts" />
     <TypeScriptCompile Include="App\Models\LocalizedText.ts" />
     <TypeScriptCompile Include="App\Models\EditedOrganizationSection.ts" />
     <TypeScriptCompile Include="App\Models\User.ts" />
@@ -526,7 +525,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49612</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

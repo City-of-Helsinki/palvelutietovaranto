@@ -4,13 +4,13 @@ module ServiceRegister
 {
     export class HierarchicalOrganizationMapper
     {
-        public static map(data: any): Array<HierarchicalOrganization>
+        public static map(data: any): Array<Hierarchical>
         {
-            var result: Array<HierarchicalOrganization> = new Array<HierarchicalOrganization>();
+            var result: Array<Hierarchical> = new Array<Hierarchical>();
             data.forEach((item: any) =>
             {
                 var names: Array<LocalizedText> = LocalizedTextMapper.map(item.names);
-                result.push(new HierarchicalOrganization(item.id, names, this.map(item.subOrganizations)));
+                result.push(new Hierarchical(item.id, names[0].localizedValue, this.map(item.subOrganizations)));
             });
             return result;
         }

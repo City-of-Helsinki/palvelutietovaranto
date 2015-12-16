@@ -23,6 +23,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
         }
 
         [Given(@"the service '(.+)' is selected")]
+        [When(@"the service '(.+)' is selected")]
         public void GivenTheServiceIsSelected(string serviceName)
         {
             TestEnvironment.Driver.ClickLink(serviceName);
@@ -186,6 +187,18 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
         public void ThenServiceHasNoLifeEvent(string lifeEvent)
         {
             Assert.IsFalse(TestEnvironment.Driver.ElementHasText("lifeEventReadOnlyList", lifeEvent));
+        }
+
+        [When(@"basic information editing is cancelled")]
+        public void WhenBasicInformationEditingIsCancelled()
+        {
+            TestEnvironment.Driver.ClickElement("cancelEditingServiceBasicInformation");
+        }
+
+        [When(@"classification information editing is cancelled")]
+        public void WhenClassificationInformationEditingIsCancelled()
+        {
+            TestEnvironment.Driver.ClickElement("cancelEditingServiceClassificationInformation");
         }
 
         private static void AssertServiceClassification(TableRow classificationData, string serviceClassListElementId, string ontologyTermListElementId, 

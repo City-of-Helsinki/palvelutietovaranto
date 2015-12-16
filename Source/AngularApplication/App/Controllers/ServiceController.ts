@@ -321,9 +321,9 @@ module ServiceRegister
                 {
                     this.model = results[0];
                     this.languages = new Languages(results[1]);
-                    this.lifeEvents = new HierarchicalSelectionClassification(new HierarchicalClasses(results[2]), this.model.lifeEvents);
-                    this.serviceClasses = new HierarchicalSelectionClassification(new HierarchicalClasses(results[3]), this.model.serviceClasses);
-                    this.targetGroups = new HierarchicalSelectionClassification(new HierarchicalClasses(results[4]), this.model.targetGroups);
+                    this.lifeEvents = new HierarchicalSelectionClassification(new Tree(results[2]), this.model.lifeEvents);
+                    this.serviceClasses = new HierarchicalSelectionClassification(new Tree(results[3]), this.model.serviceClasses);
+                    this.targetGroups = new HierarchicalSelectionClassification(new Tree(results[4]), this.model.targetGroups);
                     this.ontologyTerms = new OntologyTerms(this.model.ontologyTerms);
                     this.selectedLanguages = this.languages.filter(this.model.languageCodes);
                     this.trustModelHtmlData();
@@ -343,9 +343,9 @@ module ServiceRegister
                 {
                     this.languages = new Languages(results[0]);
                     this.selectedLanguages = new Array<Language>();
-                    this.lifeEvents = new HierarchicalSelectionClassification(new HierarchicalClasses(results[1]));
-                    this.serviceClasses = new HierarchicalSelectionClassification(new HierarchicalClasses(results[2]));
-                    this.targetGroups = new HierarchicalSelectionClassification(new HierarchicalClasses(results[3]));
+                    this.lifeEvents = new HierarchicalSelectionClassification(new Tree(results[1]));
+                    this.serviceClasses = new HierarchicalSelectionClassification(new Tree(results[2]));
+                    this.targetGroups = new HierarchicalSelectionClassification(new Tree(results[3]));
                     this.busyIndicationService.hideBusyIndicator();
                 });
         }

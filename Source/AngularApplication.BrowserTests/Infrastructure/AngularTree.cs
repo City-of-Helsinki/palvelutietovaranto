@@ -24,6 +24,12 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
             nodeTextElement.FindElement(By.XPath("../../i[@class='tree-branch-head']")).Click();
         }
 
+        public void Collapse(string nodeText)
+        {
+            // Clicking the right place toggles expand / collapse
+            Expand(nodeText);
+        }
+
         private IWebElement GetTreeNodeSpanElement(string nodeText)
         {
             return treeElement.FindElements(By.XPath("//span")).Single(e => e.Text.Equals(nodeText));
