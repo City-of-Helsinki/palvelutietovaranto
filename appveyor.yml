@@ -1,6 +1,5 @@
-
 init:
-- cmd: "Scripts\patch-version.cmd"
+- cmd: Scripts\patch-version.cmd
 
 assembly_info:
   patch: true
