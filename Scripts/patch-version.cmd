@@ -1,5 +1,7 @@
 @echo off
 
+echo Patching version numbers...
+
 rem Get current assembly version in environment variable
 for /f %%i in ('PowerShell -File Scripts\get-version.ps1') do set CUSTOM_MAJOR_VERSION=%%i
 
@@ -8,7 +10,8 @@ set CUSTOM_INFORMATIONAL_VERSION=%CUSTOM_VERSION%
 
 if not %APPVEYOR_REPO_BRANCH%==master ( set CUSTOM_INFORMATIONAL_VERSION=%CUSTOM_INFORMATIONAL_VERSION%-prerelease )
 
-set APPVEYOR_BUILD_VERSION=%CUSTOM_INFORMATIONAL_VERSION%
+set APPVEYOR_BUILD_VERSION=%APPVEYOR_REPO_BRANCH%-%CUSTOM_INFORMATIONAL_VERSION%
+appveyor UpdateBuild -Version "%APPVEYOR_BUILD_VERSION%"
 
 echo Patched version: %CUSTOM_VERSION%
 echo Patched informational version: %CUSTOM_INFORMATIONAL_VERSION%
