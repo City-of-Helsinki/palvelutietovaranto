@@ -10,37 +10,37 @@ module ServiceRegister
         {
         }
 
-        public getLifeEvents(): angular.IPromise<Array<HierarchicalClass>>
+        public getLifeEvents(): angular.IPromise<Array<Hierarchical>>
         {
             return this.$http.get(this.apiBaseUrl + "serviceregister/lifeevents", { cache: true })
-                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<HierarchicalClass> =>
+                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<Hierarchical> =>
                 {
                     return HierarchicalClassMapper.map(response.data);;
                 });
         }
 
-        public getServiceClasses(): angular.IPromise<Array<HierarchicalClass>>
+        public getServiceClasses(): angular.IPromise<Array<Hierarchical>>
         {
             return this.$http.get(this.apiBaseUrl + "serviceregister/serviceclasses", { cache: true })
-                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<HierarchicalClass> =>
+                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<Hierarchical> =>
                 {
                     return HierarchicalClassMapper.map(response.data);;
                 });
         }
 
-        public getOnthologyTerms(): angular.IPromise<Array<HierarchicalClass>>
+        public getOnthologyTerms(): angular.IPromise<Array<Hierarchical>>
         {
             return this.$http.get(this.apiBaseUrl + "serviceregister/ontologyterms", { cache: true })
-                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<HierarchicalClass> =>
+                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<Hierarchical> =>
                 {
                     return HierarchicalClassMapper.map(response.data);;
                 });
         }
 
-        public getTargetGroups(): angular.IPromise<Array<HierarchicalClass>>
+        public getTargetGroups(): angular.IPromise<Array<Hierarchical>>
         {
             return this.$http.get(this.apiBaseUrl + "serviceregister/targetgroups", { cache: true })
-                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<HierarchicalClass> =>
+                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<Hierarchical> =>
                 {
                     return HierarchicalClassMapper.map(response.data);;
                 });

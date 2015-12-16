@@ -6,13 +6,16 @@ module ServiceRegister
     {
         protected selectedClassId: string;
 
-        public expandedAvailable: Array<HierarchicalClass>;
-        public addedCollection: HierarchicalClasses;
+        public addedCollection: Tree;
 
-        constructor(protected availableCollection: HierarchicalClasses, addedIds?: Array<string>)
+        constructor(protected availableCollection: Tree, addedIds?: Array<string>)
         {
-            this.addedCollection = new HierarchicalClasses();
-            this.expandedAvailable = new Array<HierarchicalClass>();
+            if (this.availableCollection == null)
+            {
+                this.availableCollection = new Tree();
+            }
+
+            this.addedCollection = new Tree();
             if (addedIds != null)
             {
                 addedIds.forEach((id: string) =>
@@ -24,14 +27,19 @@ module ServiceRegister
             }
         }
 
-        public get added(): Array<HierarchicalClass>
+        public get added(): Array<Hierarchical>
         {
             return this.addedCollection.value;
         }
 
-        public get available(): Array<HierarchicalClass>
+        public get available(): Array<Hierarchical>
         {
             return this.availableCollection.value;
+        }
+
+        public get expandedAvailable(): Array<Hierarchical>
+        {
+            return this.availableCollection.expanded;
         }
 
         public isClassSelected(): boolean
@@ -46,12 +54,12 @@ module ServiceRegister
 
         public expandAvailable(): void
         {
-            this.expandedAvailable = this.available;
+            this.availableCollection.expandAll();
         }
 
         public collapseAvailable(): void
         {
-            this.expandedAvailable = new Array<HierarchicalClass>();
+            this.availableCollection.collapseAll();
         }
 
         public toggleSelection(classId: string, selected: boolean): void
@@ -68,14 +76,14 @@ module ServiceRegister
 
         public addSelected(): void
         {
-            if (this.selectedClassId != null && !this.addedCollection.containsRootClass(this.selectedClassId))
+            if (this.selectedClassId != null && !this.addedCollection.containsRoot(this.selectedClassId))
             {
-                var availableClass: HierarchicalClass = this.availableCollection.getClass(this.selectedClassId);
+                var availableClass: Hierarchical = this.availableCollection.get(this.selectedClassId);
                 if (availableClass == null)
                 {
                     throw new ClassNotAvailableException("Selected class " + this.selectedClassId + " not available.");
                 }
-                this.added.push(new HierarchicalClass(availableClass.id, availableClass.name, new Array<HierarchicalClass>()));
+                this.added.push(new Hierarchical(availableClass.id, availableClass.name, new Array<Hierarchical>()));
             }
         }
 

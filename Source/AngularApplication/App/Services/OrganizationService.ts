@@ -28,12 +28,12 @@ module ServiceRegister
                 });                
         }
 
-        public getOrganizationHierarchy(): angular.IPromise<Array<HierarchicalOrganization>>
+        public getOrganizationHierarchy(): angular.IPromise<Tree>
         {
             return this.$http.get(this.apiBaseUrl + "serviceregister/organizationhierarchy")
-                .then((response: angular.IHttpPromiseCallbackArg<any>): Array<HierarchicalOrganization> =>
+                .then((response: angular.IHttpPromiseCallbackArg<any>): Tree =>
                 {
-                    return HierarchicalOrganizationMapper.map(response.data);
+                    return new Tree(HierarchicalOrganizationMapper.map(response.data));
                 });
         }
 

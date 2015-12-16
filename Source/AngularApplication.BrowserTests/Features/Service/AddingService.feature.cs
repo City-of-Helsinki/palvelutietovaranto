@@ -221,16 +221,20 @@ this.FeatureBackground();
 #line 47
  testRunner.When("\'Omistus\' is typed to the service class search field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 48
- testRunner.And("service class \'Omistusasuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("service class \'Asuminen\' is collapsed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 49
- testRunner.Then("service class \'Omistusasuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("service class \'Asuminen\' is expanded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 50
- testRunner.And("service class \'Asuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("service class \'Omistusasuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 51
+ testRunner.Then("service class \'Omistusasuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 52
- testRunner.When("service class selection \'Asuminen\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 53
- testRunner.Then("service class \'Omistusasuminen\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("service class \'Asuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 54
+ testRunner.When("service class selection \'Asuminen\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 55
+ testRunner.Then("service class \'Omistusasuminen\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 56
  testRunner.And("service class \'Asuminen\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -243,21 +247,21 @@ this.FeatureBackground();
         public virtual void SelectingOntologyTerms()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Selecting ontology terms", ((string[])(null)));
-#line 56
+#line 58
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 57
+#line 59
  testRunner.Given("service basic information is filled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 58
- testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 60
+ testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 62
  testRunner.When("ontology term \'kielet (opetus)\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 61
- testRunner.Then("ontology term \'kielet (opetus)\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 63
+ testRunner.Then("ontology term \'kielet (opetus)\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 65
  testRunner.When("ontology term selection \'kielet (opetus)\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 64
+#line 66
  testRunner.Then("ontology term \'kielet (opetus)\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -270,27 +274,31 @@ this.FeatureBackground();
         public virtual void SelectingTargetGroups()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Selecting target groups", ((string[])(null)));
-#line 66
+#line 68
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 67
+#line 69
  testRunner.Given("service basic information is filled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 68
- testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 70
- testRunner.When("\'K\' is typed to the target group search field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 71
- testRunner.And("target group \'Ikäihmiset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 72
- testRunner.Then("target group \'Kansalaiset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("\'K\' is typed to the target group search field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 73
- testRunner.And("target group \'Ikäihmiset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("target group \'Kansalaiset\' is collapsed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 74
+ testRunner.And("target group \'Kansalaiset\' is expanded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 75
- testRunner.When("target group selection \'Ikäihmiset\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("target group \'Ikäihmiset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 76
- testRunner.Then("target group \'Ikäihmiset\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("target group \'Kansalaiset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 77
+ testRunner.And("target group \'Ikäihmiset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 79
+ testRunner.When("target group selection \'Ikäihmiset\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 80
+ testRunner.Then("target group \'Ikäihmiset\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 81
  testRunner.And("target group \'Kansalaiset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -303,27 +311,31 @@ this.FeatureBackground();
         public virtual void SelectingLifeEvents()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Selecting life events", ((string[])(null)));
-#line 79
+#line 83
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 80
- testRunner.Given("service basic information is filled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 81
- testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 83
- testRunner.When("\'mu\' is typed to the life event search field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 84
- testRunner.And("life event \'Paluumuutto Suomeen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("service basic information is filled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 85
- testRunner.Then("life event \'Muuttaminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 86
- testRunner.And("life event \'Paluumuutto Suomeen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 87
+ testRunner.When("\'mu\' is typed to the life event search field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 88
- testRunner.When("life event selection \'Muuttaminen\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("life event \'Muuttaminen\' is collapsed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 89
- testRunner.Then("life event \'Muuttaminen\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("life event \'Muuttaminen\' is expanded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 90
+ testRunner.And("life event \'Paluumuutto Suomeen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 91
+ testRunner.Then("life event \'Muuttaminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 92
+ testRunner.And("life event \'Paluumuutto Suomeen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 94
+ testRunner.When("life event selection \'Muuttaminen\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 95
+ testRunner.Then("life event \'Muuttaminen\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 96
  testRunner.And("life event \'Paluumuutto Suomeen\' is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -336,29 +348,29 @@ this.FeatureBackground();
         public virtual void SavingServiceClassification()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Saving service classification", ((string[])(null)));
-#line 92
+#line 98
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 93
+#line 99
  testRunner.Given("service basic information is filled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 94
- testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 95
- testRunner.And("service class \'Asuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 96
- testRunner.And("service class \'Perheiden palvelut\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 97
- testRunner.And("ontology term \'opetus\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 98
- testRunner.And("target group \'Yritykset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 100
- testRunner.When("service classification is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("the user moves forward to the classification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 101
- testRunner.Then("the user is redirected to the organization\'s service list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("service class \'Asuminen\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 102
- testRunner.And("the listed service contains ontology terms \'opetus\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("service class \'Perheiden palvelut\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 103
+ testRunner.And("ontology term \'opetus\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 104
+ testRunner.And("target group \'Yritykset\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 106
+ testRunner.When("service classification is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 107
+ testRunner.Then("the user is redirected to the organization\'s service list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 108
+ testRunner.And("the listed service contains ontology terms \'opetus\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 109
  testRunner.And("the listed service contains service classes \'Asuminen, Perheiden palvelut\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

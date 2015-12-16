@@ -3,26 +3,26 @@
 describe("classification", () =>
 {
     var sut: ServiceRegister.Classification;
-    var availableClasses: ServiceRegister.HierarchicalClasses;
+    var availableClasses: ServiceRegister.Tree;
 
     function createSingleClassClassificationAndSelectOnlyClass(classId: string)
     {
-        availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(classId, "class", null)));
+        availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(classId, "class", null)));
         sut = new ServiceRegister.Classification(availableClasses);
         sut.toggleSelection(classId, true);
     }
 
     function createRootAndChildClassClassificationAndSelectChildClass(rootClassId: string, childClassId: string)
     {
-        availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(rootClassId, "root",
-            new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(childClassId, "leaf", null)))));
+        availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(rootClassId, "root",
+            new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(childClassId, "leaf", null)))));
         sut = new ServiceRegister.Classification(availableClasses);
         sut.toggleSelection(childClassId, true);
     }
 
     function createSingleClassClassificationWithTheClassAdded(classId: string)
     {
-        availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(classId, "class", null)));
+        availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(classId, "class", null)));
         var addedIds: Array<string> = new Array<string>(classId);
         sut = new ServiceRegister.Classification(availableClasses, addedIds);        
     }
@@ -101,7 +101,7 @@ describe("classification", () =>
     {
         it("unavailable class cannot be added", () =>
         {
-            availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>());
+            availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>());
             sut = new ServiceRegister.Classification(availableClasses);
             sut.toggleSelection("1", true);
 
@@ -109,7 +109,7 @@ describe("classification", () =>
         });
         it("nothing is added if nothing is selected", () =>
         {
-            availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>());
+            availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>());
             sut = new ServiceRegister.Classification(availableClasses);
 
             sut.addSelected();
@@ -132,8 +132,8 @@ describe("classification", () =>
         {
             var rootClassId: string = "1";
             var childClassId: string = "1.1";
-            availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(rootClassId, "root",
-                new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(childClassId, "leaf", null)))));
+            availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(rootClassId, "root",
+                new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(childClassId, "leaf", null)))));
             sut = new ServiceRegister.Classification(availableClasses);
             sut.toggleSelection(rootClassId, true);
 
@@ -162,7 +162,7 @@ describe("classification", () =>
     {
         it("nothing is removed if nothing is available", () =>
         {
-            availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>());
+            availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>());
             sut = new ServiceRegister.Classification(availableClasses);
 
             sut.remove("1");
@@ -184,8 +184,8 @@ describe("classification", () =>
         {
             var rootClassId: string = "1";
             var childClassId: string = "1.1";
-            availableClasses = new ServiceRegister.HierarchicalClasses(new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(rootClassId, "root",
-                new Array<ServiceRegister.HierarchicalClass>(new ServiceRegister.HierarchicalClass(childClassId, "leaf", null)))));
+            availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(rootClassId, "root",
+                new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical(childClassId, "leaf", null)))));
             sut = new ServiceRegister.Classification(availableClasses);
             sut.toggleSelection(rootClassId, true);
             sut.addSelected();
@@ -223,14 +223,17 @@ describe("classification", () =>
 
     describe("expanding and collapsing available classes", () =>
     {
-        it("expanding all", () =>
+        it("expanding all expands classes with children", () =>
         {
-            createRootAndChildClassClassificationAndSelectChildClass("1", "1.1");
+            availableClasses = new ServiceRegister.Tree(new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical("1", "root",
+                new Array<ServiceRegister.Hierarchical>(new ServiceRegister.Hierarchical("1.1", "leaf", null))),
+                new ServiceRegister.Hierarchical("2", "another root", null)));
             sut = new ServiceRegister.Classification(availableClasses);
 
             sut.expandAvailable();
 
-            expect(sut.expandedAvailable.length).toBe(sut.available.length);
+            expect(sut.expandedAvailable.length).toBe(1);
+            expect(sut.expandedAvailable[0].id).toBe("1");
         });
         it("collapsing all", () =>
         {
