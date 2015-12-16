@@ -117,19 +117,41 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Same unique business identifier cannot be added twice to different organizations")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Same unique business identifier cannot be added twice to different active organiz" +
+            "ations")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ValidatingData")]
-        public virtual void SameUniqueBusinessIdentifierCannotBeAddedTwiceToDifferentOrganizations()
+        public virtual void SameUniqueBusinessIdentifierCannotBeAddedTwiceToDifferentActiveOrganizations()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Same unique business identifier cannot be added twice to different organizations", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Same unique business identifier cannot be added twice to different active organiz" +
+                    "ations", ((string[])(null)));
 #line 15
 this.ScenarioSetup(scenarioInfo);
 #line 16
- testRunner.Given("there is an organization with business identifier \'1234567-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("there is an active organization with business identifier \'1234567-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 17
  testRunner.When("unique business identifier \'1234567-1\' is validated for a new organization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
  testRunner.Then("business identifer is invalid because it is already used", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Same unique business identifier can be added twice to different inactive organiza" +
+            "tions")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ValidatingData")]
+        public virtual void SameUniqueBusinessIdentifierCanBeAddedTwiceToDifferentInactiveOrganizations()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Same unique business identifier can be added twice to different inactive organiza" +
+                    "tions", ((string[])(null)));
+#line 20
+this.ScenarioSetup(scenarioInfo);
+#line 21
+ testRunner.Given("there is an inactive organization with business identifier \'1234567-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 22
+ testRunner.When("unique business identifier \'1234567-1\' is validated for a new organization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
+ testRunner.Then("business identifer is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -140,13 +162,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void UnchangedBusinessIdentifierOfAnAlreadyAddedOrganizationIsValid()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unchanged business identifier of an already added organization is valid", ((string[])(null)));
-#line 20
+#line 25
 this.ScenarioSetup(scenarioInfo);
-#line 21
- testRunner.Given("there is an organization with business identifier \'1234567-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 26
+ testRunner.Given("there is an active organization with business identifier \'1234567-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 27
  testRunner.When("unique business identifier \'1234567-1\' is validated for the same organization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 23
+#line 28
  testRunner.Then("business identifer is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -158,13 +180,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void Non_UniqueBusinessIdentifierCanBeAddedTwiceToDifferentOrganizations()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Non-unique business identifier can be added twice to different organizations", ((string[])(null)));
-#line 25
+#line 30
 this.ScenarioSetup(scenarioInfo);
-#line 26
- testRunner.Given("there is an organization with business identifier \'1234567-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 27
+#line 31
+ testRunner.Given("there is an active organization with business identifier \'1234567-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 32
  testRunner.When("non-unique business identifier \'1234567-1\' is validated for a new organization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 28
+#line 33
  testRunner.Then("business identifer is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -176,11 +198,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ValidPhoneNumber()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Valid phone number", ((string[])(null)));
-#line 30
+#line 35
 this.ScenarioSetup(scenarioInfo);
-#line 31
+#line 36
  testRunner.When("phone number \'0100100\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 32
+#line 37
  testRunner.Then("phone number is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -192,11 +214,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void InvalidFormatPhoneNumber()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid format phone number", ((string[])(null)));
-#line 34
+#line 39
 this.ScenarioSetup(scenarioInfo);
-#line 35
+#line 40
  testRunner.When("phone number \'no number\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 36
+#line 41
  testRunner.Then("phone number is invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -208,11 +230,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ValidEmailAddress()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Valid email address", ((string[])(null)));
-#line 38
+#line 43
 this.ScenarioSetup(scenarioInfo);
-#line 39
+#line 44
  testRunner.When("email \'me@gmail.com\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 40
+#line 45
  testRunner.Then("email is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -224,11 +246,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void InvalidFormatEmailAddress()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid format email address", ((string[])(null)));
-#line 42
+#line 47
 this.ScenarioSetup(scenarioInfo);
-#line 43
+#line 48
  testRunner.When("email \'me2gmail,com\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 44
+#line 49
  testRunner.Then("email is invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -240,11 +262,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ValidWebAddress()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Valid web address", ((string[])(null)));
-#line 46
+#line 51
 this.ScenarioSetup(scenarioInfo);
-#line 47
+#line 52
  testRunner.When("web address \'www.gmail.com\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 48
+#line 53
  testRunner.Then("web address is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -256,11 +278,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void InvalidFormatWebAddress()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid format web address", ((string[])(null)));
-#line 50
+#line 55
 this.ScenarioSetup(scenarioInfo);
-#line 51
+#line 56
  testRunner.When("web address \'www.gmail,com\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 52
+#line 57
  testRunner.Then("web address is invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -272,11 +294,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ValidPostalCode()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Valid postal code", ((string[])(null)));
-#line 54
+#line 59
 this.ScenarioSetup(scenarioInfo);
-#line 55
+#line 60
  testRunner.When("postal code \'20540\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 56
+#line 61
  testRunner.Then("postal code is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -288,11 +310,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void InvalidFormatPostalCode()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid format postal code", ((string[])(null)));
-#line 58
+#line 63
 this.ScenarioSetup(scenarioInfo);
-#line 59
+#line 64
  testRunner.When("postal code \'2054\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 60
+#line 65
  testRunner.Then("postal code is invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -304,11 +326,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ValidPostOfficeBoxPostalCode()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Valid post office box postal code", ((string[])(null)));
-#line 62
+#line 67
 this.ScenarioSetup(scenarioInfo);
-#line 63
+#line 68
  testRunner.When("post office box postal code \'20541\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 64
+#line 69
  testRunner.Then("post office box postal code is valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -320,11 +342,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void InvalidFormatPostOfficeBoxPostalCode()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid format post office box postal code", ((string[])(null)));
-#line 66
+#line 71
 this.ScenarioSetup(scenarioInfo);
-#line 67
+#line 72
  testRunner.When("post office box postal code \'2054\' is validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 68
+#line 73
  testRunner.Then("post office box postal code is invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

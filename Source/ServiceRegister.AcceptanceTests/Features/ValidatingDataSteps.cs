@@ -114,10 +114,17 @@ namespace ServiceRegister.AcceptanceTests.Features
             Assert.IsFalse(isWebAddressValid);
         }
 
-        [Given(@"there is an organization with business identifier '(.+)'")]
-        public void GivenThereIsAnOrganizationWithBusinessIdentifier(string businessId)
+        [Given(@"there is an active organization with business identifier '(.+)'")]
+        public void GivenThereIsAnActiveOrganizationWithBusinessIdentifier(string businessId)
         {
-            OrganizationService.AddOrganization(businessId, null, "Yritys", null, new List<LocalizedText> { new LocalizedText("fi", "organisaatio")}, null);
+            OrganizationService.AddOrganization(businessId, null, "Yritys", null, new List<LocalizedText> { new LocalizedText("fi", "organisaatio") }, null);
+        }
+
+        [Given(@"there is an inactive organization with business identifier '(.+)'")]
+        public void GivenThereIsAnInactiveOrganizationWithBusinessIdentifier(string businessId)
+        {
+            Guid guid = OrganizationService.AddOrganization(businessId, null, "Yritys", null, new List<LocalizedText> { new LocalizedText("fi", "organisaatio") }, null);
+            OrganizationService.DeactivateOrganization(guid);
         }
 
         [Then(@"business identifer is invalid because it is already used")]
