@@ -53,6 +53,7 @@
     <Compile Include="OrganizationType.cs" />
     <Compile Include="User\CustomPropertyName.cs" />
     <Compile Include="User\RequiredCustomPropertyMissingException.cs" />
+    <Compile Include="User\Roles.cs" />
     <Compile Include="WebPage.cs" />
   </ItemGroup>
   <ItemGroup>
