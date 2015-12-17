@@ -21,7 +21,7 @@ namespace ServiceRegister.Application.Validation
         public IBusinessIdentifierValidationResult ValidateUniqueBusinessIdentifier(string businessId, Guid? organizationId)
         {
             IBusinessIdentifierValidationResult result = ValidateBusinessIdentifier(businessId);
-            if (result.IsValid && organizationRepository.HasOrganization(businessId, organizationId))
+            if (result.IsValid && organizationRepository.HasActiveOrganization(businessId, organizationId))
             {
                 return new BusinessIdentifierValidationResult(false, InvalidBusinessIdentifierReason.AlreadyExists);
             }

@@ -39,7 +39,7 @@ namespace ServiceRegister.Store.CodeFirst
 
         public void AddOrganizationAndSave(IOrganization organization)
         {
-            if (HasOrganization(organization.BusinessId, organization.Id))
+            if (HasActiveOrganization(organization.BusinessId, organization.Id))
             {
                 throw new ArgumentException(string.Format("Organization with business id '{0}' already added.", organization.BusinessId));
             }
@@ -129,7 +129,7 @@ namespace ServiceRegister.Store.CodeFirst
         public void UpdateOrganizationBasicInformation(Guid id, IBasicInformation information, bool allowExistingBusinessId)
         {
             Organization dbOrganization = GetDbOrganization(id);
-            if (!allowExistingBusinessId && HasOrganization(information.BusinessId, id))
+            if (!allowExistingBusinessId && HasActiveOrganization(information.BusinessId, id))
             {
                 throw new ArgumentException(string.Format("Organization with business id '{0}' already added.", information.BusinessId));
             }
@@ -154,11 +154,11 @@ namespace ServiceRegister.Store.CodeFirst
             dbOrganization.SetPostalAddresses(addresses, context);
         }
 
-        public bool HasOrganization(string businessId, Guid? excludedOrganizationId)
+        public bool HasActiveOrganization(string businessId, Guid? excludedOrganizationId)
         {
             return excludedOrganizationId.HasValue ?
-                context.Organizations.Any(org => org.BusinessId.Equals(businessId) && !org.Id.Equals(excludedOrganizationId.Value)) :
-                context.Organizations.Any(org => org.BusinessId.Equals(businessId));
+                context.Organizations.Any(org => org.BusinessId.Equals(businessId) && org.Active && !org.Id.Equals(excludedOrganizationId.Value)) :
+                context.Organizations.Any(org => org.BusinessId.Equals(businessId) && org.Active);
         }
 
         public void RemoveOrganization(Guid id)
