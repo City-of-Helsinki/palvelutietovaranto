@@ -181,6 +181,7 @@ module ServiceRegister
         public saveEditedBasicInformation(): angular.IPromise<void>
         {
             this.editedSection = EditedServiceSection.None;
+            this.model.languagesProperty = this.selectedLanguages;
             if (this.isModelChanged())
             {
                 return this.saveBasicInformation();
@@ -288,7 +289,6 @@ module ServiceRegister
         private saveBasicInformation(): angular.IPromise<void>
         {
             this.busyIndicationService.showBusyIndicator("Tallennetaan palvelun perustietoja...");
-            this.model.languagesProperty = this.selectedLanguages;
             this.model.generateBasicInformationLocalizedAndFormattedTexts();
             this.trustModelHtmlData();
             return this.serviceService.setServiceBasicInformation(this.organizationId, this.model)
