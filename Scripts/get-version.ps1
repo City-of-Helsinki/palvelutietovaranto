@@ -11,7 +11,6 @@ foreach($content in $fileContent)
     $match = [System.Text.RegularExpressions.Regex]::Match($content, $RegularExpression)
     if($match.Success)
     {
-        $result = $match.groups[1].value
-        $result.Substring(0, $result.Length-2)
+        $match.groups[1].value
     }
 }
