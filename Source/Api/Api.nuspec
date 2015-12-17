@@ -7,8 +7,7 @@
     <authors>Affecto</authors>
     <version>$version$</version>
     <releaseNotes>
-      Fix creating a new user when being a normal organization user.
-      Faster and configurable ontology term search.
+      Look for duplicate organization business identifiers only within active organizations.
     </releaseNotes>
   </metadata>
 </package>

@@ -7,11 +7,9 @@
     <authors>Affecto</authors>
     <version>$version$</version>
     <releaseNotes>
-      Fix creating a new user when being a normal organization user.
-      User instructions for services.
-      User instructions for organizations.
-      Fix for read-only layouts in IE when using very long words in text areas.
-      Faster and configurable ontology term search.
+      Fix saving service basic information when only languages are changed.
+      Fix collapsing available service classification tree nodes.
+      Fix cancelling service basic information editing.
     </releaseNotes>
   </metadata>
 </package>
