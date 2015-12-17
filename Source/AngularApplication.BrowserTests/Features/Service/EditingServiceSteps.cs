@@ -201,6 +201,13 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
             TestEnvironment.Driver.ClickElement("cancelEditingServiceClassificationInformation");
         }
 
+        [When(@"service language '(.+)' is added")]
+        public void WhenServiceLanguageIsAdded(string language)
+        {
+            var languagesElement = new ChosenDropDown(TestEnvironment.Driver, "serviceLanguages");
+            languagesElement.Select(language);
+        }
+
         private static void AssertServiceClassification(TableRow classificationData, string serviceClassListElementId, string ontologyTermListElementId, 
             string targetGroupListElementId, string lifeEventListElementId)
         {

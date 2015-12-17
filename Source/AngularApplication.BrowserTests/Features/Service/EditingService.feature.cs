@@ -248,52 +248,60 @@ this.FeatureBackground();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Service languages can be edityed and edited information is shown correctly")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EditingService")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BrowserTest")]
+        public virtual void ServiceLanguagesCanBeEdityedAndEditedInformationIsShownCorrectly()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Service languages can be edityed and edited information is shown correctly", ((string[])(null)));
+#line 38
+this.ScenarioSetup(scenarioInfo);
+#line 4
+this.FeatureBackground();
+#line 39
+ testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 40
+ testRunner.And("the basic information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
+ testRunner.When("service language \'englanti\' is added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 42
+ testRunner.And("the service information is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Service name",
+                        "Alternate name",
+                        "Short description",
+                        "Description",
+                        "Languages",
+                        "Requirements",
+                        "User instructions"});
+            table6.AddRow(new string[] {
+                        "Daycare",
+                        "Daycare for children",
+                        "Private daycare",
+                        "Daycare to help public daycare",
+                        "suomi, ruotsi, englanti",
+                        "User must have kids",
+                        "Bring kids in the morning, take home in the afternoon"});
+#line 43
+ testRunner.Then("following service information is displayed", ((string)(null)), table6, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Service classification information is shown correctly in read mode")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EditingService")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BrowserTest")]
         public virtual void ServiceClassificationInformationIsShownCorrectlyInReadMode()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Service classification information is shown correctly in read mode", ((string[])(null)));
-#line 37
+#line 47
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 38
+#line 48
  testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Service classes",
-                        "Ontology terms",
-                        "Target groups",
-                        "Life events",
-                        "Keywords"});
-            table6.AddRow(new string[] {
-                        "Asuminen, Asumisen tuet",
-                        "työväenopisto, päivähoito",
-                        "Kansalaiset, Ikäihmiset",
-                        "Asevelvollisuus, Muuttaminen",
-                        "Kunta, Palvelu"});
-#line 39
- testRunner.Then("following service classification information is displayed", ((string)(null)), table6, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Service classification information is shown correctly in edit mode")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EditingService")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BrowserTest")]
-        public virtual void ServiceClassificationInformationIsShownCorrectlyInEditMode()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Service classification information is shown correctly in edit mode", ((string[])(null)));
-#line 43
-this.ScenarioSetup(scenarioInfo);
-#line 4
-this.FeatureBackground();
-#line 44
- testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 45
- testRunner.And("the classification information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Service classes",
@@ -307,8 +315,42 @@ this.FeatureBackground();
                         "Kansalaiset, Ikäihmiset",
                         "Asevelvollisuus, Muuttaminen",
                         "Kunta, Palvelu"});
-#line 46
- testRunner.Then("following service classification information is displayed in edit mode", ((string)(null)), table7, "Then ");
+#line 49
+ testRunner.Then("following service classification information is displayed", ((string)(null)), table7, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Service classification information is shown correctly in edit mode")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EditingService")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BrowserTest")]
+        public virtual void ServiceClassificationInformationIsShownCorrectlyInEditMode()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Service classification information is shown correctly in edit mode", ((string[])(null)));
+#line 53
+this.ScenarioSetup(scenarioInfo);
+#line 4
+this.FeatureBackground();
+#line 54
+ testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 55
+ testRunner.And("the classification information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Service classes",
+                        "Ontology terms",
+                        "Target groups",
+                        "Life events",
+                        "Keywords"});
+            table8.AddRow(new string[] {
+                        "Asuminen, Asumisen tuet",
+                        "työväenopisto, päivähoito",
+                        "Kansalaiset, Ikäihmiset",
+                        "Asevelvollisuus, Muuttaminen",
+                        "Kunta, Palvelu"});
+#line 56
+ testRunner.Then("following service classification information is displayed in edit mode", ((string)(null)), table8, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -322,48 +364,48 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Existing service classification information can be edited and edited information " +
                     "is shown correctly", ((string[])(null)));
-#line 50
+#line 60
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 51
+#line 61
  testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 52
+#line 62
  testRunner.And("the classification information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 53
+#line 63
  testRunner.When("service keywords are cleared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 54
+#line 64
  testRunner.And("service class \'Asumisen tuet\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 55
+#line 65
  testRunner.And("ontology term \'päivähoito\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 56
+#line 66
  testRunner.And("target group \'Ikäihmiset\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 57
+#line 67
  testRunner.And("life event \'Asevelvollisuus\' is removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 58
+#line 68
  testRunner.And("the service classification information is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Service classes",
                         "Ontology terms",
                         "Target groups",
                         "Life events",
                         "Keywords"});
-            table8.AddRow(new string[] {
+            table9.AddRow(new string[] {
                         "Asuminen",
                         "työväenopisto",
                         "Kansalaiset",
                         "Muuttaminen",
                         ""});
-#line 59
- testRunner.Then("following service classification information is displayed", ((string)(null)), table8, "Then ");
-#line 62
+#line 69
+ testRunner.Then("following service classification information is displayed", ((string)(null)), table9, "Then ");
+#line 72
  testRunner.And("service has no service class \'Asumisen tuet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 63
+#line 73
  testRunner.And("service has no ontology term \'päivähoito\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 64
+#line 74
  testRunner.And("service has no target group \'Ikäihmiset\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 65
+#line 75
  testRunner.And("service has no life event \'Asevelvollisuus\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -376,18 +418,18 @@ this.FeatureBackground();
         public virtual void CancellingTheEditingOfServiceBasicInformationChangesNothing()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancelling the editing of service basic information changes nothing", ((string[])(null)));
-#line 67
+#line 77
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 68
+#line 78
  testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 69
+#line 79
  testRunner.And("the basic information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 70
+#line 80
  testRunner.When("basic information editing is cancelled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Service name",
                         "Alternate name",
                         "Short description",
@@ -395,7 +437,7 @@ this.FeatureBackground();
                         "Languages",
                         "Requirements",
                         "User instructions"});
-            table9.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "Daycare",
                         "Daycare for children",
                         "Private daycare",
@@ -403,23 +445,23 @@ this.FeatureBackground();
                         "suomi, ruotsi",
                         "User must have kids",
                         "Bring kids in the morning, take home in the afternoon"});
-#line 71
- testRunner.Then("following service information is displayed", ((string)(null)), table9, "Then ");
+#line 81
+ testRunner.Then("following service information is displayed", ((string)(null)), table10, "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Service classes",
                         "Ontology terms",
                         "Target groups",
                         "Life events",
                         "Keywords"});
-            table10.AddRow(new string[] {
+            table11.AddRow(new string[] {
                         "Asuminen, Asumisen tuet",
                         "työväenopisto, päivähoito",
                         "Kansalaiset, Ikäihmiset",
                         "Asevelvollisuus, Muuttaminen",
                         "Kunta, Palvelu"});
-#line 74
- testRunner.And("following service classification information is displayed", ((string)(null)), table10, "And ");
+#line 84
+ testRunner.And("following service classification information is displayed", ((string)(null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -431,18 +473,18 @@ this.FeatureBackground();
         public virtual void CancellingTheEditingOfServiceClassificationInformationChangesNothing()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancelling the editing of service classification information changes nothing", ((string[])(null)));
-#line 78
+#line 88
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 79
+#line 89
  testRunner.Given("the service \'Daycare\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 80
+#line 90
  testRunner.And("the classification information is put in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 81
+#line 91
  testRunner.When("classification information editing is cancelled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Service name",
                         "Alternate name",
                         "Short description",
@@ -450,7 +492,7 @@ this.FeatureBackground();
                         "Languages",
                         "Requirements",
                         "User instructions"});
-            table11.AddRow(new string[] {
+            table12.AddRow(new string[] {
                         "Daycare",
                         "Daycare for children",
                         "Private daycare",
@@ -458,23 +500,23 @@ this.FeatureBackground();
                         "suomi, ruotsi",
                         "User must have kids",
                         "Bring kids in the morning, take home in the afternoon"});
-#line 82
- testRunner.Then("following service information is displayed", ((string)(null)), table11, "Then ");
+#line 92
+ testRunner.Then("following service information is displayed", ((string)(null)), table12, "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Service classes",
                         "Ontology terms",
                         "Target groups",
                         "Life events",
                         "Keywords"});
-            table12.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "Asuminen, Asumisen tuet",
                         "työväenopisto, päivähoito",
                         "Kansalaiset, Ikäihmiset",
                         "Asevelvollisuus, Muuttaminen",
                         "Kunta, Palvelu"});
-#line 85
- testRunner.And("following service classification information is displayed", ((string)(null)), table12, "And ");
+#line 95
+ testRunner.And("following service classification information is displayed", ((string)(null)), table13, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
