@@ -19,7 +19,7 @@ namespace ServiceRegister.Application.Organization
         void UpdateOrganizationContactInformation(Guid id, IContactInformation information);
         void UpdateOrganizationVisitingAddress(Guid id, IVisitingAddress address);
         void UpdateOrganizationPostalAddresses(Guid id, IPostalAddress addresses);
-        bool HasOrganization(string businessId, Guid? excludedOrganizationId);
+        bool HasActiveOrganization(string businessId, Guid? excludedOrganizationId);
         void RemoveOrganization(Guid id);
         void DeactivateOrganization(Guid id);
         IOrganizationName GetOrganizationName(Guid id);

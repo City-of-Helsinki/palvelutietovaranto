@@ -12,18 +12,23 @@ Scenario: Invalid business identifier check sum digit
 	When unique business identifier '1069622-5' is validated
 	Then business identifer is invalid because of invalid check sum digit
 
-Scenario: Same unique business identifier cannot be added twice to different organizations
-	Given there is an organization with business identifier '1234567-1'
+Scenario: Same unique business identifier cannot be added twice to different active organizations
+	Given there is an active organization with business identifier '1234567-1'
 	When unique business identifier '1234567-1' is validated for a new organization
 	Then business identifer is invalid because it is already used
 
+Scenario: Same unique business identifier can be added twice to different inactive organizations
+	Given there is an inactive organization with business identifier '1234567-1'
+	When unique business identifier '1234567-1' is validated for a new organization
+	Then business identifer is valid
+
 Scenario: Unchanged business identifier of an already added organization is valid
-	Given there is an organization with business identifier '1234567-1'
+	Given there is an active organization with business identifier '1234567-1'
 	When unique business identifier '1234567-1' is validated for the same organization
 	Then business identifer is valid
 
 Scenario: Non-unique business identifier can be added twice to different organizations
-	Given there is an organization with business identifier '1234567-1'
+	Given there is an active organization with business identifier '1234567-1'
 	When non-unique business identifier '1234567-1' is validated for a new organization
 	Then business identifer is valid
 
