@@ -105,7 +105,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
             TableRow classificationData = table.Rows.Single();
             string keywords = classificationData["Keywords"];
             AssertServiceClassification(classificationData, "serviceClassReadOnlyList", "ontologyTermReadOnlyList", "targetGroupReadOnlyList", "lifeEventReadOnlyList");
-            Assert.IsTrue(TestEnvironment.Driver.ElementHasText("keywordList", keywords));
+            Assert.IsTrue(TestEnvironment.Driver.ElementHasText("keywordReadOnlyList", keywords));
         }
 
         [Given(@"the classification information is put in edit mode")]
