@@ -37,7 +37,8 @@
                                     <input id="userEmailAddressInput" type="text" class="form-control" name="emailAddress" maxlength="200"
                                            data-ng-model="model.emailAddress" data-ng-blur="controller.validateEmailAddress()" data-ng-required="true" autocomplete="off">
                                     <input id="emailInputToDisableAutocomplete" type="text" style="display: none;" />
-                                    <div id="userEmailAddressExistsErrorMessage" aria-live="polite" class="validation-message" data-ng-show="controller.validEmailAddress && controller.existingEmailAddress">
+                                    <div id="userEmailAddressExistsErrorMessage" aria-live="polite" class="validation-message" 
+                                         data-ng-show="controller.validEmailAddress && controller.existingEmailAddress">
                                         Sähköpostiosoite on jo varattu
                                     </div>
                                     <div id="userEmailAddressErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validEmailAddress">

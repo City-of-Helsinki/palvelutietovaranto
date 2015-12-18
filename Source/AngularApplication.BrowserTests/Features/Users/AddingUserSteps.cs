@@ -74,16 +74,28 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
             Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userPhoneNumberErrorMessage"));
         }
 
-        [Then(@"password error message is displayed")]
-        public void ThenPasswordErrorMessageIsDisplayed()
+        [Then(@"password mismatch error message is displayed")]
+        public void ThenPasswordMismatchErrorMessageIsDisplayed()
         {
             Assert.IsTrue(TestEnvironment.Driver.IsElementDisplayed("userConfirmedPasswordErrorMessage"));
         }
 
-        [Then(@"password error message is not displayed")]
-        public void ThenPasswordErrorMessageIsNotDisplayed()
+        [Then(@"password mismatch error message is not displayed")]
+        public void ThenPasswordMismatchErrorMessageIsNotDisplayed()
         {
             Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userConfirmedPasswordErrorMessage"));
+        }
+
+        [Then(@"password strength error message is displayed")]
+        public void ThenPasswordStregthErrorMessageIsDisplayed()
+        {
+            Assert.IsTrue(TestEnvironment.Driver.IsElementDisplayed("userPasswordErrorMessage"));
+        }
+
+        [Then(@"password strength error message is not displayed")]
+        public void ThenPasswordStregthErrorMessageIsNotDisplayed()
+        {
+            Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userPasswordErrorMessage"));
         }
 
         [Then(@"insufficient permissions error is displayed")]
