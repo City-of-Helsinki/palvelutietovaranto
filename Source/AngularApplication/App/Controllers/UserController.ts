@@ -20,11 +20,11 @@ module ServiceRegister
         public originalModel: User;
 
         public userInformationForm: angular.IFormController;
-        public userInformationBeingEdited: boolean;
        
         constructor(private $scope: Affecto.Base.IViewScope, private $location: angular.ILocationService, $routeParams: IUserRoute, private $sce: angular.ISCEService,
             private $q: angular.IQService, private userService: UserService, private settingsService: SettingsService, private validationService: ValidationService,
-            private busyIndicationService: Affecto.BusyIndication.IBusyIndicationService, private organizationService: OrganizationService, private authenticationService: Affecto.Login.IAuthenticationService)
+            private busyIndicationService: Affecto.BusyIndication.IBusyIndicationService, private organizationService: OrganizationService,
+            private authenticationService: Affecto.Login.IAuthenticationService)
         {
 
             var user: AuthenticatedUser = authenticationService.getUser<AuthenticatedUser>();
@@ -44,58 +44,17 @@ module ServiceRegister
             this.validConfirmedPassword = true;
             this.validPassword = true;
 
-            this.userInformationBeingEdited = false;
-
             this.initializeSelectionLists();
         }
 
-        public canSave(): boolean
+        public canAddUser(): boolean
         {
             return this.validPhoneNumber && this.validEmailAddress && !this.existingEmailAddress && this.validPassword && this.validConfirmedPassword;
-        }
-
-        public cancelEditing(): void
-        {
-            this.model = this.originalModel;
-            this.userInformationBeingEdited = false;
-        }
-
-        public cancelAdd(): void
-        {
-           this.goToHomePage();
         }
 
         public goToHomePage(): void
         {
             this.$location.path("/Organizations/" + this.model.organizationId + "/Users");
-        }
-
-        public editUserInformation(): void
-        {
-            this.originalModel = angular.copy(this.model);
-            this.validateEmailAddress();
-            this.validatePhoneNumber();
-            this.validateConfirmedPassword();
-            this.userInformationForm.$setPristine();
-            this.userInformationBeingEdited = true;
-        }
-
-        public isUserInformationBeingEdited(): boolean
-        {
-            return this.userInformationBeingEdited;
-        }
-
-        public saveUserInformation(): angular.IPromise<void>
-        {
-            if (this.isModelChanged())
-            {
-                return this.saveUser(true);
-            }
-        }
-
-        public addUserInformation(): angular.IPromise<void>
-        {
-            return this.addUser(true);
         }
 
         public validateEmailAddress(): void
@@ -155,9 +114,17 @@ module ServiceRegister
             }
         }
 
-        private isModelChanged(): boolean
+        public addUser()
         {
-            return !angular.equals(this.model, this.originalModel);
+            this.busyIndicationService.showBusyIndicator("Tallennetaan käyttäjän tietoja...");
+            this.originalModel = angular.copy(this.model);
+
+            return this.userService.addUser(this.model)
+                .then(() =>
+                {
+                    this.busyIndicationService.hideBusyIndicator();
+                    this.goToHomePage();
+                });
         }
 
         private setEmailAddressValidity = (isValid: boolean, isExisting: boolean): void =>
@@ -216,38 +183,6 @@ module ServiceRegister
             }
 
             this.originalModel = angular.copy(this.model);
-        }
-
-        private saveUser(goToHomePage: boolean)
-        {
-            this.busyIndicationService.showBusyIndicator("Tallennetaan käyttäjän tietoja...");
-            this.originalModel = angular.copy(this.model);
-
-            return this.userService.setUser(this.model)
-                .then(() =>
-                {
-                    this.busyIndicationService.hideBusyIndicator();
-                    if (goToHomePage)
-                    {
-                        this.goToHomePage();
-                    }
-                });
-        }
-
-        private addUser(goToHomePage: boolean)
-        {
-            this.busyIndicationService.showBusyIndicator("Tallennetaan käyttäjän tietoja...");
-            this.originalModel = angular.copy(this.model);
-
-            return this.userService.addUser(this.model)
-                .then((userId: string) =>
-                {
-                    this.busyIndicationService.hideBusyIndicator();
-                    if (goToHomePage)
-                    {
-                        this.goToHomePage();
-                    }
-                });
         }
 
         private initializeSelectionLists(): angular.IPromise<void>

@@ -10,14 +10,6 @@ module ServiceRegister
         {
         }
 
-        public setUser(user: User): angular.IPromise<void>
-        {
-            return this.$http.put(this.apiBaseUrl + "serviceregister/users/", user)
-                .then((): void =>
-                {
-                });
-        }
-
         public getUser(userId: string): angular.IPromise<User>
         {
             return this.$http.get(this.apiBaseUrl + "serviceregister/users/" + userId)

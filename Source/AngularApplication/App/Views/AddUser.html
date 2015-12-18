@@ -12,11 +12,11 @@
                     <div class="content-box">
                         <div class="content-box-header">
                             <h3>Käyttäjän tiedot</h3>
-                            <button id="saveNewUserButton" type="submit" class="button edit" data-ng-click="controller.addUserInformation()"
-                                    data-ng-disabled="controller.userInformationForm.$invalid || !controller.canSave() || controller.userInformationForm.$pristine">
+                            <button id="saveNewUserButton" type="submit" class="button edit" data-ng-click="controller.addUser()"
+                                    data-ng-disabled="controller.userInformationForm.$invalid || !controller.canAddUser() || controller.userInformationForm.$pristine">
                                 Tallenna
                             </button>
-                            <button type="submit" class="button cancel" data-ng-click="controller.cancelAdd()">
+                            <button type="submit" class="button cancel" data-ng-click="controller.goToHomePage()">
                                 Keskeytä
                             </button>
                         </div>

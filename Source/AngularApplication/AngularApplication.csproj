@@ -175,7 +175,6 @@
     <Content Include="App\Views\ServicePartials\ViewBasicInformation.html" />
     <Content Include="App\Views\ServicePartials\ViewClassificationAndOnthologyTerms.html" />
     <Content Include="App\Views\Services.html" />
-    <Content Include="App\Views\User.html" />
     <Content Include="App\Views\AddUser.html" />
     <Content Include="App\Views\Error.html" />
     <Content Include="App\Views\Index.html" />
