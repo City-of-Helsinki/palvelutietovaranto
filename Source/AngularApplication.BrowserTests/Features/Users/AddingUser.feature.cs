@@ -322,7 +322,7 @@ this.FeatureBackground();
 #line 102
  testRunner.And("the user \'ylermi@yllapitaja.com\' / \'password\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 103
- testRunner.Then("the user \'ylermi@yllapitaja.com\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the user \'ylermi\' / \'yllapitaja\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

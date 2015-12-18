@@ -98,10 +98,10 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
             Assert.IsFalse(TestEnvironment.Driver.GetDropDownListContent("userRoleInput").Contains("PTV-pääkäyttäjä"));
         }
 
-        [Then(@"the user '(.+)' is logged in")]
-        public void TheUserIsLoggedIn(string userName)
+        [Then(@"the user '(.+)' / '(.+)' is logged in")]
+        public void TheUserIsLoggedIn(string firstName, string lastName)
         {
-            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("userName", userName));
+            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("userName", string.Format("{0} {1}", lastName, firstName)));
         }
     }
 }

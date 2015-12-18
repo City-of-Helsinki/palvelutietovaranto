@@ -100,7 +100,7 @@ Scenario: Administrator User can add users
 	And the user is saved
 	And current user logs out 
 	And the user 'ylermi@yllapitaja.com' / 'password' is logged in
-	Then the user 'ylermi@yllapitaja.com' is logged in
+	Then the user 'ylermi' / 'yllapitaja' is logged in
 	
 Scenario: User without manage administrator users permission cannot add administrator user
 	Given the organization administrator user is logged in
