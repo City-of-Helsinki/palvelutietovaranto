@@ -20,7 +20,6 @@
                                 Keskeytä
                             </button>
                         </div>
-
                         <div class="content-box-inner">
                             <div class="row">
                                 <div class="col-xs-6">
@@ -32,7 +31,6 @@
                                     <input id="userFirstNameInput" type="text" class="form-control" maxlength="100" data-ng-model="model.firstName" data-ng-required="true" />
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-xs-6">
                                     <label class="mandatory-field">Sähköpostiosoite (=käyttäjätunnus)</label>
@@ -56,13 +54,25 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Organisaatio</label>
+                                    <select id="userOrganizationInput" class="form-control" data-ng-model="model.organizationIdProperty"
+                                            data-ng-options="org.id as org.name for org in controller.organizations" data-ng-required="true"></select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label class="mandatory-field">Rooli</label>
+                                    <select id="userRoleInput" class="form-control" data-ng-model="model.roleIdProperty"
+                                            data-ng-options="role.id as role.name for role in controller.userRoles" data-ng-required="true"></select>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col-xs-6">
                                     <label class="mandatory-field">Salasana</label>
                                     <input id="userPasswordInput" type="password" class="form-control" maxlength="100" data-ng-model="model.password"
                                            data-ng-change="controller.validateConfirmedPassword()" data-ng-required="true" autocomplete="off"
-                                           data-ng-blur="controller.validatePassword()"/>
+                                           data-ng-blur="controller.validatePassword()" />
                                     <input id="passwordInputToDisableAutocomplete" type="password" style="display: none;" />
                                     <div id="userPasswordErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validPassword">
                                         Salasanan pituus on vähintään 10 merkkiä ja siinä pitää olla merkkejä vähintään kolmesta luokasta (pienet kirjaimet, isot kirjaimet, numerot, erikoismerkit)
@@ -76,19 +86,6 @@
                                     <div id="userConfirmedPasswordErrorMessage" aria-live="polite" class="validation-message" data-ng-show="!controller.validConfirmedPassword">
                                         Salasana ei täsmää
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label class="mandatory-field">Organisaatio</label>
-                                    <select id="userOrganizationInput" class="form-control" data-ng-model="model.organizationIdProperty"
-                                            data-ng-options="org.id as org.name for org in controller.organizations" data-ng-required="true"></select>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label class="mandatory-field">Rooli</label>
-                                    <select id="userRoleInput" class="form-control" data-ng-model="model.roleIdProperty"
-                                            data-ng-options="role.id as role.name for role in controller.userRoles" data-ng-required="true"></select>
                                 </div>
                             </div>
                         </div>
