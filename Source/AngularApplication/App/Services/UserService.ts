@@ -62,5 +62,14 @@ module ServiceRegister
                     return response.data;
                 });
         }
+
+        public validatePasswordStrength(password: string): angular.IPromise<boolean>
+        {
+            return this.$http.post(this.apiBaseUrl + "serviceregister/users/password", "\"" + password + "\"")
+                .then((response: angular.IHttpPromiseCallbackArg<any>): boolean =>
+                {
+                    return response.data;
+                });            
+        }
     }
 } 

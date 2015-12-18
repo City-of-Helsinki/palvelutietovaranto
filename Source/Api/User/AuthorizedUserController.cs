@@ -50,6 +50,13 @@ namespace ServiceRegister.Api.User
         }
 
         [HttpPost]
+        [PostRoute("users/password")]
+        public IHttpActionResult ValidatePasswordStrength([FromBody] string password)
+        {
+            return Ok(false);
+        }
+
+        [HttpPost]
         [PostRoute("users")]
         public IHttpActionResult AddUser(User user)
         {

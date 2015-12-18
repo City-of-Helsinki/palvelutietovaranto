@@ -15,13 +15,12 @@ module ServiceRegister
         public validEmailAddress: boolean;
         public existingEmailAddress: boolean;
         public validPassword: boolean;
+        public validConfirmedPassword: boolean;
         public model: User;
         public originalModel: User;
 
         public userInformationForm: angular.IFormController;
         public userInformationBeingEdited: boolean;
-       
-
        
         constructor(private $scope: Affecto.Base.IViewScope, private $location: angular.ILocationService, $routeParams: IUserRoute, private $sce: angular.ISCEService,
             private $q: angular.IQService, private userService: UserService, private settingsService: SettingsService, private validationService: ValidationService,
@@ -42,6 +41,7 @@ module ServiceRegister
             this.validPhoneNumber = true;
             this.validEmailAddress = true;
             this.existingEmailAddress = false;
+            this.validConfirmedPassword = true;
             this.validPassword = true;
 
             this.userInformationBeingEdited = false;
@@ -51,7 +51,7 @@ module ServiceRegister
 
         public canSave(): boolean
         {
-            return this.validPhoneNumber && this.validEmailAddress && !this.existingEmailAddress && this.validPassword;
+            return this.validPhoneNumber && this.validEmailAddress && !this.existingEmailAddress && this.validPassword && this.validConfirmedPassword;
         }
 
         public cancelEditing(): void
@@ -75,7 +75,7 @@ module ServiceRegister
             this.originalModel = angular.copy(this.model);
             this.validateEmailAddress();
             this.validatePhoneNumber();
-            this.validatePassword();
+            this.validateConfirmedPassword();
             this.userInformationForm.$setPristine();
             this.userInformationBeingEdited = true;
         }
@@ -131,11 +131,27 @@ module ServiceRegister
         {
             if (this.model.hasPassword())
             {
-                this.setPasswordValidity(this.model.password === this.model.passwordConfirm);
+                this.userService.validatePasswordStrength(this.model.password)
+                    .then((result: boolean) =>
+                    {
+                        this.setPasswordValidity(result);
+                    });
             }
             else
             {
                 this.setPasswordValidity(true);
+            }            
+        }
+
+        public validateConfirmedPassword(): void
+        {
+            if (this.model.hasBothPasswords() && this.validPassword)
+            {
+                this.setConfirmedPasswordValidity(this.model.password === this.model.passwordConfirm);
+            }
+            else
+            {
+                this.setConfirmedPasswordValidity(true);
             }
         }
 
@@ -157,10 +173,20 @@ module ServiceRegister
             this.setFormFieldValidity("phoneNumber", isValid);
         }
 
+        private setConfirmedPasswordValidity = (isValid: boolean): void =>
+        {
+            this.validConfirmedPassword = isValid;
+            this.setFormFieldValidity("passwordConfirm", isValid);
+        }
+
         private setPasswordValidity = (isValid: boolean): void =>
         {
             this.validPassword = isValid;
-            this.setFormFieldValidity("passwordConfirm", isValid);
+            this.setFormFieldValidity("password", isValid);
+            if (!isValid)
+            {
+                this.setConfirmedPasswordValidity(true);
+            }
         }
 
         private setFormFieldValidity = (fieldName: string, isValid: boolean): void =>
