@@ -53,7 +53,8 @@ namespace ServiceRegister.Api.User
         [PostRoute("users/password")]
         public IHttpActionResult ValidatePasswordStrength([FromBody] string password)
         {
-            return Ok(false);
+            bool isValid = userService.ValidatePasswordStrength(password);
+            return Ok(isValid);
         }
 
         [HttpPost]

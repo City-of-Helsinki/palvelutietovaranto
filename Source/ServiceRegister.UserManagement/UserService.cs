@@ -53,6 +53,11 @@ namespace ServiceRegister.UserManagement
             return identityManagementService.IsExistingUserAccount(emailAddress, IdentityManagement.Model.AccountType.Password);
         }
 
+        public bool ValidatePasswordStrength(string password)
+        {
+            return false;
+        }
+
         public Guid AddUser(Guid roleId, Guid organizationId, string emailAddress, string password, string lastName, string firstName, string phoneNumber)
         {
             if (roleId == Guid.Empty)
