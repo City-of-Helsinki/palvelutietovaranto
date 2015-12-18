@@ -18,6 +18,10 @@ module ServiceRegister
         {
             return "USER_MAINTENANCE";
         }
-   
+
+        public static get manageAdministratorUsers(): string
+        {
+            return "MANAGE_ADMINISTRATOR_USERS";
+        }
     }
 } 

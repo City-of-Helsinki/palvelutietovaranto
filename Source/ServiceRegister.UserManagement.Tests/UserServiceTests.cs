@@ -38,6 +38,11 @@ namespace ServiceRegister.UserManagement.Tests
             mapperFactory = Substitute.For<MapperFactory>();
             userContext = Substitute.For<IAuthenticatedUserContext>();
             sut = new UserService(identityManagementService, mapperFactory, userContext);
+
+            var role = Substitute.For<IdentityManagement.Model.IRole>();
+            role.Id.Returns(ExpectedRoleId);
+            role.Name.Returns(Roles.Administrator);
+            identityManagementService.GetRoles().Returns(new List<IdentityManagement.Model.IRole> { role });
         }
 
         [TestMethod]
@@ -226,6 +231,17 @@ namespace ServiceRegister.UserManagement.Tests
             Guid userId = sut.AddUser(ExpectedRoleId, ExpectedOrganizationId, ExpectedEmailAddress, ExpectedPassword, ExpectedLastName, ExpectedFirstName, ExpectedPhoneNumber);
 
             Assert.AreEqual(expectedUser.Id, userId);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InsufficientPermissionsException))]
+        public void AdministratorUserCannotBeAddedWithoutPermission()
+        {
+            userContext
+                .When(u => u.CheckPermission(Permissions.Users.ManageAdministratorUsers))
+                .Do(callInfo => { throw new InsufficientPermissionsException(Permissions.Users.ManageAdministratorUsers); });
+
+            sut.AddUser(ExpectedRoleId, ExpectedOrganizationId, ExpectedEmailAddress, ExpectedPassword, ExpectedLastName, ExpectedFirstName, ExpectedPhoneNumber);
         }
 
         [TestMethod]
