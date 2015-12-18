@@ -85,6 +85,8 @@ namespace ServiceRegister.UserManagement
                 throw new ArgumentException("User's first name cannot be empty.", "firstName");
             }
 
+            CheckManageUsersPermissions(roleId);
+
             if (IsExistingUser(emailAddress))
             {
                 throw new ExistingUserAccountException(string.Format("User account '{0}' already exists.", emailAddress));
@@ -126,6 +128,22 @@ namespace ServiceRegister.UserManagement
 
             var mapper = mapperFactory.CreateUserMapper();
             return mapper.Map(users).ToList();
+        }
+
+        private void CheckManageUsersPermissions(Guid roleId)
+        {
+            IEnumerable<IdentityManagement.Model.IRole> roles = identityManagementService.GetRoles();
+            IdentityManagement.Model.IRole newRole = roles.SingleOrDefault(r => r.Id == roleId);
+
+            if (newRole == null)
+            {
+                throw new ArgumentException(string.Format("No roles found with id '{0}'.", roleId));
+            }
+
+            if (newRole.Name == Roles.Administrator)
+            {
+                userContext.CheckPermission(Permissions.Users.ManageAdministratorUsers);
+            }
         }
     }
 }

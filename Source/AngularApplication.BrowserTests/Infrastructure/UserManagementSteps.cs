@@ -6,22 +6,28 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
     [Binding]
     internal class UserManagementSteps
     {
-        [Given(@"the user '(.*)' / '(.*)' is logged in")]
-        public void GivenTheUserIsLoggedIn(string email, string password)
+        [When(@"the user '(.*)' / '(.*)' is logged in")]
+        public void WhenTheUserIsLoggedIn(string email, string password)
         {
-            TestEnvironment.Driver.NavigateTo(string.Format("{0}Login", TestEnvironment.ApplicationHomePage));
-            Thread.Sleep(5000);
-
-            TestEnvironment.Driver.TypeText("loginEmailInputField", email);
-            TestEnvironment.Driver.TypeText("loginPasswordInputField", password);
-            TestEnvironment.Driver.ClickElement("loginButton");
-            Thread.Sleep(20000);
+            LoginUser(email, password);
         }
 
-        [Given(@"the test user is logged in")]
-        public void GivenTheTestUserIsLoggedIn()
+        [Given(@"the basic user is logged in")]
+        public void GivenTheBasicUserIsLoggedIn()
         {
-            GivenTheUserIsLoggedIn(TestEnvironment.TestUserEmailAddress, TestEnvironment.TestUserPassword);
+            LoginUser(TestEnvironment.BasicTestUserEmailAddress, TestEnvironment.TestUserPassword);
+        }
+
+        [Given(@"the organization administrator user is logged in")]
+        public void GivenTheOrganizationAdministratorUserIsLoggedIn()
+        {
+            LoginUser(TestEnvironment.OrganizationAdministratorTestUserEmailAddress, TestEnvironment.TestUserPassword);
+        }
+
+        [Given(@"the administrator user is logged in")]
+        public void GivenTheAdministratorUserIsLoggedIn()
+        {
+            LoginUser(TestEnvironment.AdministratorTestUserEmailAddress, TestEnvironment.TestUserPassword);
         }
 
         [Given(@"last name '(.+)' is typed")]
@@ -81,13 +87,22 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
             Thread.Sleep(3000);
         }
 
-        [Given(@"current user logs out")]
-        public void GivenCurrentUserLogsOut()
+        [When(@"current user logs out")]
+        public void WhenCurrentUserLogsOut()
         {
             Thread.Sleep(3000);
             TestEnvironment.Driver.ClickElement("logoutButton");
             Thread.Sleep(5000);
+        }
 
+        private void LoginUser(string email, string password)
+        {
+            TestEnvironment.Driver.NavigateTo(string.Format("{0}Login", TestEnvironment.ApplicationHomePage));
+            Thread.Sleep(5000);
+            TestEnvironment.Driver.TypeText("loginEmailInputField", email);
+            TestEnvironment.Driver.TypeText("loginPasswordInputField", password);
+            TestEnvironment.Driver.ClickElement("loginButton");
+            Thread.Sleep(20000);
         }
     }
 }

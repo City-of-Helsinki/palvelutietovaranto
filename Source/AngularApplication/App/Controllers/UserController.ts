@@ -21,6 +21,8 @@ module ServiceRegister
 
         public userInformationForm: angular.IFormController;
        
+        private administratorUser: string = "PTV-pääkäyttäjä" ;
+       
         constructor(private $scope: Affecto.Base.IViewScope, private $location: angular.ILocationService, $routeParams: IUserRoute, private $sce: angular.ISCEService,
             private $q: angular.IQService, private userService: UserService, private settingsService: SettingsService, private validationService: ValidationService,
             private busyIndicationService: Affecto.BusyIndication.IBusyIndicationService, private organizationService: OrganizationService,
@@ -99,7 +101,7 @@ module ServiceRegister
             else
             {
                 this.setPasswordValidity(true);
-            }            
+            }
         }
 
         public validateConfirmedPassword(): void
@@ -109,7 +111,7 @@ module ServiceRegister
                 this.setConfirmedPasswordValidity(this.model.password === this.model.passwordConfirm);
             }
             else
-            {
+        {
                 this.setConfirmedPasswordValidity(true);
             }
         }
@@ -185,19 +187,23 @@ module ServiceRegister
             this.originalModel = angular.copy(this.model);
         }
 
-        private initializeSelectionLists(): angular.IPromise<void>
+        private initializeSelectionLists(): void
         {
             this.busyIndicationService.showBusyIndicator("Haetaan valintalistojen sisältöä...");
-            return this.organizationService.getMainOrganizations()
-                .then((orgs: Array<OrganizationName>) =>
+            this.$q.all([this.organizationService.getMainOrganizations(), this.settingsService.getUserRoles()])
+                .then((result: Array<any>) =>
                 {
-                    this.organizations = orgs;
-                    this.settingsService.getUserRoles()
-                        .then((roles: Array<UserRole>) =>
+                    this.organizations = result[0];
+                    var userRoles: Array<UserRole> = result[1];
+                    if (this.authenticationService.getUser<AuthenticatedUser>().hasPermission(Permission.manageAdministratorUsers))
+                {
+                        this.userRoles = userRoles;
+                    }
+                    else
                         {
-                            this.userRoles = roles;
+                        this.userRoles = userRoles.filter((item: UserRole) => item.name !== this.administratorUser);
+                    }
                             this.busyIndicationService.hideBusyIndicator();
-                });
                 });
         }
     }
