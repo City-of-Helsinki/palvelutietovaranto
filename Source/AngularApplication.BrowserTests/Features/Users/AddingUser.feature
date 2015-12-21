@@ -104,7 +104,7 @@ Scenario: User without user maintanance permission cannot add users
 	Given the basic user is logged in
 	When the user is starting to add a new user
 	Then insufficient permissions error is displayed
-
+	
 Scenario: Administrator User can add users
 	Given the administrator user is logged in
 	And the user is starting to add a new user
