@@ -32,7 +32,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
         public void ThenOrganizationIsSelectedFromDropDownList(string org)
         {
             TestEnvironment.Driver.SelectDropDownListItem("userOrganizationInput", org);
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
         }
 
         [Then(@"the list should contain the new user '(.*)'")]

@@ -101,7 +101,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
         [Then(@"the user '(.+)' / '(.+)' is logged in")]
         public void TheUserIsLoggedIn(string firstName, string lastName)
         {
-            Assert.IsFalse(TestEnvironment.Driver.ElementHasText("userName", string.Format("{0} {1}", lastName, firstName)));
+            Assert.IsTrue(TestEnvironment.Driver.ElementHasText("userName", string.Format("{0} {1}", lastName, firstName)));
         }
     }
 }
