@@ -44,7 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.Authentication.Passwords, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.Authentication.Passwords.1.1.0-prerelease01\lib\net452\Affecto.Authentication.Passwords.dll</HintPath>
+      <HintPath>..\packages\Affecto.Authentication.Passwords.1.1.0\lib\net452\Affecto.Authentication.Passwords.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.Configuration.Extensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
