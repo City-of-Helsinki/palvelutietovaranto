@@ -177,7 +177,7 @@ namespace ServiceRegister.UserManagement.Tests
         {
             sut.AddUser(ExpectedRoleId, ExpectedOrganizationId, ExpectedEmailAddress, ExpectedPassword, ExpectedLastName, ExpectedFirstName, ExpectedPhoneNumber);
 
-            identityManagementService.Received(1).CreateUser(string.Format("{0} {1}", ExpectedLastName, ExpectedFirstName),
+            identityManagementService.Received(1).CreateUser($"{ExpectedLastName} {ExpectedFirstName}",
                 Arg.Any<IEnumerable<KeyValuePair<string, string>>>());
         }
 
@@ -334,6 +334,41 @@ namespace ServiceRegister.UserManagement.Tests
                 .Do(callInfo => { throw new InsufficientPermissionsException(Permissions.Users.ViewAllUsers); });
 
             sut.GetUsers(organizationId);
+        }
+
+        [TestMethod]
+        public void NullPasswordIsNotValid()
+        {
+            bool isValid = sut.ValidatePasswordStrength(null);
+            Assert.IsFalse(isValid);
+        }
+
+        [TestMethod]
+        public void EmptyPasswordIsNotValid()
+        {
+            bool isValid = sut.ValidatePasswordStrength(string.Empty);
+            Assert.IsFalse(isValid);
+        }
+
+        [TestMethod]
+        public void TooShortPasswordIsNotValid()
+        {
+            bool isValid = sut.ValidatePasswordStrength("aB1&");
+            Assert.IsFalse(isValid);
+        }
+
+        [TestMethod]
+        public void PasswordWithoutEnoughCharacterClassesIsNotValid()
+        {
+            bool isValid = sut.ValidatePasswordStrength("aaaBBBcccDDD");
+            Assert.IsFalse(isValid);
+        }
+
+        [TestMethod]
+        public void PasswordIsValid()
+        {
+            bool isValid = sut.ValidatePasswordStrength("aaaBBB333&#_");
+            Assert.IsTrue(isValid);
         }
     }
 }
