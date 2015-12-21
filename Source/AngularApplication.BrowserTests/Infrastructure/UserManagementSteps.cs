@@ -6,6 +6,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
     [Binding]
     internal class UserManagementSteps
     {
+        [Given(@"the user '(.*)' / '(.*)' is logged in")]
         [When(@"the user '(.*)' / '(.*)' is logged in")]
         public void WhenTheUserIsLoggedIn(string email, string password)
         {
@@ -87,6 +88,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
             Thread.Sleep(3000);
         }
 
+        [Given(@"current user logs out")]
         [When(@"current user logs out")]
         public void WhenCurrentUserLogsOut()
         {
