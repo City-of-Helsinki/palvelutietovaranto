@@ -98,7 +98,7 @@ Scenario: Administrator User can add users
 	And organization 'Daycare Inc.' is selected
 	And role 'Ylläpitäjä' is selected
 	And the user is saved
-	And current user logs out 
+	And current user logs out
 	And the user 'ylermi@yllapitaja.com' / 'password' is logged in
 	Then the user 'ylermi' / 'yllapitaja' is logged in
 	
