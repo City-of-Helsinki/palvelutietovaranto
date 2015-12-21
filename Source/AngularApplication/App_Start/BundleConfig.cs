@@ -13,7 +13,6 @@ namespace ServiceRegister.AngularApplication
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-2.1.3.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate.js").Include("~/Scripts/jquery.validate.unobtrusive.js"));
-            bundles.Add(new ScriptBundle("~/bundles/jqueryfancybox").Include("~/Scripts/jquery.fancybox.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

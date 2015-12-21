@@ -78,8 +78,4 @@ $(document).ready(function () {
 
     //$('.map-toggle > span').click(function ()... moved to ViewScript.js
 
-    $(document).ready(function () {
-        $('.fancybox').fancybox();
-    });
-
 })(jQuery);
