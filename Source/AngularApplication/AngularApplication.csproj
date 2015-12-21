@@ -282,7 +282,6 @@
     <Content Include="Content\partials\_chosen.scss" />
     <Content Include="Content\partials\_citizen.scss" />
     <Content Include="Content\partials\_colors.scss" />
-    <Content Include="Content\partials\_entrepreneur.scss" />
     <Content Include="Content\partials\_fonts.scss" />
     <Content Include="Content\partials\_footer.scss" />
     <Content Include="Content\partials\_forms.scss" />
@@ -295,7 +294,6 @@
     <Content Include="Content\partials\_jqueryui.scss" />
     <Content Include="Content\partials\_mixins.scss" />
     <Content Include="Content\partials\_normalize.scss" />
-    <Content Include="Content\partials\_official.scss" />
     <Content Include="Content\partials\_organizationmap.scss" />
     <Content Include="Content\partials\_print.scss" />
     <Content Include="Content\partials\_ptv.scss" />
