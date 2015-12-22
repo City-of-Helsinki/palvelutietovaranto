@@ -1,7 +1,7 @@
 ﻿<div class="row">
     <div class="col-xs-6">
         <label>Katuosoite</label>
-        <input id="visitingStreetAddress" type="text" class="form-control" maxlength="200" data-ng-model="controller.model.visitingStreetAddress" 
+        <input id="visitingStreetAddress" type="text" class="form-control" maxlength="50" data-ng-model="controller.model.visitingStreetAddress" 
                data-ng-required="controller.model.hasVisitingAddressParts()" />
     </div>
     <div class="col-xs-3">
@@ -14,7 +14,7 @@
     </div>
     <div class="col-xs-3">
         <label>Postitoimipaikka</label>
-        <input id="visitingAddressPostalDistrict" type="text" class="form-control" maxlength="100" data-ng-model="controller.model.visitingAddressPostalDistrict" 
+        <input id="visitingAddressPostalDistrict" type="text" class="form-control" maxlength="30" data-ng-model="controller.model.visitingAddressPostalDistrict" 
                data-ng-required="controller.model.hasVisitingAddressParts()" />
     </div>
 </div>
