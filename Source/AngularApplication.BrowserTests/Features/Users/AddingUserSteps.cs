@@ -74,14 +74,26 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
             Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userPhoneNumberErrorMessage"));
         }
 
-        [Then(@"password error message is displayed")]
-        public void ThenPasswordErrorMessageIsDisplayed()
+        [Then(@"password mismatch error message is displayed")]
+        public void ThenPasswordMismatchErrorMessageIsDisplayed()
+        {
+            Assert.IsTrue(TestEnvironment.Driver.IsElementDisplayed("userConfirmedPasswordErrorMessage"));
+        }
+
+        [Then(@"password mismatch error message is not displayed")]
+        public void ThenPasswordMismatchErrorMessageIsNotDisplayed()
+        {
+            Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userConfirmedPasswordErrorMessage"));
+        }
+
+        [Then(@"password strength error message is displayed")]
+        public void ThenPasswordStregthErrorMessageIsDisplayed()
         {
             Assert.IsTrue(TestEnvironment.Driver.IsElementDisplayed("userPasswordErrorMessage"));
         }
 
-        [Then(@"password error message is not displayed")]
-        public void ThenPasswordErrorMessageIsNotDisplayed()
+        [Then(@"password strength error message is not displayed")]
+        public void ThenPasswordStregthErrorMessageIsNotDisplayed()
         {
             Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userPasswordErrorMessage"));
         }
@@ -97,7 +109,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
         {
             Assert.IsFalse(TestEnvironment.Driver.GetDropDownListContent("userRoleInput").Contains("PTV-pääkäyttäjä"));
         }
-
+       
         [Then(@"the user '(.+)' / '(.+)' is logged in")]
         public void TheUserIsLoggedIn(string firstName, string lastName)
         {

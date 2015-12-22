@@ -43,5 +43,10 @@ module ServiceRegister
         {
             return this.password != null && this.password !== "";
         }
+
+        public hasBothPasswords(): boolean
+        {
+            return this.hasPassword() && this.passwordConfirm != null && this.passwordConfirm !== "";
+        }
     }
 }
