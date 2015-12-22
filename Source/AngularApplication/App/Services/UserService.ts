@@ -10,14 +10,6 @@ module ServiceRegister
         {
         }
 
-        public setUser(user: User): angular.IPromise<void>
-        {
-            return this.$http.put(this.apiBaseUrl + "serviceregister/users/", user)
-                .then((): void =>
-                {
-                });
-        }
-
         public getUser(userId: string): angular.IPromise<User>
         {
             return this.$http.get(this.apiBaseUrl + "serviceregister/users/" + userId)
@@ -61,6 +53,15 @@ module ServiceRegister
                 {
                     return response.data;
                 });
+        }
+
+        public validatePasswordStrength(password: string): angular.IPromise<boolean>
+        {
+            return this.$http.post(this.apiBaseUrl + "serviceregister/users/password", "\"" + password + "\"")
+                .then((response: angular.IHttpPromiseCallbackArg<any>): boolean =>
+                {
+                    return response.data;
+                });            
         }
     }
 } 

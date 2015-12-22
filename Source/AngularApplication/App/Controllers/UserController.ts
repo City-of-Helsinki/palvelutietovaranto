@@ -15,17 +15,18 @@ module ServiceRegister
         public validEmailAddress: boolean;
         public existingEmailAddress: boolean;
         public validPassword: boolean;
+        public validConfirmedPassword: boolean;
         public model: User;
         public originalModel: User;
 
         public userInformationForm: angular.IFormController;
-        public userInformationBeingEdited: boolean;
        
         private administratorUser: string = "PTV-pääkäyttäjä" ;
        
         constructor(private $scope: Affecto.Base.IViewScope, private $location: angular.ILocationService, $routeParams: IUserRoute, private $sce: angular.ISCEService,
             private $q: angular.IQService, private userService: UserService, private settingsService: SettingsService, private validationService: ValidationService,
-            private busyIndicationService: Affecto.BusyIndication.IBusyIndicationService, private organizationService: OrganizationService, private authenticationService: Affecto.Login.IAuthenticationService)
+            private busyIndicationService: Affecto.BusyIndication.IBusyIndicationService, private organizationService: OrganizationService,
+            private authenticationService: Affecto.Login.IAuthenticationService)
         {
 
             var user: AuthenticatedUser = authenticationService.getUser<AuthenticatedUser>();
@@ -42,60 +43,20 @@ module ServiceRegister
             this.validPhoneNumber = true;
             this.validEmailAddress = true;
             this.existingEmailAddress = false;
+            this.validConfirmedPassword = true;
             this.validPassword = true;
-
-            this.userInformationBeingEdited = false;
 
             this.initializeSelectionLists();
         }
 
-        public canSave(): boolean
+        public canAddUser(): boolean
         {
-            return this.validPhoneNumber && this.validEmailAddress && !this.existingEmailAddress && this.validPassword;
-        }
-
-        public cancelEditing(): void
-        {
-            this.model = this.originalModel;
-            this.userInformationBeingEdited = false;
-        }
-
-        public cancelAdd(): void
-        {
-           this.goToHomePage();
+            return this.validPhoneNumber && this.validEmailAddress && !this.existingEmailAddress && this.validPassword && this.validConfirmedPassword;
         }
 
         public goToHomePage(): void
         {
             this.$location.path("/Organizations/" + this.model.organizationId + "/Users");
-        }
-
-        public editUserInformation(): void
-        {
-            this.originalModel = angular.copy(this.model);
-            this.validateEmailAddress();
-            this.validatePhoneNumber();
-            this.validatePassword();
-            this.userInformationForm.$setPristine();
-            this.userInformationBeingEdited = true;
-        }
-
-        public isUserInformationBeingEdited(): boolean
-        {
-            return this.userInformationBeingEdited;
-        }
-
-        public saveUserInformation(): angular.IPromise<void>
-        {
-            if (this.isModelChanged())
-            {
-                return this.saveUser(true);
-            }
-        }
-
-        public addUserInformation(): angular.IPromise<void>
-        {
-            return this.addUser(true);
         }
 
         public validateEmailAddress(): void
@@ -131,7 +92,11 @@ module ServiceRegister
         {
             if (this.model.hasPassword())
             {
-                this.setPasswordValidity(this.model.password === this.model.passwordConfirm);
+                this.userService.validatePasswordStrength(this.model.password)
+                    .then((result: boolean) =>
+                    {
+                        this.setPasswordValidity(result);
+                    });
             }
             else
             {
@@ -139,9 +104,29 @@ module ServiceRegister
             }
         }
 
-        private isModelChanged(): boolean
+        public validateConfirmedPassword(): void
         {
-            return !angular.equals(this.model, this.originalModel);
+            if (this.model.hasBothPasswords() && this.validPassword)
+            {
+                this.setConfirmedPasswordValidity(this.model.password === this.model.passwordConfirm);
+            }
+            else
+        {
+                this.setConfirmedPasswordValidity(true);
+            }
+        }
+
+        public addUser()
+        {
+            this.busyIndicationService.showBusyIndicator("Tallennetaan käyttäjän tietoja...");
+            this.originalModel = angular.copy(this.model);
+
+            return this.userService.addUser(this.model)
+                .then(() =>
+                {
+                    this.busyIndicationService.hideBusyIndicator();
+                    this.goToHomePage();
+                });
         }
 
         private setEmailAddressValidity = (isValid: boolean, isExisting: boolean): void =>
@@ -157,10 +142,20 @@ module ServiceRegister
             this.setFormFieldValidity("phoneNumber", isValid);
         }
 
+        private setConfirmedPasswordValidity = (isValid: boolean): void =>
+        {
+            this.validConfirmedPassword = isValid;
+            this.setFormFieldValidity("passwordConfirm", isValid);
+        }
+
         private setPasswordValidity = (isValid: boolean): void =>
         {
             this.validPassword = isValid;
-            this.setFormFieldValidity("passwordConfirm", isValid);
+            this.setFormFieldValidity("password", isValid);
+            if (!isValid)
+            {
+                this.setConfirmedPasswordValidity(true);
+            }
         }
 
         private setFormFieldValidity = (fieldName: string, isValid: boolean): void =>
@@ -192,38 +187,6 @@ module ServiceRegister
             this.originalModel = angular.copy(this.model);
         }
 
-        private saveUser(goToHomePage: boolean)
-        {
-            this.busyIndicationService.showBusyIndicator("Tallennetaan käyttäjän tietoja...");
-            this.originalModel = angular.copy(this.model);
-
-            return this.userService.setUser(this.model)
-                .then(() =>
-                {
-                    this.busyIndicationService.hideBusyIndicator();
-                    if (goToHomePage)
-                    {
-                        this.goToHomePage();
-                    }
-                });
-        }
-
-        private addUser(goToHomePage: boolean)
-        {
-            this.busyIndicationService.showBusyIndicator("Tallennetaan käyttäjän tietoja...");
-            this.originalModel = angular.copy(this.model);
-
-            return this.userService.addUser(this.model)
-                .then((userId: string) =>
-                {
-                    this.busyIndicationService.hideBusyIndicator();
-                    if (goToHomePage)
-                    {
-                        this.goToHomePage();
-                    }
-                });
-        }
-
         private initializeSelectionLists(): void
         {
             this.busyIndicationService.showBusyIndicator("Haetaan valintalistojen sisältöä...");
@@ -233,14 +196,14 @@ module ServiceRegister
                     this.organizations = result[0];
                     var userRoles: Array<UserRole> = result[1];
                     if (this.authenticationService.getUser<AuthenticatedUser>().hasPermission(Permission.manageAdministratorUsers))
-                    {
+                {
                         this.userRoles = userRoles;
                     }
                     else
-                    {
+                        {
                         this.userRoles = userRoles.filter((item: UserRole) => item.name !== this.administratorUser);
                     }
-                    this.busyIndicationService.hideBusyIndicator();
+                            this.busyIndicationService.hideBusyIndicator();
                 });
         }
     }
