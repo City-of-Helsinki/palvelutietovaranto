@@ -159,7 +159,20 @@ namespace ServiceRegister.Api.Tests.User
             Assert.AreSame(apiOrganization, users.ElementAt(1).Organization);
         }
 
-        protected void SetupMappers()
+        [TestMethod]
+        public void ValidatePasswordStrength()
+        {
+            const string password = "secret";
+            const bool isValid = true;
+            userService.ValidatePasswordStrength(password).Returns(isValid);
+
+            OkNegotiatedContentResult<bool> result = sut.ValidatePasswordStrength(password) as OkNegotiatedContentResult<bool>;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(isValid, result.Content);
+        }
+
+        private void SetupMappers()
         {
             mapperFactory = Substitute.For<MapperFactory>();
             userListItemMapper = Substitute.For<IMapper<IUserListItem, UserListItem>>();

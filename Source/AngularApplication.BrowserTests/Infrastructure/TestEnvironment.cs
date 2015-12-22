@@ -26,7 +26,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
         public static readonly string BasicTestUserEmailAddress = "basic@test.net";
         public static readonly string OrganizationAdministratorTestUserEmailAddress = "organizationAdministrator@test.net";
         public static readonly string AdministratorTestUserEmailAddress = "administrator@test.net";
-        public static readonly string TestUserPassword = "secretPassword";
+        public static readonly string TestUserPassword = "secretPassword!";
         public static readonly string ApplicationHomePage = ConfigurationManager.AppSettings.Get("applicationUrl");
 
         public static WebHostDriver Driver { get; private set; }
