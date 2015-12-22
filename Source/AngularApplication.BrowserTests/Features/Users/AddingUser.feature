@@ -92,6 +92,7 @@ Scenario: Password strength is validated
 	And email address 'leo@hotmail.com' is typed
 
 	When password 'leo' is typed
+	And password 'leo' is typed again
 	Then the user cannot be saved
 	And password strength error message is displayed
 

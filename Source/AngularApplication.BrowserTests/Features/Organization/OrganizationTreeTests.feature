@@ -2,7 +2,7 @@
 Feature: OrganizationTreeTests
 
 Background: 
-	Given the test user is logged in
+	Given the administrator user is logged in
 
 Scenario: Add main new level organization
 	Given the organization tree is visible

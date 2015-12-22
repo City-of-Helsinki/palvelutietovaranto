@@ -3,7 +3,7 @@ Feature: AddingService
 	
 Background: 
 	Given an organization exists with the name 'Daycare Inc.'
-	And the test user is logged in
+	And the administrator user is logged in
 	And the user is starting to add a new service
 
 Scenario: Mandatory basic information must be filled before the service can be saved
