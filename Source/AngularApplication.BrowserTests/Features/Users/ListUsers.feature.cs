@@ -85,9 +85,9 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
 #line 10
  testRunner.And("email address \'teppo@testaaja.com\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("password \'password\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("password \'Password1!\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("password \'password\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("password \'Password1!\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
  testRunner.And("organization \'Organisaatio A\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
@@ -176,7 +176,7 @@ this.FeatureBackground();
 #line 34
  testRunner.Given("current user logs out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 35
- testRunner.And("the user \'teppo@testaaja.com\' / \'password\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the user \'teppo@testaaja.com\' / \'Password1!\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 36
  testRunner.And("user navigates to users list page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 37
