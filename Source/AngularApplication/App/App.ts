@@ -126,10 +126,6 @@ function registerRoutes($routeProvider: angular.route.IRouteProvider): void
             controller: "ServiceRegister.UserController",
             templateUrl: "App/Views/AddUser.html"
         })
-        .when("/Users/:userId",
-        {
-            templateUrl: "App/Views/User.html"
-        })
         .when("/Organizations",
         {
             controller: "ServiceRegister.OrganizationController",

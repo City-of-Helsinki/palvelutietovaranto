@@ -9,12 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ServiceRegister.UserManagement</RootNamespace>
     <AssemblyName>ServiceRegister.UserManagement</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,8 +43,8 @@
       <HintPath>..\packages\Affecto.Authentication.Claims.2.2.0\lib\net45\Affecto.Authentication.Claims.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Affecto.Authentication.Passwords, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.Authentication.Passwords.1.0.0\lib\net45\Affecto.Authentication.Passwords.dll</HintPath>
+    <Reference Include="Affecto.Authentication.Passwords, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Affecto.Authentication.Passwords.1.1.0\lib\net452\Affecto.Authentication.Passwords.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.Configuration.Extensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -63,7 +64,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.IdentityManagement.Commanding, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.IdentityManagement.Store.Mocking.8.0.0\lib\net451\Affecto.IdentityManagement.Commanding.dll</HintPath>
+      <HintPath>..\packages\Affecto.IdentityManagement.Store.Autofac.8.0.0\lib\net451\Affecto.IdentityManagement.Commanding.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.IdentityManagement.Interfaces, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -71,23 +72,23 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.IdentityManagement.Querying, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.IdentityManagement.Store.Mocking.8.0.0\lib\net451\Affecto.IdentityManagement.Querying.dll</HintPath>
+      <HintPath>..\packages\Affecto.IdentityManagement.Store.Autofac.8.0.0\lib\net451\Affecto.IdentityManagement.Querying.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.IdentityManagement.Store, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.IdentityManagement.Store.Mocking.8.0.0\lib\net451\Affecto.IdentityManagement.Store.dll</HintPath>
+      <HintPath>..\packages\Affecto.IdentityManagement.Store.Autofac.8.0.0\lib\net451\Affecto.IdentityManagement.Store.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.IdentityManagement.Store.EntityFramework, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.IdentityManagement.Store.Mocking.8.0.0\lib\net451\Affecto.IdentityManagement.Store.EntityFramework.dll</HintPath>
+      <HintPath>..\packages\Affecto.IdentityManagement.Store.Autofac.8.0.0\lib\net451\Affecto.IdentityManagement.Store.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.IdentityManagement.Store.Mocking, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Affecto.IdentityManagement.Store.Mocking.8.0.0\lib\net451\Affecto.IdentityManagement.Store.Mocking.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Affecto.IdentityManagement.Store.PostgreSql, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.IdentityManagement.Store.PostgreSql.8.0.0\lib\net451\Affecto.IdentityManagement.Store.PostgreSql.dll</HintPath>
+    <Reference Include="Affecto.IdentityManagement.Store.PostgreSql, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Affecto.IdentityManagement.Store.PostgreSql.8.1.0\lib\net451\Affecto.IdentityManagement.Store.PostgreSql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.Mapping, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

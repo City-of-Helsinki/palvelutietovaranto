@@ -11,6 +11,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
     internal sealed class AddingUserSteps
     {
         [Given(@"the user is starting to add a new user")]
+        [When(@"the user is starting to add a new user")]
         public void GivenTheUserIsStartingToAddANewUser()
         {
             TestEnvironment.Driver.NavigateTo(string.Format("{0}Organizations/{1}/NewUser", 
@@ -24,8 +25,6 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
         {
             Assert.IsFalse(TestEnvironment.Driver.IsElementEnabled("saveNewUserButton"));
         }
-
-
 
         [Then(@"the user can be saved")]
         public void ThenTheUserCanBeSaved()
@@ -55,7 +54,6 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
         public void WhenPhoneNumberIsTyped(string phoneNumber)
         {
             TestEnvironment.Driver.TypeText("userPhoneNumberInput", phoneNumber);
-
         }
 
         [When(@"focus is moved out of the phone number field")]
@@ -76,14 +74,26 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
             Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userPhoneNumberErrorMessage"));
         }
 
-        [Then(@"password error message is displayed")]
-        public void ThenPasswordErrorMessageIsDisplayed()
+        [Then(@"password mismatch error message is displayed")]
+        public void ThenPasswordMismatchErrorMessageIsDisplayed()
+        {
+            Assert.IsTrue(TestEnvironment.Driver.IsElementDisplayed("userConfirmedPasswordErrorMessage"));
+        }
+
+        [Then(@"password mismatch error message is not displayed")]
+        public void ThenPasswordMismatchErrorMessageIsNotDisplayed()
+        {
+            Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userConfirmedPasswordErrorMessage"));
+        }
+
+        [Then(@"password strength error message is displayed")]
+        public void ThenPasswordStregthErrorMessageIsDisplayed()
         {
             Assert.IsTrue(TestEnvironment.Driver.IsElementDisplayed("userPasswordErrorMessage"));
         }
 
-        [Then(@"password error message is not displayed")]
-        public void ThenPasswordErrorMessageIsNotDisplayed()
+        [Then(@"password strength error message is not displayed")]
+        public void ThenPasswordStregthErrorMessageIsNotDisplayed()
         {
             Assert.IsFalse(TestEnvironment.Driver.IsElementDisplayed("userPasswordErrorMessage"));
         }
@@ -94,6 +104,16 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
             Assert.IsTrue(TestEnvironment.Driver.Value.Url.Contains("INSUFFICIENT_PERMISSIONS"));
         }
 
+        [Then(@"administrator role is not available")]
+        public void AdministratorRoleIsNotAvailable()
+        {
+            Assert.IsFalse(TestEnvironment.Driver.GetDropDownListContent("userRoleInput").Contains("PTV-pääkäyttäjä"));
+        }
        
+        [Then(@"the user '(.+)' / '(.+)' is logged in")]
+        public void TheUserIsLoggedIn(string firstName, string lastName)
+        {
+            Assert.IsTrue(TestEnvironment.Driver.ElementHasText("userName", string.Format("{0} {1}", lastName, firstName)));
+        }
     }
 }

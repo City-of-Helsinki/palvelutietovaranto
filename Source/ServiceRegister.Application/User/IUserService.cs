@@ -9,5 +9,6 @@ namespace ServiceRegister.Application.User
         IEnumerable<IRole> GetRoles();
         IEnumerable<IUserListItem> GetUsers(Guid organizationId);
         bool IsExistingUser(string emailAddress);
+        bool ValidatePasswordStrength(string password);
     }
 }

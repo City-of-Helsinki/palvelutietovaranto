@@ -73,7 +73,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Users
         {
 #line 4
 #line 5
- testRunner.Given("the test user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
  testRunner.And("an organization exists with the name \'Organisaatio A\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
@@ -151,33 +151,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line 28
- testRunner.Given("the user is starting to add a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("current user logs out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 29
- testRunner.And("last name \'Koeistaja\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the organization administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 30
- testRunner.And("first name \'Keijo\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("user navigates to users list page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 31
- testRunner.And("email address \'keijo@koeistaja.com\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
- testRunner.And("password \'password\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 33
- testRunner.And("password \'password\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 34
- testRunner.And("organization \'Organisaatio A\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
- testRunner.And("role \'Organisaation pääkäyttäjä\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
- testRunner.And("the user is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 37
- testRunner.And("current user logs out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 38
- testRunner.Given("the user \'keijo@koeistaja.com\' / \'password\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
- testRunner.And("user navigates to users list page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 40
  testRunner.Then("page should not contain organization drop down element", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 41
- testRunner.And("the list should contain the new user \'keijo@koeistaja.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -189,17 +169,17 @@ this.FeatureBackground();
         public virtual void UserWithoutUserMaintanancePermissionCannotSeeAddUserButton()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User without user maintanance permission cannot see add user button", ((string[])(null)));
-#line 43
+#line 33
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 44
+#line 34
  testRunner.Given("current user logs out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 45
+#line 35
  testRunner.And("the user \'teppo@testaaja.com\' / \'password\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 46
+#line 36
  testRunner.And("user navigates to users list page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 47
+#line 37
  testRunner.Then("page should not contain add new user button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

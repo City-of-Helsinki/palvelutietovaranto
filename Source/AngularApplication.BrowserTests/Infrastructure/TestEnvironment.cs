@@ -23,8 +23,10 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
     [Binding]
     internal static class TestEnvironment
     {
-        public static readonly string TestUserEmailAddress = "test@test.net";
-        public static readonly string TestUserPassword = "secretPassword";
+        public static readonly string BasicTestUserEmailAddress = "basic@test.net";
+        public static readonly string OrganizationAdministratorTestUserEmailAddress = "organizationAdministrator@test.net";
+        public static readonly string AdministratorTestUserEmailAddress = "administrator@test.net";
+        public static readonly string TestUserPassword = "secretPassword!";
         public static readonly string ApplicationHomePage = ConfigurationManager.AppSettings.Get("applicationUrl");
 
         public static WebHostDriver Driver { get; private set; }
@@ -56,7 +58,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
             RegisterAuthenticatedUserContext(builder);
             ResolveProductionCodeModules(builder);
             ClearDatabase();
-            CreateTestOrganizationAndUser();
+            CreateTestOrganizationAndUsers();
             SetupCurrentScenarioContext();
             Driver = new WebHostDriver(Browser);
         }
@@ -134,13 +136,16 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Infrastructure
             userManagementTestEnvironment.RemoveAllUsers();
         }
 
-        private static void CreateTestOrganizationAndUser()
+        private static void CreateTestOrganizationAndUsers()
         {
             Guid organizationId = organizationService.AddOrganization("6464032-2", null, "Valtio", null,
                 new List<LocalizedText> { new LocalizedText("fi", "Testkäyttäjän organisaatio") }, null);
 
-            userContext.Permissions = new List<string> { Permissions.Users.UserMaintenance };
-            userManagementTestEnvironment.AddTestUser(organizationId, TestUserEmailAddress, TestUserPassword, "Test", "User");
+            userContext.Permissions = new List<string> { Permissions.Users.UserMaintenance, Permissions.Users.ManageAdministratorUsers };
+            userManagementTestEnvironment.AddBasicTestUser(organizationId, BasicTestUserEmailAddress, TestUserPassword, "Basic", "User");
+            userManagementTestEnvironment.AddOrganizationAdministratorTestUser(organizationId, OrganizationAdministratorTestUserEmailAddress, TestUserPassword, 
+                "OrganizationAdmin", "User");
+            userManagementTestEnvironment.AddAdministratorTestUser(organizationId, AdministratorTestUserEmailAddress, TestUserPassword, "Admin", "User");
             userContext.Permissions.Clear();
         }
 
