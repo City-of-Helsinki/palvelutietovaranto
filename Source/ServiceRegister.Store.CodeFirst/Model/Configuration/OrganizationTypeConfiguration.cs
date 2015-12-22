@@ -8,8 +8,8 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(organizationType => organizationType.Id);
 
-            Property(organizationType => organizationType.Name).IsRequired().HasMaxLength(200);
-            Property(organizationType => organizationType.SourceId).HasMaxLength(200);
+            Property(organizationType => organizationType.Name).IsRequired();
+            Property(organizationType => organizationType.SourceId);
 
         }
     }

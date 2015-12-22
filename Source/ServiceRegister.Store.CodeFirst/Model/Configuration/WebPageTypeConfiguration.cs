@@ -8,7 +8,7 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(webPageType => webPageType.Id);
 
-            Property(webPageType => webPageType.Type).IsRequired().HasMaxLength(200);
+            Property(webPageType => webPageType.Type).IsRequired();
         }
     }
 }

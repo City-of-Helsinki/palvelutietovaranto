@@ -8,8 +8,8 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(phoneNumber => phoneNumber.Id);
 
-            Property(phoneNumber => phoneNumber.Number).IsRequired().HasMaxLength(50);
-            Property(phoneNumber => phoneNumber.PhoneCallFee).HasMaxLength(150);
+            Property(phoneNumber => phoneNumber.Number).IsRequired();
+            Property(phoneNumber => phoneNumber.PhoneCallFee);
         }
     }
 }

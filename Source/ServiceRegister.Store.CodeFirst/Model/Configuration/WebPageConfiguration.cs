@@ -8,8 +8,8 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(address => address.Id);
 
-            Property(address => address.Url).IsRequired().HasMaxLength(1000);
-            Property(address => address.Name).IsRequired().HasMaxLength(500);
+            Property(address => address.Url).IsRequired();
+            Property(address => address.Name).IsRequired();
         }
     }
 }
