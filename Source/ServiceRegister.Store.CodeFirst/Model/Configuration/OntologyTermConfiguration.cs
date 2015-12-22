@@ -7,10 +7,10 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         public OntologyTermConfiguration()
         {
             HasKey(serviceClass => serviceClass.Id);
-            Property(serviceClass => serviceClass.Name).HasMaxLength(200);
-            Property(serviceClass => serviceClass.LowerCaseName).HasMaxLength(200);
-            Property(serviceClass => serviceClass.SourceId).HasMaxLength(200);
-            Property(serviceClass => serviceClass.SourceParentId).HasMaxLength(200);
+            Property(serviceClass => serviceClass.Name);
+            Property(serviceClass => serviceClass.LowerCaseName);
+            Property(serviceClass => serviceClass.SourceId);
+            Property(serviceClass => serviceClass.SourceParentId);
         }
     }
 }

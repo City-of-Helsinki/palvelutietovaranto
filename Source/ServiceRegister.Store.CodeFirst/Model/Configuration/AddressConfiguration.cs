@@ -8,8 +8,8 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(address => address.Id);
 
-            Property(address => address.PostOfficeBox).HasMaxLength(100);
-            Property(address => address.PostalCode).HasMaxLength(100);
+            Property(address => address.PostOfficeBox);
+            Property(address => address.PostalCode);
 
             HasMany(address => address.LanguageSpecifications).WithRequired().HasForeignKey(a => a.AddressId);
         }

@@ -10,8 +10,8 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
             HasKey(organization => organization.Id);
 
             Property(organization => organization.NumericId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(organization => organization.BusinessId).HasMaxLength(9);
-            Property(organization => organization.Oid).HasMaxLength(100);
+            Property(organization => organization.BusinessId);
+            Property(organization => organization.Oid);
             Property(organization => organization.Active);
 
             HasRequired(organization => organization.Type);

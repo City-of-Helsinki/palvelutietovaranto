@@ -8,7 +8,7 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(keyword => keyword.Id);
 
-            Property(keyword => keyword.Keyword).HasMaxLength(4000).IsRequired();
+            Property(keyword => keyword.Keyword).IsRequired();
 
             HasRequired(keyword => keyword.Service);
             HasRequired(keyword => keyword.Language);

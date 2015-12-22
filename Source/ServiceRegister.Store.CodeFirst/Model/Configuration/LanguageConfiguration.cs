@@ -8,8 +8,8 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(language => language.Id);
             
-            Property(language => language.Code).IsRequired().HasMaxLength(3);
-            Property(language => language.Name).IsRequired().HasMaxLength(100);
+            Property(language => language.Code).IsRequired();
+            Property(language => language.Name).IsRequired();
         }
     }
 }

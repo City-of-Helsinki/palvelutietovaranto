@@ -8,8 +8,8 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(specification => new { specification.OrganizationId, specification.LanguageId });
             
-            Property(specification => specification.Name).HasMaxLength(500);
-            Property(specification => specification.Description).HasMaxLength(4000);
+            Property(specification => specification.Name);
+            Property(specification => specification.Description);
             
             HasRequired(specification => specification.Language);
         }

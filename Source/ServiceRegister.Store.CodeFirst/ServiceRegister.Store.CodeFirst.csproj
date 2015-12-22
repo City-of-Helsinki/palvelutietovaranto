@@ -168,6 +168,10 @@
     <Compile Include="Migrations\201512070737514_AddOntologyTermLowerCaseName.Designer.cs">
       <DependentUpon>201512070737514_AddOntologyTermLowerCaseName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512220717510_AlterVarcharColumnsToText.cs" />
+    <Compile Include="Migrations\201512220717510_AlterVarcharColumnsToText.Designer.cs">
+      <DependentUpon>201512220717510_AlterVarcharColumnsToText.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\ServiceRegisterDbMigration.cs" />
     <Compile Include="Model\Address.cs" />
@@ -325,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512070737514_AddOntologyTermLowerCaseName.resx">
       <DependentUpon>201512070737514_AddOntologyTermLowerCaseName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512220717510_AlterVarcharColumnsToText.resx">
+      <DependentUpon>201512220717510_AlterVarcharColumnsToText.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
