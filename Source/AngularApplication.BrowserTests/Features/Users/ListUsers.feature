@@ -8,8 +8,8 @@ Background:
 	When last name 'Testaaja' is typed
 	And first name 'Teppo' is typed
 	And email address 'teppo@testaaja.com' is typed
-	And password 'password' is typed
-	And password 'password' is typed again
+	And password 'Password1!' is typed
+	And password 'Password1!' is typed again
 	And organization 'Organisaatio A' is selected
 	And role 'Ylläpitäjä' is selected
 	And the user is saved
@@ -32,6 +32,6 @@ Scenario: organization admin user cannot change organization in user list page
 	
 Scenario: User without user maintanance permission cannot see add user button
 	Given current user logs out 
-	And the user 'teppo@testaaja.com' / 'password' is logged in
+	And the user 'teppo@testaaja.com' / 'Password1!' is logged in
 	And user navigates to users list page
 	Then page should not contain add new user button

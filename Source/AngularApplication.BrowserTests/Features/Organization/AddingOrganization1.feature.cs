@@ -73,7 +73,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Organization
         {
 #line 4
 #line 5
- testRunner.Given("the test user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
  testRunner.And("the user is starting to add a new organization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

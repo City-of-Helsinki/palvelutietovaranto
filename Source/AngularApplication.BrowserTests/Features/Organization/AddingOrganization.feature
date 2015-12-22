@@ -2,7 +2,7 @@
 Feature: AddingOrganization
 
 Background: 
-	Given the test user is logged in
+	Given the administrator user is logged in
 	And the user is starting to add a new organization
 
 Scenario: Wizard steps navigation validation

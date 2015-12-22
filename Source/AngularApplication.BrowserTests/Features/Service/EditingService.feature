@@ -2,7 +2,7 @@
 Feature: EditingService
 
 Background: 
-	Given the test user is logged in
+	Given the administrator user is logged in
 	And an organization exists with the name 'Daycare Inc.'
 	And a service exists for the organization with following details
 	| Service name | Alternate name       | Short description | Description                    | Languages     | Requirements        | User instructions                                     | Service classes         | Ontology terms            | Target groups           | Life events                  | Keywords       |

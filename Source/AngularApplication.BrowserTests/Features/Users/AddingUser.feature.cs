@@ -293,16 +293,18 @@ this.FeatureBackground();
 #line 94
  testRunner.When("password \'leo\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 95
- testRunner.Then("the user cannot be saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("password \'leo\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 96
+ testRunner.Then("the user cannot be saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 97
  testRunner.And("password strength error message is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 98
- testRunner.When("password \'LeoTheKing!\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 99
- testRunner.And("password \'LeoTheKing!\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("password \'LeoTheKing!\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 100
- testRunner.Then("the user can be saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("password \'LeoTheKing!\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 101
+ testRunner.Then("the user can be saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 102
  testRunner.And("password strength error message is not displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -315,15 +317,15 @@ this.FeatureBackground();
         public virtual void UserWithoutUserMaintanancePermissionCannotAddUsers()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User without user maintanance permission cannot add users", ((string[])(null)));
-#line 103
+#line 104
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 104
- testRunner.Given("the basic user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 105
- testRunner.When("the user is starting to add a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("the basic user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 106
+ testRunner.When("the user is starting to add a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 107
  testRunner.Then("insufficient permissions error is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -336,35 +338,35 @@ this.FeatureBackground();
         public virtual void AdministratorUserCanAddUsers()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Administrator User can add users", ((string[])(null)));
-#line 108
+#line 109
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 109
- testRunner.Given("the administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 110
- testRunner.And("the user is starting to add a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("the administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 111
- testRunner.When("last name \'yllapitaja\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("the user is starting to add a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 112
- testRunner.And("first name \'ylermi\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("last name \'yllapitaja\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 113
- testRunner.And("email address \'ylermi@yllapitaja.com\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("first name \'ylermi\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 114
- testRunner.And("password \'Password123\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("email address \'ylermi@yllapitaja.com\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 115
- testRunner.And("password \'Password123\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("password \'Password123\' is typed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 116
- testRunner.And("organization \'Daycare Inc.\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("password \'Password123\' is typed again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 117
- testRunner.And("role \'Ylläpitäjä\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("organization \'Daycare Inc.\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 118
- testRunner.And("the user is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("role \'Ylläpitäjä\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 119
- testRunner.And("current user logs out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the user is saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 120
- testRunner.And("the user \'ylermi@yllapitaja.com\' / \'Password123\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("current user logs out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 121
+ testRunner.And("the user \'ylermi@yllapitaja.com\' / \'Password123\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 122
  testRunner.Then("the user \'ylermi\' / \'yllapitaja\' is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -377,15 +379,15 @@ this.FeatureBackground();
         public virtual void UserWithoutManageAdministratorUsersPermissionCannotAddAdministratorUser()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User without manage administrator users permission cannot add administrator user", ((string[])(null)));
-#line 123
+#line 124
 this.ScenarioSetup(scenarioInfo);
 #line 4
 this.FeatureBackground();
-#line 124
- testRunner.Given("the organization administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 125
- testRunner.When("the user is starting to add a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("the organization administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 126
+ testRunner.When("the user is starting to add a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 127
  testRunner.Then("administrator role is not available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
