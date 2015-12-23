@@ -76,7 +76,7 @@
                     <div class="right">
                         <button id="addServiceThirdStepSaveAndQuitButton" type="submit" class="button" data-ng-click="controller.saveClassificationAndOnthologyTermsAndQuit()"
                                 data-ng-show="controller.areClassificationAndOnthologyTermsBeingEdited()"
-                                data-ng-disabled="!controller.canSaveClassificationAndOnthologyTerms()">
+                                data-ng-disabled="controller.classificationAndOnthologyTermsForm.$invalid || !controller.canSaveClassificationAndOnthologyTerms()">
                             Valmis
                         </button>
                     </div>
