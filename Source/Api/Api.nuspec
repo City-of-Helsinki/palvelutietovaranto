@@ -7,7 +7,9 @@
     <authors>Affecto</authors>
     <version>$version$</version>
     <releaseNotes>
-      Look for duplicate organization business identifiers only within active organizations.
+      Allow whole Finnish alphabet in organization web page addresses.
+      Don't allow organization administrator to create PTV administrator users.
+      Implement new user password stregth validation.
     </releaseNotes>
   </metadata>
 </package>
