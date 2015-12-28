@@ -7,9 +7,16 @@
     <authors>Affecto</authors>
     <version>$version$</version>
     <releaseNotes>
-      Fix saving service basic information when only languages are changed.
-      Fix collapsing available service classification tree nodes.
-      Fix cancelling service basic information editing.
+      Fix service classification form validity check when there is more than maximum amount of characters in service keywords.
+      Fix organization name maximum length.
+      Fix organization phone call fee maximum length.
+      Fix organization web page name maximum length.
+      Fix organization postal district maximum length.
+      Fix organization street address maximum length.
+      Allow whole Finnish alphabet in organization web page addresses.
+      Fix styles of remove organization button.
+      Don't allow organization administrator to create PTV administrator users.
+      Implement new user password stregth validation.
     </releaseNotes>
   </metadata>
 </package>
