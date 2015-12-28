@@ -75,7 +75,7 @@ namespace ServiceRegister.AngularApplication.BrowserTests.Features.Service
 #line 5
  testRunner.Given("an organization exists with the name \'Daycare Inc.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("the test user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the administrator user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
  testRunner.And("the user is starting to add a new service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

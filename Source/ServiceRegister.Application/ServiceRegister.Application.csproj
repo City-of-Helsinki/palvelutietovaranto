@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ServiceRegister.Application</RootNamespace>
     <AssemblyName>ServiceRegister.Application</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -36,8 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Affecto.Identifiers, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.Identifiers.1.2.0\lib\net45\Affecto.Identifiers.dll</HintPath>
+    <Reference Include="Affecto.Identifiers, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Affecto.Identifiers.1.3.0\lib\net45\Affecto.Identifiers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.Identifiers.Finnish, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

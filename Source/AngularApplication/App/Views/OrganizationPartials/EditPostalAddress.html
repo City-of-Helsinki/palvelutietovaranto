@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-xs-6">
                     <label for="city" class="mandatory-field">Postitoimipaikka</label>
-                    <input type="text" class="form-control" id="city" maxlength="100" data-ng-model="controller.model.postalPostOfficeBoxAddressPostalDistrict"
+                    <input type="text" class="form-control" id="city" maxlength="30" data-ng-model="controller.model.postalPostOfficeBoxAddressPostalDistrict"
                             data-ng-required="controller.showPostOfficeBoxPostalAddress()" />
                 </div>
             </div>
@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-xs-6">
                     <label class="mandatory-field">Katuosoite</label>
-                    <input id="separateStreetPostalAddress" type="text" class="form-control" maxlength="200" data-ng-model="controller.model.postalStreetAddressStreet"
+                    <input id="separateStreetPostalAddress" type="text" class="form-control" maxlength="50" data-ng-model="controller.model.postalStreetAddressStreet"
                             data-ng-required="controller.showSeparateStreetPostalAddress()" />
                 </div>
                 <div class="col-xs-3">
@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-xs-3">
                     <label class="mandatory-field">Postitoimipaikka</label>
-                    <input id="postalStreetAddressPostalDistrict" type="text" class="form-control" maxlength="100" data-ng-model="controller.model.postalStreetAddressPostalDistrict"
+                    <input id="postalStreetAddressPostalDistrict" type="text" class="form-control" maxlength="30" data-ng-model="controller.model.postalStreetAddressPostalDistrict"
                             data-ng-required="controller.showSeparateStreetPostalAddress()" />
                 </div>
             </div>

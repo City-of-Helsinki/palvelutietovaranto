@@ -8,9 +8,9 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(specification => new { specification.AddressId, specification.LanguageId });
 
-            Property(specification => specification.StreetAddress).HasMaxLength(200);
-            Property(specification => specification.PostalDistrict).HasMaxLength(100);
-            Property(specification => specification.Qualifier).HasMaxLength(500);
+            Property(specification => specification.StreetAddress);
+            Property(specification => specification.PostalDistrict);
+            Property(specification => specification.Qualifier);
 
             HasRequired(specification => specification.Language);
         }

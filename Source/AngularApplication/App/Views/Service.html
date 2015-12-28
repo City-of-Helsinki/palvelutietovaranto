@@ -67,7 +67,7 @@
                     <div class="content-box-header">
                         <h3>Luokittelut ja ontologiasanat</h3>
                         <button id="saveClassificationAndOnthologyTermsButton" type="submit" class="button save" data-ng-click="controller.saveEditedClassificationAndOnthologyTerms()"
-                                data-ng-disabled="controller.classificationAndOnthologyTermsForm.$pristine || !controller.canSaveClassificationAndOnthologyTerms()">
+                                data-ng-disabled="controller.classificationAndOnthologyTermsForm.$pristine || controller.classificationAndOnthologyTermsForm.$invalid || !controller.canSaveClassificationAndOnthologyTerms()">
                             Tallenna
                         </button>
                         <button id="cancelEditingServiceClassificationInformation" type="submit" class="button cancel" data-ng-click="controller.cancelEditing()">

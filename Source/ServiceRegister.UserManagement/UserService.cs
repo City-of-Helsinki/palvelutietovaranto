@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Affecto.Authentication.Claims;
+using Affecto.Authentication.Passwords;
+using Affecto.Authentication.Passwords.Specifications;
 using Affecto.Mapping;
+using Affecto.Patterns.Specification;
 using ServiceRegister.Application.User;
 using ServiceRegister.Common.User;
 using ServiceRegister.UserManagement.Mapping;
@@ -21,15 +24,15 @@ namespace ServiceRegister.UserManagement
         {
             if (identityManagementService == null)
             {
-                throw new ArgumentNullException("identityManagementService");
+                throw new ArgumentNullException(nameof(identityManagementService));
             }
             if (mapperFactory == null)
             {
-                throw new ArgumentNullException("mapperFactory");
+                throw new ArgumentNullException(nameof(mapperFactory));
             }
             if (userContext == null)
             {
-                throw new ArgumentNullException("userContext");
+                throw new ArgumentNullException(nameof(userContext));
             }
 
             this.identityManagementService = identityManagementService;
@@ -47,45 +50,62 @@ namespace ServiceRegister.UserManagement
         {
             if (string.IsNullOrWhiteSpace(emailAddress))
             {
-                throw new ArgumentException("Email address cannot be empty.", "emailAddress");
+                throw new ArgumentException("Email address cannot be empty.", nameof(emailAddress));
             }
 
             return identityManagementService.IsExistingUserAccount(emailAddress, IdentityManagement.Model.AccountType.Password);
+        }
+
+        public bool ValidatePasswordStrength(string password)
+        {
+            if (string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+
+            var passwordObject = new Password(password);
+
+            var lengthSpecification = new PasswordMinimumLengthSpecification(10);
+            var characterSpecification = new PasswordCharacterSpecification(3);
+
+            return lengthSpecification.And(characterSpecification).IsSatisfiedBy(passwordObject);
         }
 
         public Guid AddUser(Guid roleId, Guid organizationId, string emailAddress, string password, string lastName, string firstName, string phoneNumber)
         {
             if (roleId == Guid.Empty)
             {
-                throw new ArgumentException("User's role id cannot be empty.", "roleId");
+                throw new ArgumentException("User's role id cannot be empty.", nameof(roleId));
             }
             if (organizationId == Guid.Empty)
             {
-                throw new ArgumentException("User's organization id cannot be empty.", "organizationId");
+                throw new ArgumentException("User's organization id cannot be empty.", nameof(organizationId));
             }
             if (string.IsNullOrWhiteSpace(emailAddress))
             {
-                throw new ArgumentException("User's email address cannot be empty.", "emailAddress");
+                throw new ArgumentException("User's email address cannot be empty.", nameof(emailAddress));
             }
             if (string.IsNullOrWhiteSpace(password))
             {
-                throw new ArgumentException("User's password cannot be empty.", "password");
+                throw new ArgumentException("User's password cannot be empty.", nameof(password));
             }
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                throw new ArgumentException("User's last name cannot be empty.", "lastName");
+                throw new ArgumentException("User's last name cannot be empty.", nameof(lastName));
             }
             if (string.IsNullOrWhiteSpace(firstName))
             {
-                throw new ArgumentException("User's first name cannot be empty.", "firstName");
+                throw new ArgumentException("User's first name cannot be empty.", nameof(firstName));
             }
+
+            CheckManageUsersPermissions(roleId);
 
             if (IsExistingUser(emailAddress))
             {
-                throw new ExistingUserAccountException(string.Format("User account '{0}' already exists.", emailAddress));
+                throw new ExistingUserAccountException($"User account '{emailAddress}' already exists.");
             }
 
-            string displayName = string.Format("{0} {1}", lastName, firstName);
+            string displayName = $"{lastName} {firstName}";
 
             var customProperties = new CustomProperties
             {
@@ -121,6 +141,22 @@ namespace ServiceRegister.UserManagement
 
             var mapper = mapperFactory.CreateUserMapper();
             return mapper.Map(users).ToList();
+        }
+
+        private void CheckManageUsersPermissions(Guid roleId)
+        {
+            IEnumerable<IdentityManagement.Model.IRole> roles = identityManagementService.GetRoles();
+            IdentityManagement.Model.IRole newRole = roles.SingleOrDefault(r => r.Id == roleId);
+
+            if (newRole == null)
+            {
+                throw new ArgumentException($"No roles found with id '{roleId}'.");
+            }
+
+            if (newRole.Name == Roles.Administrator)
+            {
+                userContext.CheckPermission(Permissions.Users.ManageAdministratorUsers);
+            }
         }
     }
 }

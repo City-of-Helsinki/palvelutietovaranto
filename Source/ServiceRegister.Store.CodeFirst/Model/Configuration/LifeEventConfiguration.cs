@@ -7,9 +7,9 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         public LifeEventConfiguration()
         {
             HasKey(lifeEvent => lifeEvent.Id);
-            Property(lifeEvent => lifeEvent.Name).HasMaxLength(200);
-            Property(lifeEvent => lifeEvent.SourceId).HasMaxLength(200);
-            Property(lifeEvent => lifeEvent.SourceParentId).HasMaxLength(200);
+            Property(lifeEvent => lifeEvent.Name);
+            Property(lifeEvent => lifeEvent.SourceId);
+            Property(lifeEvent => lifeEvent.SourceParentId);
         }
     }
 }

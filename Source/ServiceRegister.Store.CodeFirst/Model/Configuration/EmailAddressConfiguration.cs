@@ -8,7 +8,7 @@ namespace ServiceRegister.Store.CodeFirst.Model.Configuration
         {
             HasKey(address => address.Id);
 
-            Property(address => address.Email).IsRequired().HasMaxLength(200);
+            Property(address => address.Email).IsRequired();
         }
     }
 }
