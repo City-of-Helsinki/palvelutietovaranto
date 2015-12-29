@@ -16,7 +16,7 @@
 </treecontrol>
 
 <script id="organizationTreeTemplate.html" type="text/ng-template">
-    <ul {{options.ulClass}}>
+    <ul class="long-words-container" {{options.ulClass}}>
         <li data-ng-repeat="node in node.{{options.nodeChildren}} | filter:filterExpression:filterComparator {{options.orderBy}}" data-ng-class="headClass(node)"
             {{options.liClass}} set-node-to-data>
             <div class="branch-container" data-ng-class="selectedClass()">
