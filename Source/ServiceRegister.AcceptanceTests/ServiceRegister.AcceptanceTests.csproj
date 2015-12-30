@@ -49,8 +49,8 @@
       <HintPath>..\packages\Affecto.EntityFramework.PostgreSql.2.0.0\lib\net45\Affecto.EntityFramework.PostgreSql.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Affecto.Identifiers.Finnish, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Affecto.Identifiers.Finnish.2.0.0\lib\net45\Affecto.Identifiers.Finnish.dll</HintPath>
+    <Reference Include="Affecto.Identifiers.Finnish, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Affecto.Identifiers.Finnish.2.1.0\lib\net45\Affecto.Identifiers.Finnish.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Affecto.Patterns.Cqrs, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
