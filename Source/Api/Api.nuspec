@@ -7,9 +7,7 @@
     <authors>Affecto</authors>
     <version>$version$</version>
     <releaseNotes>
-      Allow whole Finnish alphabet in organization web page addresses.
-      Don't allow organization administrator to create PTV administrator users.
-      Implement new user password stregth validation.
+      Fix organization post office box postal address postal code validation.
     </releaseNotes>
   </metadata>
 </package>
