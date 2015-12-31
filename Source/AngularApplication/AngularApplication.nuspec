@@ -7,16 +7,8 @@
     <authors>Affecto</authors>
     <version>$version$</version>
     <releaseNotes>
-      Fix service classification form validity check when there is more than maximum amount of characters in service keywords.
-      Fix organization name maximum length.
-      Fix organization phone call fee maximum length.
-      Fix organization web page name maximum length.
-      Fix organization postal district maximum length.
-      Fix organization street address maximum length.
-      Allow whole Finnish alphabet in organization web page addresses.
-      Fix styles of remove organization button.
-      Don't allow organization administrator to create PTV administrator users.
-      Implement new user password stregth validation.
+      Fix organization layout text wrapping.
+      Fix organization post office box postal address postal code validation.
     </releaseNotes>
   </metadata>
 </package>
